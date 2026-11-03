@@ -1,0 +1,1101 @@
+{
+  "hero": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "url": "/assets/hero-400-ebeaba3aa0.webp"
+      },
+      {
+        "width": 640,
+        "height": 360,
+        "url": "/assets/hero-640-ebeaba3aa0.webp"
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "url": "/assets/hero-960-ebeaba3aa0.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "url": "/assets/hero-1280-ebeaba3aa0.webp"
+      },
+      {
+        "width": 1600,
+        "height": 900,
+        "url": "/assets/hero-1600-ebeaba3aa0.webp"
+      }
+    ],
+    "src": "/assets/hero-1600-ebeaba3aa0.webp"
+  },
+  "hero_mobile": {
+    "width": 900,
+    "height": 1600,
+    "variants": [
+      {
+        "width": 400,
+        "height": 711,
+        "url": "/assets/hero-mobile-400-8bf662b624.webp"
+      },
+      {
+        "width": 640,
+        "height": 1138,
+        "url": "/assets/hero-mobile-640-8bf662b624.webp"
+      },
+      {
+        "width": 900,
+        "height": 1600,
+        "url": "/assets/hero-mobile-900-8bf662b624.webp"
+      }
+    ],
+    "src": "/assets/hero-mobile-900-8bf662b624.webp"
+  },
+  "pool": {
+    "width": 1599,
+    "height": 899,
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "url": "/assets/pool-400-812c659949.webp"
+      },
+      {
+        "width": 640,
+        "height": 360,
+        "url": "/assets/pool-640-812c659949.webp"
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "url": "/assets/pool-960-812c659949.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "url": "/assets/pool-1280-812c659949.webp"
+      },
+      {
+        "width": 1599,
+        "height": 899,
+        "url": "/assets/pool-1599-812c659949.webp"
+      }
+    ],
+    "src": "/assets/pool-1599-812c659949.webp"
+  },
+  "covered": {
+    "width": 960,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 400,
+        "height": 533,
+        "url": "/assets/covered-400-65a672841d.webp"
+      },
+      {
+        "width": 640,
+        "height": 853,
+        "url": "/assets/covered-640-65a672841d.webp"
+      },
+      {
+        "width": 960,
+        "height": 1280,
+        "url": "/assets/covered-960-65a672841d.webp"
+      }
+    ],
+    "src": "/assets/covered-960-65a672841d.webp"
+  },
+  "grounds": {
+    "width": 900,
+    "height": 1600,
+    "variants": [
+      {
+        "width": 400,
+        "height": 711,
+        "url": "/assets/grounds-400-77de4701b8.webp"
+      },
+      {
+        "width": 640,
+        "height": 1138,
+        "url": "/assets/grounds-640-77de4701b8.webp"
+      },
+      {
+        "width": 900,
+        "height": 1600,
+        "url": "/assets/grounds-900-77de4701b8.webp"
+      }
+    ],
+    "src": "/assets/grounds-900-77de4701b8.webp"
+  },
+  "events": {
+    "width": 1280,
+    "height": 960,
+    "variants": [
+      {
+        "width": 400,
+        "height": 300,
+        "url": "/assets/events-400-f05864a363.webp"
+      },
+      {
+        "width": 640,
+        "height": 480,
+        "url": "/assets/events-640-f05864a363.webp"
+      },
+      {
+        "width": 960,
+        "height": 720,
+        "url": "/assets/events-960-f05864a363.webp"
+      },
+      {
+        "width": 1280,
+        "height": 960,
+        "url": "/assets/events-1280-f05864a363.webp"
+      }
+    ],
+    "src": "/assets/events-1280-f05864a363.webp"
+  },
+  "bar": {
+    "width": 960,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 400,
+        "height": 533,
+        "url": "/assets/bar-400-22ab287f6e.webp"
+      },
+      {
+        "width": 640,
+        "height": 853,
+        "url": "/assets/bar-640-22ab287f6e.webp"
+      },
+      {
+        "width": 960,
+        "height": 1280,
+        "url": "/assets/bar-960-22ab287f6e.webp"
+      }
+    ],
+    "src": "/assets/bar-960-22ab287f6e.webp"
+  },
+  "grill": {
+    "width": 576,
+    "height": 879,
+    "variants": [
+      {
+        "width": 400,
+        "height": 610,
+        "url": "/assets/grill-400-c7a3d2c47d.webp"
+      },
+      {
+        "width": 576,
+        "height": 879,
+        "url": "/assets/grill-576-c7a3d2c47d.webp"
+      }
+    ],
+    "src": "/assets/grill-576-c7a3d2c47d.webp"
+  },
+  "drink": {
+    "width": 1200,
+    "height": 1600,
+    "variants": [
+      {
+        "width": 400,
+        "height": 533,
+        "url": "/assets/drink-400-a314921a78.webp"
+      },
+      {
+        "width": 640,
+        "height": 853,
+        "url": "/assets/drink-640-a314921a78.webp"
+      },
+      {
+        "width": 960,
+        "height": 1280,
+        "url": "/assets/drink-960-a314921a78.webp"
+      },
+      {
+        "width": 1200,
+        "height": 1600,
+        "url": "/assets/drink-1200-a314921a78.webp"
+      }
+    ],
+    "src": "/assets/drink-1200-a314921a78.webp"
+  },
+  "bungalow": {
+    "width": 1254,
+    "height": 1254,
+    "variants": [
+      {
+        "width": 400,
+        "height": 400,
+        "url": "/assets/bungalow-interior-400-6e6150a076.webp"
+      },
+      {
+        "width": 640,
+        "height": 640,
+        "url": "/assets/bungalow-interior-640-6e6150a076.webp"
+      },
+      {
+        "width": 960,
+        "height": 960,
+        "url": "/assets/bungalow-interior-960-6e6150a076.webp"
+      },
+      {
+        "width": 1254,
+        "height": 1254,
+        "url": "/assets/bungalow-interior-1254-6e6150a076.webp"
+      }
+    ],
+    "src": "/assets/bungalow-interior-1254-6e6150a076.webp"
+  },
+  "apartment": {
+    "width": 1254,
+    "height": 1254,
+    "variants": [
+      {
+        "width": 400,
+        "height": 400,
+        "url": "/assets/apartment-interior-400-6a1915b4ad.webp"
+      },
+      {
+        "width": 640,
+        "height": 640,
+        "url": "/assets/apartment-interior-640-6a1915b4ad.webp"
+      },
+      {
+        "width": 960,
+        "height": 960,
+        "url": "/assets/apartment-interior-960-6a1915b4ad.webp"
+      },
+      {
+        "width": 1254,
+        "height": 1254,
+        "url": "/assets/apartment-interior-1254-6a1915b4ad.webp"
+      }
+    ],
+    "src": "/assets/apartment-interior-1254-6a1915b4ad.webp"
+  },
+  "organizers": {
+    "width": 960,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 400,
+        "height": 533,
+        "url": "/assets/organizers-400-5f1022855f.webp"
+      },
+      {
+        "width": 640,
+        "height": 853,
+        "url": "/assets/organizers-640-5f1022855f.webp"
+      },
+      {
+        "width": 960,
+        "height": 1280,
+        "url": "/assets/organizers-960-5f1022855f.webp"
+      }
+    ],
+    "src": "/assets/organizers-960-5f1022855f.webp"
+  },
+  "contact": {
+    "width": 960,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 400,
+        "height": 533,
+        "url": "/assets/contact-400-7946c0e52a.webp"
+      },
+      {
+        "width": 640,
+        "height": 853,
+        "url": "/assets/contact-640-7946c0e52a.webp"
+      },
+      {
+        "width": 960,
+        "height": 1280,
+        "url": "/assets/contact-960-7946c0e52a.webp"
+      }
+    ],
+    "src": "/assets/contact-960-7946c0e52a.webp"
+  },
+  "overview_day": {
+    "width": 1599,
+    "height": 899,
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "url": "/assets/overview-day-400-975e3ee28e.webp"
+      },
+      {
+        "width": 640,
+        "height": 360,
+        "url": "/assets/overview-day-640-975e3ee28e.webp"
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "url": "/assets/overview-day-960-975e3ee28e.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "url": "/assets/overview-day-1280-975e3ee28e.webp"
+      },
+      {
+        "width": 1599,
+        "height": 899,
+        "url": "/assets/overview-day-1599-975e3ee28e.webp"
+      }
+    ],
+    "src": "/assets/overview-day-1599-975e3ee28e.webp"
+  },
+  "sauna": {
+    "width": 1200,
+    "height": 1600,
+    "variants": [
+      {
+        "width": 400,
+        "height": 533,
+        "url": "/assets/sauna-400-c76ee1d12f.webp"
+      },
+      {
+        "width": 640,
+        "height": 853,
+        "url": "/assets/sauna-640-c76ee1d12f.webp"
+      },
+      {
+        "width": 960,
+        "height": 1280,
+        "url": "/assets/sauna-960-c76ee1d12f.webp"
+      },
+      {
+        "width": 1200,
+        "height": 1600,
+        "url": "/assets/sauna-1200-c76ee1d12f.webp"
+      }
+    ],
+    "src": "/assets/sauna-1200-c76ee1d12f.webp"
+  },
+  "terrace_night": {
+    "width": 960,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 400,
+        "height": 533,
+        "url": "/assets/terrace-night-400-1f5de46305.webp"
+      },
+      {
+        "width": 640,
+        "height": 853,
+        "url": "/assets/terrace-night-640-1f5de46305.webp"
+      },
+      {
+        "width": 960,
+        "height": 1280,
+        "url": "/assets/terrace-night-960-1f5de46305.webp"
+      }
+    ],
+    "src": "/assets/terrace-night-960-1f5de46305.webp"
+  },
+  "lawn": {
+    "width": 900,
+    "height": 1600,
+    "variants": [
+      {
+        "width": 400,
+        "height": 711,
+        "url": "/assets/lawn-400-09c5bf6c5c.webp"
+      },
+      {
+        "width": 640,
+        "height": 1138,
+        "url": "/assets/lawn-640-09c5bf6c5c.webp"
+      },
+      {
+        "width": 900,
+        "height": 1600,
+        "url": "/assets/lawn-900-09c5bf6c5c.webp"
+      }
+    ],
+    "src": "/assets/lawn-900-09c5bf6c5c.webp"
+  },
+  "cabana": {
+    "width": 960,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 400,
+        "height": 533,
+        "url": "/assets/cabana-400-b835da67bc.webp"
+      },
+      {
+        "width": 640,
+        "height": 853,
+        "url": "/assets/cabana-640-b835da67bc.webp"
+      },
+      {
+        "width": 960,
+        "height": 1280,
+        "url": "/assets/cabana-960-b835da67bc.webp"
+      }
+    ],
+    "src": "/assets/cabana-960-b835da67bc.webp"
+  },
+  "bar_hall": {
+    "width": 960,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 400,
+        "height": 533,
+        "url": "/assets/bar-hall-400-a1a76dbe8d.webp"
+      },
+      {
+        "width": 640,
+        "height": 853,
+        "url": "/assets/bar-hall-640-a1a76dbe8d.webp"
+      },
+      {
+        "width": 960,
+        "height": 1280,
+        "url": "/assets/bar-hall-960-a1a76dbe8d.webp"
+      }
+    ],
+    "src": "/assets/bar-hall-960-a1a76dbe8d.webp"
+  },
+  "pool_night": {
+    "width": 960,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 400,
+        "height": 533,
+        "url": "/assets/pool-night-400-c47e622ddb.webp"
+      },
+      {
+        "width": 640,
+        "height": 853,
+        "url": "/assets/pool-night-640-c47e622ddb.webp"
+      },
+      {
+        "width": 960,
+        "height": 1280,
+        "url": "/assets/pool-night-960-c47e622ddb.webp"
+      }
+    ],
+    "src": "/assets/pool-night-960-c47e622ddb.webp"
+  },
+  "gallery-extra-1": {
+    "width": 960,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 400,
+        "height": 533,
+        "url": "/assets/gallery-extra-1-400-240886673f.webp"
+      },
+      {
+        "width": 640,
+        "height": 853,
+        "url": "/assets/gallery-extra-1-640-240886673f.webp"
+      },
+      {
+        "width": 960,
+        "height": 1280,
+        "url": "/assets/gallery-extra-1-960-240886673f.webp"
+      }
+    ],
+    "src": "/assets/gallery-extra-1-960-240886673f.webp"
+  },
+  "gallery-extra-2": {
+    "width": 960,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 400,
+        "height": 533,
+        "url": "/assets/gallery-extra-2-400-0462321d21.webp"
+      },
+      {
+        "width": 640,
+        "height": 853,
+        "url": "/assets/gallery-extra-2-640-0462321d21.webp"
+      },
+      {
+        "width": 960,
+        "height": 1280,
+        "url": "/assets/gallery-extra-2-960-0462321d21.webp"
+      }
+    ],
+    "src": "/assets/gallery-extra-2-960-0462321d21.webp"
+  },
+  "gallery-extra-3": {
+    "width": 1280,
+    "height": 960,
+    "variants": [
+      {
+        "width": 400,
+        "height": 300,
+        "url": "/assets/gallery-extra-3-400-59503cf2bc.webp"
+      },
+      {
+        "width": 640,
+        "height": 480,
+        "url": "/assets/gallery-extra-3-640-59503cf2bc.webp"
+      },
+      {
+        "width": 960,
+        "height": 720,
+        "url": "/assets/gallery-extra-3-960-59503cf2bc.webp"
+      },
+      {
+        "width": 1280,
+        "height": 960,
+        "url": "/assets/gallery-extra-3-1280-59503cf2bc.webp"
+      }
+    ],
+    "src": "/assets/gallery-extra-3-1280-59503cf2bc.webp"
+  },
+  "gallery-extra-4": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "url": "/assets/gallery-extra-4-400-ad6d49d70f.webp"
+      },
+      {
+        "width": 640,
+        "height": 360,
+        "url": "/assets/gallery-extra-4-640-ad6d49d70f.webp"
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "url": "/assets/gallery-extra-4-960-ad6d49d70f.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "url": "/assets/gallery-extra-4-1280-ad6d49d70f.webp"
+      },
+      {
+        "width": 1600,
+        "height": 900,
+        "url": "/assets/gallery-extra-4-1600-ad6d49d70f.webp"
+      }
+    ],
+    "src": "/assets/gallery-extra-4-1600-ad6d49d70f.webp"
+  },
+  "gallery-extra-5": {
+    "width": 900,
+    "height": 1600,
+    "variants": [
+      {
+        "width": 400,
+        "height": 711,
+        "url": "/assets/gallery-extra-5-400-8bf662b624.webp"
+      },
+      {
+        "width": 640,
+        "height": 1138,
+        "url": "/assets/gallery-extra-5-640-8bf662b624.webp"
+      },
+      {
+        "width": 900,
+        "height": 1600,
+        "url": "/assets/gallery-extra-5-900-8bf662b624.webp"
+      }
+    ],
+    "src": "/assets/gallery-extra-5-900-8bf662b624.webp"
+  },
+  "gallery-extra-6": {
+    "width": 900,
+    "height": 1600,
+    "variants": [
+      {
+        "width": 400,
+        "height": 711,
+        "url": "/assets/gallery-extra-6-400-183bf88ec3.webp"
+      },
+      {
+        "width": 640,
+        "height": 1138,
+        "url": "/assets/gallery-extra-6-640-183bf88ec3.webp"
+      },
+      {
+        "width": 900,
+        "height": 1600,
+        "url": "/assets/gallery-extra-6-900-183bf88ec3.webp"
+      }
+    ],
+    "src": "/assets/gallery-extra-6-900-183bf88ec3.webp"
+  },
+  "gallery-extra-7": {
+    "width": 960,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 400,
+        "height": 533,
+        "url": "/assets/gallery-extra-7-400-da7abd7b1e.webp"
+      },
+      {
+        "width": 640,
+        "height": 853,
+        "url": "/assets/gallery-extra-7-640-da7abd7b1e.webp"
+      },
+      {
+        "width": 960,
+        "height": 1280,
+        "url": "/assets/gallery-extra-7-960-da7abd7b1e.webp"
+      }
+    ],
+    "src": "/assets/gallery-extra-7-960-da7abd7b1e.webp"
+  },
+  "gallery-extra-8": {
+    "width": 1200,
+    "height": 1600,
+    "variants": [
+      {
+        "width": 400,
+        "height": 533,
+        "url": "/assets/gallery-extra-8-400-a314921a78.webp"
+      },
+      {
+        "width": 640,
+        "height": 853,
+        "url": "/assets/gallery-extra-8-640-a314921a78.webp"
+      },
+      {
+        "width": 960,
+        "height": 1280,
+        "url": "/assets/gallery-extra-8-960-a314921a78.webp"
+      },
+      {
+        "width": 1200,
+        "height": 1600,
+        "url": "/assets/gallery-extra-8-1200-a314921a78.webp"
+      }
+    ],
+    "src": "/assets/gallery-extra-8-1200-a314921a78.webp"
+  },
+  "organizers_yoga": {
+    "width": 667,
+    "height": 749,
+    "variants": [
+      {
+        "width": 400,
+        "height": 449,
+        "url": "/assets/organizers-yoga-400-db2d87f895.webp"
+      },
+      {
+        "width": 640,
+        "height": 719,
+        "url": "/assets/organizers-yoga-640-db2d87f895.webp"
+      },
+      {
+        "width": 667,
+        "height": 749,
+        "url": "/assets/organizers-yoga-667-db2d87f895.webp"
+      }
+    ],
+    "src": "/assets/organizers-yoga-667-db2d87f895.webp"
+  },
+  "organizers_meditation": {
+    "width": 643,
+    "height": 744,
+    "variants": [
+      {
+        "width": 400,
+        "height": 463,
+        "url": "/assets/organizers-meditation-400-1fb190b960.webp"
+      },
+      {
+        "width": 640,
+        "height": 741,
+        "url": "/assets/organizers-meditation-640-1fb190b960.webp"
+      },
+      {
+        "width": 643,
+        "height": 744,
+        "url": "/assets/organizers-meditation-643-1fb190b960.webp"
+      }
+    ],
+    "src": "/assets/organizers-meditation-643-1fb190b960.webp"
+  },
+  "organizers_aqua": {
+    "width": 637,
+    "height": 742,
+    "variants": [
+      {
+        "width": 400,
+        "height": 466,
+        "url": "/assets/organizers-aqua-400-6a98bc6c9b.webp"
+      },
+      {
+        "width": 637,
+        "height": 742,
+        "url": "/assets/organizers-aqua-637-6a98bc6c9b.webp"
+      }
+    ],
+    "src": "/assets/organizers-aqua-637-6a98bc6c9b.webp"
+  },
+  "occasion_birthday": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "url": "/assets/occasion-birthday-400-73ffd6326b.webp"
+      },
+      {
+        "width": 640,
+        "height": 427,
+        "url": "/assets/occasion-birthday-640-73ffd6326b.webp"
+      },
+      {
+        "width": 960,
+        "height": 640,
+        "url": "/assets/occasion-birthday-960-73ffd6326b.webp"
+      },
+      {
+        "width": 1280,
+        "height": 853,
+        "url": "/assets/occasion-birthday-1280-73ffd6326b.webp"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "url": "/assets/occasion-birthday-1536-73ffd6326b.webp"
+      }
+    ],
+    "src": "/assets/occasion-birthday-1536-73ffd6326b.webp"
+  },
+  "occasion_kids": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "url": "/assets/occasion-kids-400-9bc26277f5.webp"
+      },
+      {
+        "width": 640,
+        "height": 427,
+        "url": "/assets/occasion-kids-640-9bc26277f5.webp"
+      },
+      {
+        "width": 960,
+        "height": 640,
+        "url": "/assets/occasion-kids-960-9bc26277f5.webp"
+      },
+      {
+        "width": 1280,
+        "height": 853,
+        "url": "/assets/occasion-kids-1280-9bc26277f5.webp"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "url": "/assets/occasion-kids-1536-9bc26277f5.webp"
+      }
+    ],
+    "src": "/assets/occasion-kids-1536-9bc26277f5.webp"
+  },
+  "occasion_wedding": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "url": "/assets/occasion-wedding-400-f7bd787cb4.webp"
+      },
+      {
+        "width": 640,
+        "height": 427,
+        "url": "/assets/occasion-wedding-640-f7bd787cb4.webp"
+      },
+      {
+        "width": 960,
+        "height": 640,
+        "url": "/assets/occasion-wedding-960-f7bd787cb4.webp"
+      },
+      {
+        "width": 1280,
+        "height": 853,
+        "url": "/assets/occasion-wedding-1280-f7bd787cb4.webp"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "url": "/assets/occasion-wedding-1536-f7bd787cb4.webp"
+      }
+    ],
+    "src": "/assets/occasion-wedding-1536-f7bd787cb4.webp"
+  },
+  "occasion_anniversary": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "url": "/assets/occasion-anniversary-400-86ce5a0910.webp"
+      },
+      {
+        "width": 640,
+        "height": 427,
+        "url": "/assets/occasion-anniversary-640-86ce5a0910.webp"
+      },
+      {
+        "width": 960,
+        "height": 640,
+        "url": "/assets/occasion-anniversary-960-86ce5a0910.webp"
+      },
+      {
+        "width": 1280,
+        "height": 853,
+        "url": "/assets/occasion-anniversary-1280-86ce5a0910.webp"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "url": "/assets/occasion-anniversary-1536-86ce5a0910.webp"
+      }
+    ],
+    "src": "/assets/occasion-anniversary-1536-86ce5a0910.webp"
+  },
+  "occasion_corporate": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "url": "/assets/occasion-corporate-400-c9bd08bf94.webp"
+      },
+      {
+        "width": 640,
+        "height": 427,
+        "url": "/assets/occasion-corporate-640-c9bd08bf94.webp"
+      },
+      {
+        "width": 960,
+        "height": 640,
+        "url": "/assets/occasion-corporate-960-c9bd08bf94.webp"
+      },
+      {
+        "width": 1280,
+        "height": 853,
+        "url": "/assets/occasion-corporate-1280-c9bd08bf94.webp"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "url": "/assets/occasion-corporate-1536-c9bd08bf94.webp"
+      }
+    ],
+    "src": "/assets/occasion-corporate-1536-c9bd08bf94.webp"
+  },
+  "occasion_family": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "url": "/assets/occasion-family-400-6dc1bc2f7b.webp"
+      },
+      {
+        "width": 640,
+        "height": 427,
+        "url": "/assets/occasion-family-640-6dc1bc2f7b.webp"
+      },
+      {
+        "width": 960,
+        "height": 640,
+        "url": "/assets/occasion-family-960-6dc1bc2f7b.webp"
+      },
+      {
+        "width": 1280,
+        "height": 853,
+        "url": "/assets/occasion-family-1280-6dc1bc2f7b.webp"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "url": "/assets/occasion-family-1536-6dc1bc2f7b.webp"
+      }
+    ],
+    "src": "/assets/occasion-family-1536-6dc1bc2f7b.webp"
+  },
+  "occasion_friends": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "url": "/assets/occasion-friends-400-80bad6e866.webp"
+      },
+      {
+        "width": 640,
+        "height": 427,
+        "url": "/assets/occasion-friends-640-80bad6e866.webp"
+      },
+      {
+        "width": 960,
+        "height": 640,
+        "url": "/assets/occasion-friends-960-80bad6e866.webp"
+      },
+      {
+        "width": 1280,
+        "height": 853,
+        "url": "/assets/occasion-friends-1280-80bad6e866.webp"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "url": "/assets/occasion-friends-1536-80bad6e866.webp"
+      }
+    ],
+    "src": "/assets/occasion-friends-1536-80bad6e866.webp"
+  },
+  "occasion_theme": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "url": "/assets/occasion-theme-400-53a72253e9.webp"
+      },
+      {
+        "width": 640,
+        "height": 427,
+        "url": "/assets/occasion-theme-640-53a72253e9.webp"
+      },
+      {
+        "width": 960,
+        "height": 640,
+        "url": "/assets/occasion-theme-960-53a72253e9.webp"
+      },
+      {
+        "width": 1280,
+        "height": 853,
+        "url": "/assets/occasion-theme-1280-53a72253e9.webp"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "url": "/assets/occasion-theme-1536-53a72253e9.webp"
+      }
+    ],
+    "src": "/assets/occasion-theme-1536-53a72253e9.webp"
+  },
+  "hammam_illustration": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "url": "/assets/hammam-illustration-400-acdb4a0bb2.webp"
+      },
+      {
+        "width": 640,
+        "height": 427,
+        "url": "/assets/hammam-illustration-640-acdb4a0bb2.webp"
+      },
+      {
+        "width": 960,
+        "height": 640,
+        "url": "/assets/hammam-illustration-960-acdb4a0bb2.webp"
+      },
+      {
+        "width": 1280,
+        "height": 853,
+        "url": "/assets/hammam-illustration-1280-acdb4a0bb2.webp"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "url": "/assets/hammam-illustration-1536-acdb4a0bb2.webp"
+      }
+    ],
+    "src": "/assets/hammam-illustration-1536-acdb4a0bb2.webp"
+  },
+  "kitchen_table": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "url": "/assets/kitchen-table-400-09e0bfec77.webp"
+      },
+      {
+        "width": 640,
+        "height": 427,
+        "url": "/assets/kitchen-table-640-09e0bfec77.webp"
+      },
+      {
+        "width": 960,
+        "height": 640,
+        "url": "/assets/kitchen-table-960-09e0bfec77.webp"
+      },
+      {
+        "width": 1280,
+        "height": 853,
+        "url": "/assets/kitchen-table-1280-09e0bfec77.webp"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "url": "/assets/kitchen-table-1536-09e0bfec77.webp"
+      }
+    ],
+    "src": "/assets/kitchen-table-1536-09e0bfec77.webp"
+  },
+  "kitchen_dumplings": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "url": "/assets/kitchen-dumplings-400-d81502faf9.webp"
+      },
+      {
+        "width": 640,
+        "height": 427,
+        "url": "/assets/kitchen-dumplings-640-d81502faf9.webp"
+      },
+      {
+        "width": 960,
+        "height": 640,
+        "url": "/assets/kitchen-dumplings-960-d81502faf9.webp"
+      },
+      {
+        "width": 1280,
+        "height": 853,
+        "url": "/assets/kitchen-dumplings-1280-d81502faf9.webp"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "url": "/assets/kitchen-dumplings-1536-d81502faf9.webp"
+      }
+    ],
+    "src": "/assets/kitchen-dumplings-1536-d81502faf9.webp"
+  }
+}

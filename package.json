@@ -1,0 +1,13 @@
+{
+  "name": "artenergy-static",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/dev.mjs",
+    "check": "node scripts/check.mjs",
+    "pages": "node scripts/pages.mjs"
+  },
+  "engines": { "node": ">=22" }
+}
