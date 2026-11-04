@@ -393,15 +393,11 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
 .room-detail:hover img{filter:brightness(.96)}
 .room-open{position:absolute;right:20px;bottom:20px;display:flex;align-items:center;gap:14px;padding:13px 17px;min-height:46px;background:var(--white);color:var(--green);font-size:17px;font-weight:500;border-radius:var(--radius)}
 .room-actions{display:block}
-.organizers-gallery{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:24px;margin-block:46px 36px}
-.organizers-gallery .photo-link{height:460px}
-.organizers-gallery img{object-position:50% 60%}
-@media(max-width:1050px){.event-invitation-inner{gap:30px}.event-invitation h3{font-size:40px}.event-invitation .button{font-size:18px}.visit-contact{grid-template-columns:1fr;justify-items:start}.organizers-gallery{gap:18px}.organizers-gallery .photo-link{height:360px}}
+@media(max-width:1050px){.event-invitation-inner{gap:30px}.event-invitation h3{font-size:40px}.event-invitation .button{font-size:18px}.visit-contact{grid-template-columns:1fr;justify-items:start}}
 @media(max-width:760px){
  .event-invitation{margin-top:44px}.event-invitation-inner{flex-direction:column;align-items:stretch;justify-content:center;gap:28px;min-height:330px;padding-block:56px}.event-invitation h3{font-size:34px;max-width:100%}.event-invitation .button{width:100%;font-size:17px}
  .visit-contact{padding:26px 22px;gap:23px}.visit-contact p{font-size:18px}.visit-contact .button{width:100%;max-width:none;font-size:16px;padding-inline:16px;gap:10px}
  .room-open{right:15px;bottom:15px;font-size:16px;padding:11px 15px}.room-actions .button{width:100%;font-size:17px}
- .organizers-gallery{grid-template-columns:1fr 1fr;gap:16px;margin-block:34px 30px}.organizers-gallery figure:first-child{grid-column:span 2}.organizers-gallery .photo-link{height:240px}.organizers-gallery figure:first-child .photo-link{height:390px}.organizers-section>.wrap>.button{width:100%;font-size:17px}
 }
 
 /* Catalog sections: occasions, food, accommodation and two distinct steam rooms. */
@@ -472,15 +468,15 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
 .organizers-background{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:65% 35%}
 .organizers-section::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(6,25,16,.92),rgba(6,25,16,.78) 58%,rgba(6,25,16,.32)),linear-gradient(0deg,rgba(6,25,16,.55),transparent 65%)}
 .organizers-inner{position:relative}
-.organizers-heading{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:56px;align-items:center}
-.organizers-heading>div{max-width:720px}
+.organizers-heading{display:flex;flex-direction:column;align-items:flex-start;gap:28px}
+.organizers-heading>div{width:100%;max-width:720px}
 .organizers-heading h2{color:var(--white);margin-bottom:28px}
-.organizers-heading>.button{max-width:340px}
+.organizers-heading>.button{max-width:100%}
 .organizers-copy{font-size:23px;line-height:1.45;color:#f2f5ee}
 .organizers-copy p+p{margin-top:18px}
-.organizers-gallery{grid-template-columns:1.25fr 1fr 1fr;align-items:end;gap:24px;margin:52px 0 0}
-.organizers-gallery .photo-link{height:350px;border-radius:8px}
-.organizers-gallery figure:first-child .photo-link{height:460px}
+.organizers-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:48px 0 0}
+.organizers-gallery .photo-link{aspect-ratio:9/10;border-radius:8px}
+.organizers-gallery img{object-position:50% 60%}
 
 @media(max-width:1050px){
  .event-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -490,7 +486,7 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
  .room-photo img{height:420px}.room-card h3{margin-inline:24px}.room-card .room-facts{margin-inline:24px}.room-card>.room-price{margin-inline:24px}
  .spa-grid{gap:24px}.spa-card-photo img{height:320px}.spa-card-content{padding:24px}
  .spa-detail-layout{gap:36px}.spa-detail-photo .photo-link{height:520px}
- .organizers-heading{grid-template-columns:1fr;gap:30px}.organizers-gallery{gap:18px}.organizers-gallery .photo-link{height:300px}.organizers-gallery figure:first-child .photo-link{height:390px}
+ .organizers-gallery{gap:18px}
 }
 @media(max-width:760px){
  .event-grid{gap:20px 14px}.event-card-copy{padding:16px 13px}.event-card-image{aspect-ratio:1.12}
@@ -505,7 +501,7 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
  .stay-contact{margin-top:30px}.stay-contact .button{width:100%;min-width:0}
  .spa-grid{grid-template-columns:1fr;gap:30px}.spa-card-photo img{height:280px}.spa-card-content{padding:24px 22px}.spa-card-heading{font-size:29px}.spa-card-description{font-size:19px;margin-bottom:22px}.spa-card .bath-price{font-size:30px}
  .spa-detail-layout{grid-template-columns:1fr;gap:36px}.spa-detail-photo .photo-link{height:360px}.spa-detail-copy>.button{width:100%}.spa-conditions{grid-template-columns:1fr;gap:36px;margin-top:56px;padding-top:36px}.spa-conditions h2{font-size:29px;margin-bottom:20px}.spa-conditions p{font-size:19px}.spa-alternative{margin-top:70px}.spa-alternative>h2{font-size:30px;margin-bottom:30px}
- .organizers-heading{gap:28px}.organizers-heading>.button{width:100%;max-width:none}.organizers-copy{font-size:19px;line-height:1.4}.organizers-gallery{grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}.organizers-gallery .photo-link{height:240px}.organizers-gallery figure:first-child .photo-link{height:390px}
+ .organizers-heading>.button{width:100%;max-width:none}.organizers-copy{font-size:19px;line-height:1.4}.organizers-gallery{grid-template-columns:1fr;gap:20px;margin-top:36px}
 }
 @media(prefers-reduced-motion:reduce){.kitchen-feature:hover img{transform:none}}
 

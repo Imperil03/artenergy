@@ -106,7 +106,7 @@ function bathSection(lang){
 }
 function organizersSection(lang){
   const t=value=>translate(value,lang);
-  return `<section class="section organizers-section" id="organizers">${image('hero',lang,{className:'organizers-background',sizes:'100vw',alt:''})}<div class="wrap organizers-inner"><div class="organizers-heading"><div><h2>${esc(t(copy.organizers.title))}</h2><div class="organizers-copy"><p>${esc(t(copy.organizers.intro))}</p><p>${esc(t(copy.organizers.body))}</p></div></div>${wa(lang,t(copy.organizers.cta),'organizers','','button button--light')}</div><div class="organizers-gallery">${copy.organizers.photos.map((key,i)=>figure(key,altFor(key,lang),lang,'organizers',i===0?'(max-width: 760px) calc(100vw - 48px), 500px':'(max-width: 760px) calc((100vw - 64px) / 2), 360px','',false)).join('')}</div></div></section>`;
+  return `<section class="section organizers-section" id="organizers">${image('hero',lang,{className:'organizers-background',sizes:'100vw',alt:''})}<div class="wrap organizers-inner"><div class="organizers-heading"><div><h2>${esc(t(copy.organizers.title))}</h2><div class="organizers-copy"><p>${esc(t(copy.organizers.intro))}</p><p>${esc(t(copy.organizers.body))}</p></div></div>${wa(lang,t(copy.organizers.cta),'organizers','','button button--light')}</div><div class="organizers-gallery">${copy.organizers.photos.map(key=>figure(key,altFor(key,lang),lang,'organizers','(max-width: 760px) calc(100vw - 48px), (max-width: 1050px) calc((100vw - 116px) / 3), 380px','',false)).join('')}</div></div></section>`;
 }
 
 function faqSection(lang){
