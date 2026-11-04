@@ -32,7 +32,10 @@ if(galleryMore&&galleryToggles.length){
       const firstPhoto=galleryMore.querySelector('a[data-gallery]');
       firstPhoto?.focus({preventScroll:true});
       firstPhoto?.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});
-    }else galleryToggles[0].focus({preventScroll:!galleryMore.contains(button)});
+    }else{
+      button.focus({preventScroll:true});
+      button.scrollIntoView({block:'center',behavior:'instant'});
+    }
   }));
   galleryMore.addEventListener('toggle',renderGallery);
   renderGallery();

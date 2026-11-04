@@ -48,6 +48,10 @@ for(const page of manifest.pages){
     assert.equal((html.match(/class="room-card"/g)||[]).length,2);
     assert.ok(!/data-hero-video|data-video-toggle|class="wrap visit-formats"/.test(html),`${page.path}: photo hero and no format strip`);
     assert.equal((html.match(/class="photo-link mosaic-photo /g)||[]).length,4,`${page.path}: four-photo mosaic`);
+    const venue=html.slice(html.indexOf('id="gallery"'),html.indexOf('id="events"'));
+    assert.equal((venue.slice(0,venue.indexOf('<details')).match(/data-gallery="venue"/g)||[]).length,8,`${page.path}: eight venue photos before expansion`);
+    assert.equal((venue.match(/data-gallery-toggle /g)||[]).length,1,`${page.path}: one gallery action`);
+    assert.ok(venue.indexOf('data-gallery-toggle ')>venue.indexOf('</details>'),`${page.path}: gallery action below the photos`);
     assert.ok(html.includes(`<a class="hero-overview" href="${basePath}/video/overview.mp4" data-overview>`));
     const overview=html.match(/<video data-overview-video[^>]*>/)?.[0];
     assert.ok(overview&&overview.includes('controls')&&overview.includes('preload="none"')&&!/\ssrc=|autoplay|loop/.test(overview),`${page.path}: user-initiated overview with no eager video source`);
