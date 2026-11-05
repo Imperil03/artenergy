@@ -19,6 +19,9 @@ for(const page of manifest.pages){
   assert.ok(!/<form(?:\s|>)/i.test(html),`${page.path}: no booking forms`);
   assert.ok(!/Цены указаны в доминиканских|Нужны фотографии|Место для фото в макете|заявка отправлена|booksy\.com|fresha\.com/.test(html),`${page.path}: no old/unsupported copy`);
   assert.ok(!/C:\\Users|\.env|sourceSha|approvalText|Direction contract/.test(html),`${page.path}: no development metadata`);
+  const contactPath=basePath+{ru:'/kontakty/',en:'/en/contact/',es:'/es/contacto/'}[page.lang];
+  const pageHeader=html.match(/<header class="site-header[\s\S]*?<\/header>/)?.[0]||'';
+  assert.ok(pageHeader.includes(`href="${contactPath}"`),`${page.path}: contacts in site navigation`);
   if(page.lang!=='ru')assert.ok(!/[А-Яа-яЁё]/.test(html),`${page.path}: no untranslated Cyrillic`);
   if(page.key!=='404'){
     assert.ok(html.includes(`href="${origin}${page.path}"`),`${page.path}: canonical`);
@@ -66,6 +69,16 @@ for(const page of manifest.pages){
   if(page.key==='menu'){
     assert.equal((html.match(/class="dish-row"/g)||[]).length,68,`${page.path}: full menu`);
     assert.equal((html.match(/data-menu-panel=/g)||[]).length,5);
+  }
+  if(page.key==='contacts'){
+    assert.ok(html.includes('href="tel:+18297715555"'),`${page.path}: callable phone`);
+    assert.ok(html.includes('href="mailto:Arteenergy501@gmail.com"'),`${page.path}: email action`);
+    assert.ok(html.includes('https://wa.me/18297715555?text='),`${page.path}: direct WhatsApp`);
+    assert.ok(html.includes('data-copy-address=')&&html.includes('data-copy-label'),`${page.path}: copy address enhancement`);
+    assert.ok(/<iframe\b[^>]*title="[^"]+"[^>]*src="https:\/\/www\.google\.com\/maps\?/.test(html),`${page.path}: named location map`);
+    assert.ok(html.includes('class="contacts-footer"')&&!html.includes('class="contact-section"'),`${page.path}: no duplicate contact footer`);
+    assert.ok(html.includes('"@type":"ContactPage"'),`${page.path}: contact page semantics`);
+    assert.ok(!/24\/7|24×7|around the clock|круглосуточно/.test(html),`${page.path}: no unconfirmed opening hours`);
   }
 }
 const js=await readFile(path.join(output,'app.js'),'utf8');

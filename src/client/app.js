@@ -61,7 +61,7 @@ mobileMenu?.addEventListener('toggle',()=>{if(mobileMenu.open&&languageMenu)lang
 languageMenu?.addEventListener('toggle',()=>{if(languageMenu.open)closeMenu();});
 document.addEventListener('click',event=>{if(mobileMenu?.open&&!mobileMenu.contains(event.target))closeMenu();if(languageMenu?.open&&!languageMenu.contains(event.target))languageMenu.open=false;});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&mobileMenu?.open){event.preventDefault();closeMenu(true);}else if(event.key==='Escape'&&languageMenu?.open){event.preventDefault();languageMenu.open=false;languageMenu.querySelector('summary')?.focus();}});
-window.matchMedia('(min-width:1051px)').addEventListener('change',event=>{if(event.matches)closeMenu();});
+window.matchMedia('(min-width:1201px)').addEventListener('change',event=>{if(event.matches)closeMenu();});
 
 const galleryMore=document.querySelector('#venue-more');
 const galleryToggles=[...document.querySelectorAll('[data-gallery-toggle]')];
@@ -311,4 +311,25 @@ if(tabs){
   });
   window.addEventListener('hashchange',()=>select(hashKey()));
   select(hashKey());
+}
+
+const copyAddress=document.querySelector('[data-copy-address]');
+if(copyAddress){
+  copyAddress.addEventListener('click',async()=>{
+    const label=copyAddress.querySelector('[data-copy-label]');
+    copyAddress.disabled=true;
+    try{
+      await navigator.clipboard.writeText(copyAddress.dataset.copyAddress);
+      copyAddress.classList.add('is-copied');
+      label.textContent=copyAddress.dataset.copySuccess;
+    }catch{
+      const address=document.getElementById(copyAddress.dataset.copyTarget),selection=window.getSelection();
+      if(address&&selection){
+        const range=document.createRange();range.selectNodeContents(address);
+        selection.removeAllRanges();selection.addRange(range);
+        label.textContent=copyAddress.dataset.copySelected;
+      }else label.textContent=copyAddress.dataset.copyFailed;
+    }finally{copyAddress.disabled=false;}
+  });
+  copyAddress.hidden=false;
 }

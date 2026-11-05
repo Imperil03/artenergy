@@ -8,7 +8,13 @@ export const assets = read('asset-manifest.json');
 export const gallery = read('gallery-catalog.json');
 export const locales=['ru','en','es'];
 export {origin} from './deployment.mjs';
-export const contact={phone:'+1 829 771 5555',whatsapp:'https://wa.me/18297715555',email:'Arteenergy501@gmail.com',instagram:'https://www.instagram.com/artenergydr/',map:'https://www.google.com/maps/dir/?api=1&destination=Calle+Kiev+35,+Punta+Cana,+Dominican+Republic'};
+export const contact={
+  phone:'+1 829 771 5555',whatsapp:'https://wa.me/18297715555',email:'Arteenergy501@gmail.com',instagram:'https://www.instagram.com/artenergydr/',
+  address:'Calle Kiev 35, Bávaro, Punta Cana, Dominican Republic',
+  map:'https://www.google.com/maps/dir/?api=1&destination=Calle+Kiev+35,+Punta+Cana,+Dominican+Republic',
+  mapSearch:'https://www.google.com/maps/search/?api=1&query=Calle+Kiev+35%2C+B%C3%A1varo%2C+Punta+Cana%2C+Dominican+Republic',
+  mapEmbed:'https://www.google.com/maps?q=Calle%20Kiev%2035%2C%20Punta%20Cana%2C%20Dominican%20Republic&output=embed',
+};
 export {translate,ui};
 
 const eventSlugs={
@@ -24,6 +30,7 @@ export function pathFor(key='home',locale='ru') {
   const prefix=locale==='ru'?'':`/${locale}`;
   if(key==='home') return prefix+'/';
   if(key==='menu') return prefix+'/menu/';
+  if(key==='contacts') return prefix+({ru:'/kontakty/',en:'/contact/',es:'/contacto/'}[locale]);
   if(key.startsWith('spa-')) {
     const i=Number(key.slice(4));
     return prefix+'/spa/'+({ru:['banya','hammam'],en:['sauna','hammam'],es:['sauna','hammam']}[locale][i])+'/';

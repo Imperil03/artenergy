@@ -2,18 +2,19 @@ import {mkdir,readFile,writeFile,rm,cp,lstat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
-import {homePage,menuPage,eventPage,roomPage,spaPage,errorPage} from '../src/templates.mjs';
+import {homePage,menuPage,contactsPage,eventPage,roomPage,spaPage,errorPage} from '../src/templates.mjs';
 import {locales,events,rooms,spaServices,pathFor,origin} from '../src/model.mjs';
 import {basePath,noIndex,publishHtml,publishCss} from '../src/deployment.mjs';
 
 export const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export const output=path.resolve(root,'dist');
-const buildDate='2026-11-03';
+const buildDate='2026-11-05';
 export async function build(){
   const pages=[];
   for(const lang of locales){
     pages.push({path:pathFor('home',lang),lang,key:'home',html:homePage(lang)});
     pages.push({path:pathFor('menu',lang),lang,key:'menu',html:menuPage(lang)});
+    pages.push({path:pathFor('contacts',lang),lang,key:'contacts',html:contactsPage(lang)});
     for(const event of events)pages.push({path:pathFor(event.key,lang),lang,key:event.key,html:eventPage(event,lang)});
     for(const room of rooms)pages.push({path:pathFor(room.key,lang),lang,key:room.key,html:roomPage(room,lang)});
     for(const service of spaServices)pages.push({path:pathFor(service.key,lang),lang,key:service.key,html:spaPage(service,lang)});
