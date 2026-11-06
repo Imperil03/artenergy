@@ -1,5 +1,6 @@
 import {copy,menu,assets,gallery,locales,origin,contact,events,rooms,spaServices,pathFor,whatsapp,translate,ui,eventText,altFor,roomText} from './model.mjs';
-import {contactPageCopy} from './translations.mjs';
+import {contactPageCopy,spaPageCopy} from './translations.mjs';
+import {basePath} from './deployment.mjs';
 
 export const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const icon=(name='arrow',size=20)=>{
@@ -22,8 +23,8 @@ const alias=id=>`<span class="anchor-alias" id="${id}" aria-hidden="true"></span
 
 function navLinks(lang,key='home'){
   const t=s=>translate(s,lang);
-  const sections=[['Площадка','gallery'],['Праздники','events'],['Посещение','visit'],['Кухня и бар','kitchen'],['Проживание','stay'],['Баня и хаммам','bath']].map(([label,id])=>`<a href="${pathFor('home',lang)}#${id}">${esc(t(label))}</a>`).join('');
-  return sections+`<a href="${pathFor('contacts',lang)}"${key==='contacts'?' aria-current="page"':''}>${esc(contactPageCopy[lang].title)}</a>`;
+  const sections=[['Площадка','gallery'],['Праздники','events'],['Посещение','visit'],['Кухня и бар','kitchen'],['Проживание','stay']].map(([label,id])=>`<a href="${pathFor('home',lang)}#${id}">${esc(t(label))}</a>`).join('');
+  return sections+`<a href="${pathFor('spa',lang)}"${key==='spa'?' aria-current="page"':''}>${esc(t(copy.bath.title))}</a><a href="${pathFor('contacts',lang)}"${key==='contacts'?' aria-current="page"':''}>${esc(contactPageCopy[lang].title)}</a>`;
 }
 function languages(key,lang){
   return `<nav class="languages" aria-label="${esc(ui[lang].language)}">${locales.map(l=>`<a href="${pathFor(key,l)}" lang="${l}" hreflang="${l}"${lang===l?' aria-current="page"':''}>${l.toUpperCase()}</a>`).join('')}</nav>`;
@@ -157,12 +158,19 @@ export function roomPage(room,lang){
   const body=`<article class="inner-page accommodation-page"><div class="wrap">${breadcrumbs(lang,t(copy.stay.title),'stay')}<div class="accommodation-layout"><div class="accommodation-image">${photoLink(room.image,t(room.title),lang,room.key,'(max-width: 760px) calc(100vw - 48px), 800px')}</div><div class="accommodation-copy"><h1>${esc(t(room.title))}</h1>${room.facts.map(f=>`<p class="section-lead">${esc(t(f))}</p>`).join('')}<p class="room-price">${esc(t(room.price))}${room.unit?`<small>${esc(t(room.unit))}</small>`:''}</p>${room.mealNote?`<p>${esc(t(room.mealNote))}</p>`:''}<p>${esc(u.roomNote)}</p>${wa(lang,t(room.contact),'room',room.title,'button')}<p class="accommodation-menu-link">${local(pathFor('menu',lang),u.seeMenu)}</p></div></div><section class="alternative-stay"><h2>${esc(t(other.title))}</h2><div class="alternative-stay-inner">${image(other.image,lang,{sizes:'(max-width: 760px) calc(100vw - 48px), 420px'})}<div><p class="room-price">${esc(t(other.price))}${other.unit?`<small>${esc(t(other.unit))}</small>`:''}</p>${local(pathFor(other.key,lang),t(other.details))}</div></div></section></div></article>`;
   return shell({key:room.key,lang,title:meta.title,description:meta.description,body});
 }
-export function spaPage(service,lang){
-  const t=value=>translate(value,lang),other=spaServices.find(item=>item.key!==service.key);
-  const caption=service.illustration?t(service.title):t('Баня ArtEnergy');
-  const title=t(service.title)+' · ArtEnergy';
-  const body=`<article class="inner-page spa-page"><div class="wrap">${breadcrumbs(lang,t(copy.bath.title),'bath')}<div class="spa-detail-layout"><figure class="spa-detail-photo">${photoLink(service.image,caption,lang,service.key,'(max-width: 760px) calc(100vw - 48px), 680px')}</figure><div class="spa-detail-copy"><h1>${esc(t(service.title))}</h1><p class="section-lead">${esc(t(service.intro))}</p><p class="bath-price">${esc(t(service.price))}<small>${esc(t(service.unit))}</small></p>${service.detail?`<p>${esc(t(service.detail))}</p>`:''}${wa(lang,t(service.cta),'bath','','button')}</div></div><div class="spa-conditions"><section><h2>${esc(t('Условия посещения'))}</h2><p>${esc(t(copy.bath.note))}</p></section><section><h2>${esc(t('Выберите время'))}</h2><p>${esc(t('Напишите дату, число гостей и желаемую продолжительность. Администратор подтвердит возможность посещения и условия.'))}</p></section></div><section class="spa-alternative"><h2>${esc(t('Другой формат отдыха'))}</h2>${spaCard(other,lang)}</section></div></article>`;
-  return shell({key:service.key,lang,title,description:t(service.intro)+' '+t(service.price)+' '+t(service.unit),body});
+export function spaPage(lang){
+  const t=s=>translate(s,lang),c=spaPageCopy[lang],u=ui[lang];
+  const offers=spaServices.map((service,i)=>{
+    const id=i===0?'banya':'hammam',title=t(service.title);
+    return `<section class="spa-offer" id="${id}" aria-labelledby="${id}-title"><div class="spa-offer-image">${photoLink(service.image,title,lang,'spa','(max-width: 760px) calc(100vw - 48px), 580px')}<div class="spa-offer-caption"><h2 id="${id}-title">${esc(title)}</h2><p>${esc(t(service.price))}<span>${esc(t(service.unit))}</span></p></div></div><div class="spa-offer-body"><p>${esc(c.descriptions[i])}</p>${service.detail?`<p class="spa-offer-detail">${esc(t(service.detail))}</p>`:''}<div class="spa-offer-action">${wa(lang,t(service.cta),'spa-service',service.title,'button')}</div></div></section>`;
+  }).join('');
+  const body=`<article class="spa-combined"><div class="wrap"><nav class="breadcrumbs" aria-label="${esc(u.navigation)}"><a href="${pathFor('home',lang)}">${esc(u.home)}</a><span aria-hidden="true">/</span><span aria-current="page">${esc(t(copy.bath.title))}</span></nav><header class="spa-intro"><h1>${esc(t(copy.bath.title))}</h1><p class="section-lead">${esc(t(copy.bath.body))}</p><nav class="spa-section-links" aria-label="${esc(c.choose)}">${spaServices.map((service,i)=>`<a href="#${i===0?'banya':'hammam'}">${esc(t(service.title))}${icon('down',18)}</a>`).join('')}</nav></header><div class="spa-offers">${offers}</div></div><section class="spa-before section--paper"><div class="wrap wrap--reading"><h2>${esc(c.before)}</h2><div class="faq-list"><details open><summary>${esc(c.booking)}${icon('down')}</summary><p>${esc(t('Напишите дату, число гостей и желаемую продолжительность. Администратор подтвердит возможность посещения и условия.'))}</p></details><details open><summary>${esc(c.extras)}${icon('down')}</summary><p>${esc(t(copy.bath.note))}</p></details></div></div></section></article>`;
+  return shell({key:'spa',lang,title:t(copy.bath.title)+' · ArtEnergy',description:c.description,body});
+}
+
+export function spaRedirect(service,lang){
+  const title=translate(copy.bath.title,lang),target=basePath+pathFor(service.key,lang),canonical=origin+pathFor('spa',lang);
+  return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(title)} · ArtEnergy</title><meta name="robots" content="noindex, follow"><link rel="canonical" href="${esc(canonical)}"><meta http-equiv="refresh" content="0;url=${esc(target)}"><script>location.replace(${JSON.stringify(target).replace(/</g,'\\u003c')})</script></head><body><h1>${esc(title)}</h1><p><a href="${pathFor(service.key,lang)}">${esc(spaPageCopy[lang].continue)}</a></p></body></html>`;
 }
 
 export function errorPage(lang='ru'){

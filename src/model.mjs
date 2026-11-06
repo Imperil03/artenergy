@@ -1,5 +1,5 @@
 import {readFileSync} from 'node:fs';
-import {translate, ui} from './translations.mjs';
+import {translate, ui, spaPageCopy} from './translations.mjs';
 
 const read = name => JSON.parse(readFileSync(new URL(`./content/${name}`,import.meta.url),'utf8'));
 export const copy = read('copy.json');
@@ -31,9 +31,9 @@ export function pathFor(key='home',locale='ru') {
   if(key==='home') return prefix+'/';
   if(key==='menu') return prefix+'/menu/';
   if(key==='contacts') return prefix+({ru:'/kontakty/',en:'/contact/',es:'/contacto/'}[locale]);
+  if(key==='spa')return prefix+'/spa/';
   if(key.startsWith('spa-')) {
-    const i=Number(key.slice(4));
-    return prefix+'/spa/'+({ru:['banya','hammam'],en:['sauna','hammam'],es:['sauna','hammam']}[locale][i])+'/';
+    return prefix+'/spa/#'+(['banya','hammam'][Number(key.slice(4))]);
   }
   if(key.startsWith('event-')) {
     const i=Number(key.slice(6));
@@ -46,9 +46,13 @@ export function pathFor(key='home',locale='ru') {
   return prefix+'/404.html';
 }
 
+export function legacySpaPath(index,locale='ru'){
+  return (locale==='ru'?'':`/${locale}`)+'/spa/'+({ru:['banya','hammam'],en:['sauna','hammam'],es:['sauna','hammam']}[locale][index])+'/';
+}
+
 export function whatsapp(locale='ru',kind='general',name='') {
   const u=ui[locale];
-  const message=kind==='bath'?u.waBath:kind==='event'?u.waEvent+translate(name,locale):kind==='room'?u.waStay+translate(name,locale):kind==='menu'?u.waMenu:kind==='organizers'?u.waOrg:kind==='visit'?u.waVisit:u.waHello;
+  const message=kind==='spa-service'?spaPageCopy[locale].waService+translate(name,locale):kind==='bath'?u.waBath:kind==='event'?u.waEvent+translate(name,locale):kind==='room'?u.waStay+translate(name,locale):kind==='menu'?u.waMenu:kind==='organizers'?u.waOrg:kind==='visit'?u.waVisit:u.waHello;
   return contact.whatsapp+'?text='+encodeURIComponent(message);
 }
 

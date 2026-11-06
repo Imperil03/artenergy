@@ -21,11 +21,21 @@ for(const page of manifest.pages){
   assert.ok(!/C:\\Users|\.env|sourceSha|approvalText|Direction contract/.test(html),`${page.path}: no development metadata`);
   const contactPath=basePath+{ru:'/kontakty/',en:'/en/contact/',es:'/es/contacto/'}[page.lang];
   const pageHeader=html.match(/<header class="site-header[\s\S]*?<\/header>/)?.[0]||'';
-  assert.ok(pageHeader.includes(`href="${contactPath}"`),`${page.path}: contacts in site navigation`);
+  if(!page.redirectTo){
+    assert.ok(pageHeader.includes(`href="${contactPath}"`),`${page.path}: contacts in site navigation`);
+    const spaPath=basePath+(page.lang==='ru'?'':`/${page.lang}`)+'/spa/';
+    assert.ok(pageHeader.includes(`href="${spaPath}"`),`${page.path}: direct SPA page in navigation`);
+  }
   if(page.lang!=='ru')assert.ok(!/[А-Яа-яЁё]/.test(html),`${page.path}: no untranslated Cyrillic`);
-  if(page.key!=='404'){
+  if(page.key!=='404'&&!page.redirectTo){
     assert.ok(html.includes(`href="${origin}${page.path}"`),`${page.path}: canonical`);
     for(const lang of ['ru','en','es'])assert.ok(html.includes(`hreflang="${lang}"`),`${page.path}: language alternative`);
+  }
+  if(page.redirectTo){
+    const canonical=origin+(page.lang==='ru'?'':`/${page.lang}`)+'/spa/';
+    assert.ok(html.includes(`rel="canonical" href="${canonical}"`),`${page.path}: alias canonical without fragment`);
+    assert.ok(html.includes(`content="0;url=${basePath+page.redirectTo}"`),`${page.path}: same-site deployment-aware redirect`);
+    assert.ok(html.includes('content="noindex, follow"'),`${page.path}: aliases not indexable`);
   }
   const ids=new Set();
   for(const match of html.matchAll(/\bid="([^"]+)"/g)){assert.ok(!ids.has(match[1]),`${page.path}: duplicate id ${match[1]}`);ids.add(match[1]);}
@@ -80,7 +90,16 @@ for(const page of manifest.pages){
     assert.ok(html.includes('"@type":"ContactPage"'),`${page.path}: contact page semantics`);
     assert.ok(!/24\/7|24×7|around the clock|круглосуточно/.test(html),`${page.path}: no unconfirmed opening hours`);
   }
+  if(page.key==='spa'){
+    assert.equal((html.match(/class="spa-offer"/g)||[]).length,2,`${page.path}: both options together`);
+    for(const id of ['banya','hammam'])assert.ok(html.includes(`id="${id}"`),`${page.path}: direct service anchor`);
+    for(const price of ['6 000 DOP','2 000 DOP'])assert.ok(html.includes(price),`${page.path}: service prices`);
+    assert.ok(html.includes({ru:'Минимальное время — 3 часа',en:'Minimum booking — 3 hours',es:'Tiempo mínimo — 3 horas'}[page.lang]),`${page.path}: minimum bath duration`);
+    assert.ok(!html.includes('image-note'),`${page.path}: no removed visible illustration badge`);
+  }
 }
+const sitemap=await readFile(path.join(output,'sitemap.xml'),'utf8');
+for(const page of manifest.pages)if(page.redirectTo)assert.ok(!sitemap.includes(`<loc>${origin+page.path}</loc>`),`${page.path}: alias excluded from sitemap`);
 const js=await readFile(path.join(output,'app.js'),'utf8');
 assert.ok(!/fetch\(|XMLHttpRequest|sendBeacon|localStorage\.setItem/.test(js),'No hidden submission/tracking');
 console.log(`PASS: ${manifest.pages.length} pages, ${links} local links/assets, ${images} image tags; locales, prices, 16-photo galleries, 68-item menus and no forms/development copy.`);
