@@ -2,6 +2,7 @@ import {readFile,readdir,stat} from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import {root,output} from './build.mjs';
+import {pathFor} from '../src/model.mjs';
 const manifest=JSON.parse(await readFile(path.join(root,'build-manifest.json'),'utf8'));
 const origin=manifest.siteUrl||'https://artenergy.do';
 const basePath=manifest.basePath||'';
@@ -25,6 +26,10 @@ for(const page of manifest.pages){
     assert.ok(pageHeader.includes(`href="${contactPath}"`),`${page.path}: contacts in site navigation`);
     const spaPath=basePath+(page.lang==='ru'?'':`/${page.lang}`)+'/spa/';
     assert.ok(pageHeader.includes(`href="${spaPath}"`),`${page.path}: direct SPA page in navigation`);
+    for(const key of ['venue','events','menu','stay','spa','contacts'])assert.ok(pageHeader.includes(`href="${basePath+pathFor(key,page.lang)}"`),`${page.path}: section ${key} in header`);
+    assert.ok(!/href="[^\"]*#/.test(pageHeader),`${page.path}: header links point to pages`);
+    const desktopNav=pageHeader.match(/<nav class="desktop-nav"[\s\S]*?<\/nav>/)?.[0]||'';
+    assert.equal((desktopNav.match(/<a /g)||[]).length,6,`${page.path}: six sections without visit item`);
   }
   if(page.lang!=='ru')assert.ok(!/[А-Яа-яЁё]/.test(html),`${page.path}: no untranslated Cyrillic`);
   if(page.key!=='404'&&!page.redirectTo){
@@ -56,6 +61,7 @@ for(const page of manifest.pages){
   }
   for(const match of html.matchAll(/<img\b[^>]*>/g)){images++;assert.match(match[0],/\balt="[^"]*"/);}
   if(page.key==='home'){
+    assert.ok(!html.includes('Кухня · Напитки · Бар · Детское меню · Торты'),`${page.path}: no removed category enumeration`);
     assert.equal((html.match(/data-gallery="venue"/g)||[]).length,16);
     assert.equal((html.match(/class="event-card"/g)||[]).length,6);
     assert.equal((html.match(/class="room-card"/g)||[]).length,2);
@@ -76,9 +82,20 @@ for(const page of manifest.pages){
     assert.ok(!/до 6 человек|up to 6|hasta 6|500 DOP/.test(bath),`${page.path}: no unconfirmed bath capacity or surcharge`);
     for(const value of ['500 DOP','1 000 DOP','3 000 DOP','150 USD','6 000 DOP','2 000 DOP'])assert.ok(html.includes(value));
   }
+  assert.ok(!/DOP — (?:доминиканские песо|Dominican pesos|pesos dominicanos)/i.test(html),`${page.path}: no currency explanation`);
   if(page.key==='menu'){
     assert.equal((html.match(/class="dish-row"/g)||[]).length,68,`${page.path}: full menu`);
     assert.equal((html.match(/data-menu-panel=/g)||[]).length,5);
+  }
+  if(page.key==='venue')assert.equal((html.match(/data-gallery="venue"/g)||[]).length,16,`${page.path}: venue gallery`);
+  if(page.key==='events'){
+    assert.equal((html.match(/class="event-card"/g)||[]).length,6,`${page.path}: event catalog`);
+    assert.equal((html.match(/<h2 class="event-card-title"/g)||[]).length,6,`${page.path}: event heading hierarchy`);
+  }
+  if(page.key==='stay'){
+    assert.equal((html.match(/class="room-card"/g)||[]).length,2,`${page.path}: accommodation catalog`);
+    assert.equal((html.match(/<h2 class="room-card-title"/g)||[]).length,2,`${page.path}: accommodation heading hierarchy`);
+    assert.ok(!html.includes('class="room-open"'),`${page.path}: no removed room overlay`);
   }
   if(page.key==='contacts'){
     assert.ok(html.includes('href="tel:+18297715555"'),`${page.path}: callable phone`);

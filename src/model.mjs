@@ -29,6 +29,9 @@ export const spaServices=copy.bath.services.map((service,i)=>({...service,key:`s
 export function pathFor(key='home',locale='ru') {
   const prefix=locale==='ru'?'':`/${locale}`;
   if(key==='home') return prefix+'/';
+  if(key==='venue')return prefix+({ru:'/ploshchadka/',en:'/venue/',es:'/espacio/'}[locale]);
+  if(key==='events')return prefix+({ru:'/sobytiya/',en:'/events/',es:'/eventos/'}[locale]);
+  if(key==='stay')return prefix+({ru:'/prozhivanie/',en:'/stays/',es:'/alojamiento/'}[locale]);
   if(key==='menu') return prefix+'/menu/';
   if(key==='contacts') return prefix+({ru:'/kontakty/',en:'/contact/',es:'/contacto/'}[locale]);
   if(key==='spa')return prefix+'/spa/';

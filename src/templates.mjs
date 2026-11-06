@@ -23,8 +23,8 @@ const alias=id=>`<span class="anchor-alias" id="${id}" aria-hidden="true"></span
 
 function navLinks(lang,key='home'){
   const t=s=>translate(s,lang);
-  const sections=[['Площадка','gallery'],['Праздники','events'],['Посещение','visit'],['Кухня и бар','kitchen'],['Проживание','stay']].map(([label,id])=>`<a href="${pathFor('home',lang)}#${id}">${esc(t(label))}</a>`).join('');
-  return sections+`<a href="${pathFor('spa',lang)}"${key==='spa'?' aria-current="page"':''}>${esc(t(copy.bath.title))}</a><a href="${pathFor('contacts',lang)}"${key==='contacts'?' aria-current="page"':''}>${esc(contactPageCopy[lang].title)}</a>`;
+  const sections=[['Площадка','venue'],['Праздники','events'],['Кухня и бар','menu'],['Проживание','stay'],[copy.bath.title,'spa'],[contactPageCopy[lang].title,'contacts']];
+  return sections.map(([label,page])=>`<a href="${pathFor(page,lang)}"${key===page?' aria-current="page"':''}>${esc(page==='contacts'?label:t(label))}</a>`).join('');
 }
 function languages(key,lang){
   return `<nav class="languages" aria-label="${esc(ui[lang].language)}">${locales.map(l=>`<a href="${pathFor(key,l)}" lang="${l}" hreflang="${l}"${lang===l?' aria-current="page"':''}>${l.toUpperCase()}</a>`).join('')}</nav>`;
@@ -55,16 +55,17 @@ function hero(lang){
   return `<section class="hero" id="hero"><picture class="hero-poster"><source media="(max-width: 760px)" srcset="${srcset('hero_mobile')}" sizes="100vw">${image('hero',lang,{eager:true,sizes:'100vw',alt:''})}</picture>${video}<div class="hero-shade"></div><div class="wrap hero-inner"><p class="hero-location">${esc(t(copy.hero.location))}</p><h1>${esc(t(copy.hero.title))}</h1><p class="hero-lead">${esc(t(copy.hero.body))}</p>${copy.hero.note?`<p class="hero-note">${esc(t(copy.hero.note))}</p>`:''}<div class="hero-actions">${wa(lang,t(copy.hero.primary),'general','','button button--hero')}<a class="hero-overview" href="/video/overview.mp4" data-overview><span class="overview-play" aria-hidden="true">${icon('play',22)}</span><span>${esc(t('Смотреть обзор'))}</span></a></div></div>${controls}</section>`;
 }
 
-function gallerySection(lang){
+function gallerySection(lang,{standalone=false}={}){
   const t=s=>translate(s,lang),items=copy.gallery.items;
+  const heading=standalone?'h1':'h2',title=standalone?{ru:'Площадка ArtEnergy',en:'The ArtEnergy grounds',es:'El espacio ArtEnergy'}[lang]:t(copy.gallery.title);
   const more=gallery.expand_in_place.map(([,label],i)=>[`gallery-extra-${i+1}`,label]);
   const toggle=`<button class="gallery-toggle" type="button" data-gallery-toggle aria-controls="venue-more" aria-expanded="false" data-open-label="${esc(t('Все фотографии'))}" data-close-label="${esc(t('Свернуть галерею'))}" hidden><span>${esc(t('Все фотографии'))}</span>${icon('down',20)}</button>`;
-  return `<section class="section venue-section" id="gallery">${alias('about')}<div class="wrap"><div class="gallery-heading"><h2>${esc(t(copy.gallery.title))}</h2><p class="section-lead">${esc(t(copy.gallery.body))}</p></div><div class="venue-mosaic">${items.slice(0,4).map(([key,label],i)=>`<a class="photo-link mosaic-photo mosaic-photo--${i+1}" href="${assets[key].src}" data-gallery="venue" data-caption="${esc(t(label)+(copy.gallery.descriptions[key]?' · '+t(copy.gallery.descriptions[key]):''))}">${image(key,lang,{sizes:i<2?'(max-width: 760px) calc(100vw - 48px), 670px':'(max-width: 760px) calc((100vw - 60px) / 2), 330px'})}<span class="mosaic-caption">${esc(t(label))}</span><span class="photo-zoom" aria-hidden="true">${icon('arrow',20)}</span></a>`).join('')}</div><div class="venue-preview-grid">${items.slice(4).map(([key,label])=>figure(key,t(label),lang,'venue','(max-width: 760px) calc((100vw - 60px) / 2), 286px','',false)).join('')}</div><details class="gallery-more" id="venue-more"><summary class="gallery-toggle"><span class="more-closed">${esc(t('Все фотографии'))}</span><span class="more-open">${esc(t('Свернуть галерею'))}</span>${icon('down')}</summary><div class="venue-extra-grid">${more.map(([key,label])=>figure(key,t(label),lang,'venue','(max-width: 760px) calc((100vw - 64px) / 2), 320px','',false)).join('')}</div></details>${toggle}</div></section>`;
+  return `<section class="${standalone?'section-page-gallery':'section venue-section'}" id="gallery">${alias('about')}<div class="wrap"><div class="gallery-heading"><${heading}>${esc(title)}</${heading}><p class="section-lead">${esc(t(copy.gallery.body))}</p></div><div class="venue-mosaic">${items.slice(0,4).map(([key,label],i)=>`<a class="photo-link mosaic-photo mosaic-photo--${i+1}" href="${assets[key].src}" data-gallery="venue" data-caption="${esc(t(label)+(copy.gallery.descriptions[key]?' · '+t(copy.gallery.descriptions[key]):''))}">${image(key,lang,{sizes:i<2?'(max-width: 760px) calc(100vw - 48px), 670px':'(max-width: 760px) calc((100vw - 60px) / 2), 330px'})}<span class="mosaic-caption">${esc(t(label))}</span><span class="photo-zoom" aria-hidden="true">${icon('arrow',20)}</span></a>`).join('')}</div><div class="venue-preview-grid">${items.slice(4).map(([key,label])=>figure(key,t(label),lang,'venue','(max-width: 760px) calc((100vw - 60px) / 2), 286px','',false)).join('')}</div><details class="gallery-more" id="venue-more"><summary class="gallery-toggle"><span class="more-closed">${esc(t('Все фотографии'))}</span><span class="more-open">${esc(t('Свернуть галерею'))}</span>${icon('down')}</summary><div class="venue-extra-grid">${more.map(([key,label])=>figure(key,t(label),lang,'venue','(max-width: 760px) calc((100vw - 64px) / 2), 320px','',false)).join('')}</div></details>${toggle}</div></section>`;
 }
 
-function eventCard(event,lang){
+function eventCard(event,lang,headingTag='h3'){
   const t=value=>translate(value,lang);
-  return `<a class="event-card" href="${pathFor(event.key,lang)}"><span class="event-card-image">${image(event.image,lang,{sizes:'(max-width: 760px) calc((100vw - 64px) / 2), (max-width: 1050px) 40vw, 290px'})}</span><div class="event-card-copy"><h3 class="event-card-title">${esc(t(event.name))}</h3><p class="event-card-summary">${esc(t(event.summary))}</p><span class="event-card-action">${esc(t('Подробнее'))}${icon()}</span></div></a>`;
+  return `<a class="event-card" href="${pathFor(event.key,lang)}"><span class="event-card-image">${image(event.image,lang,{sizes:'(max-width: 760px) calc((100vw - 64px) / 2), (max-width: 1050px) 40vw, 290px'})}</span><div class="event-card-copy"><${headingTag} class="event-card-title">${esc(t(event.name))}</${headingTag}><p class="event-card-summary">${esc(t(event.summary))}</p><span class="event-card-action">${esc(t('Подробнее'))}${icon()}</span></div></a>`;
 }
 function eventsSection(lang){
   const t=value=>translate(value,lang);
@@ -89,12 +90,12 @@ function dishRows(items,lang){
 function kitchenSection(lang){
   const t=value=>translate(value,lang);
   const photos=[['kitchen_table','С гриля','kitchen'],['kitchen_dumplings','Домашняя кухня','kitchen'],['drink','Бар','bar']];
-  return `<section class="section kitchen-section" id="kitchen"><div class="wrap"><div class="kitchen-heading"><h2>${esc(t(copy.kitchen.title))}</h2><p class="section-lead">${esc(t(copy.kitchen.body))}</p></div><div class="kitchen-showcase">${photos.map(([key,label,category],i)=>`<a class="kitchen-feature kitchen-feature--${i+1}" href="${pathFor('menu',lang)}#menu-${category}">${image(key,lang,{sizes:i===0?'(max-width: 760px) calc(100vw - 48px), 800px':'(max-width: 760px) calc((100vw - 60px) / 2), 400px'})}<span>${esc(t(label))}${icon()}</span></a>`).join('')}</div><div class="kitchen-tasting">${dishRows(copy.kitchen.preview_items.slice(0,3),lang)}${dishRows(copy.kitchen.preview_items.slice(3),lang)}</div><div class="kitchen-footer">${local(pathFor('menu',lang),t(copy.kitchen.cta),'button')}<p>${esc(t(copy.kitchen.menu_categories))}</p></div></div></section>`;
+  return `<section class="section kitchen-section" id="kitchen"><div class="wrap"><div class="kitchen-heading"><h2>${esc(t(copy.kitchen.title))}</h2><p class="section-lead">${esc(t(copy.kitchen.body))}</p></div><div class="kitchen-showcase">${photos.map(([key,label,category],i)=>`<a class="kitchen-feature kitchen-feature--${i+1}" href="${pathFor('menu',lang)}#menu-${category}">${image(key,lang,{sizes:i===0?'(max-width: 760px) calc(100vw - 48px), 800px':'(max-width: 760px) calc((100vw - 60px) / 2), 400px'})}<span>${esc(t(label))}${icon()}</span></a>`).join('')}</div><div class="kitchen-tasting">${dishRows(copy.kitchen.preview_items.slice(0,3),lang)}${dishRows(copy.kitchen.preview_items.slice(3),lang)}</div><div class="kitchen-footer">${local(pathFor('menu',lang),t(copy.kitchen.cta),'button')}</div></div></section>`;
 }
 
-function roomCard(room,lang,withContact=true){
+function roomCard(room,lang,withContact=true,headingTag='h3'){
   const t=s=>translate(s,lang);
-  return `<article class="room-card"><a class="room-detail" href="${pathFor(room.key,lang)}" aria-label="${esc(t(room.title)+' — '+t('Подробнее'))}"><span class="room-photo">${image(room.image,lang,{sizes:'(max-width: 760px) calc(100vw - 48px), 620px'})}<span class="room-open">${esc(t('Подробнее'))}${icon()}</span></span><h3>${esc(t(room.title))}</h3></a><div class="room-facts">${room.facts.map(f=>`<p>${esc(t(f))}</p>`).join('')}</div><p class="room-price">${esc(t(room.price))}${room.unit?`<small>${esc(t(room.unit))}</small>`:''}</p>${room.mealNote?`<p class="room-meal-note">${esc(t(room.mealNote))}</p>`:''}${withContact?`<div class="room-actions">${wa(lang,t(room.contact),'room',room.title,'button button--outline')}</div>`:''}</article>`;
+  return `<article class="room-card"><a class="room-detail" href="${pathFor(room.key,lang)}" aria-label="${esc(t(room.title))}"><span class="room-photo">${image(room.image,lang,{sizes:'(max-width: 760px) calc(100vw - 48px), 620px'})}</span><${headingTag} class="room-card-title">${esc(t(room.title))}</${headingTag}><div class="room-facts">${room.facts.map(f=>`<p>${esc(t(f))}</p>`).join('')}</div><p class="room-price">${esc(t(room.price))}${room.unit?`<small>${esc(t(room.unit))}</small>`:''}</p>${room.mealNote?`<p class="room-meal-note">${esc(t(room.mealNote))}</p>`:''}</a>${withContact?`<div class="room-actions">${wa(lang,t(room.contact),'room',room.title,'button button--outline')}</div>`:''}</article>`;
 }
 function staysSection(lang){
   const t=value=>translate(value,lang);
@@ -146,7 +147,7 @@ export function menuPage(lang){
 }
 
 function breadcrumbs(lang,label,anchor){
-  return `<nav class="breadcrumbs" aria-label="${esc(ui[lang].navigation)}"><a href="${pathFor('home',lang)}">${esc(ui[lang].home)}</a><span aria-hidden="true">/</span><a href="${pathFor('home',lang)}#${anchor}">${esc(label)}</a></nav>`;
+  return `<nav class="breadcrumbs" aria-label="${esc(ui[lang].navigation)}"><a href="${pathFor('home',lang)}">${esc(ui[lang].home)}</a><span aria-hidden="true">/</span><a href="${pathFor(anchor,lang)}">${esc(label)}</a></nav>`;
 }
 export function eventPage(event,lang){
   const u=ui[lang],t=s=>translate(s,lang),content=eventText[lang][event.index];
@@ -180,3 +181,5 @@ export function errorPage(lang='ru'){
   const u=ui[lang];
   return shell({key:'404',lang,title:u.notFound+' · ArtEnergy',description:u.notFoundText,status:404,body:`<section class="inner-page error-page"><div class="wrap wrap--reading"><h1>${esc(u.notFound)}</h1><p class="section-lead">${esc(u.notFoundText)}</p>${local(pathFor('home',lang),u.back,'button')}</div></section>`});
 }
+
+export {shell,gallerySection,eventCard,roomCard,wa,local};

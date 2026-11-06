@@ -3,6 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {homePage,menuPage,contactsPage,eventPage,roomPage,spaPage,spaRedirect,errorPage} from '../src/templates.mjs';
+import {sectionPage} from '../src/section-pages.mjs';
 import {locales,events,rooms,spaServices,pathFor,legacySpaPath,origin} from '../src/model.mjs';
 import {basePath,noIndex,publishHtml,publishCss} from '../src/deployment.mjs';
 
@@ -13,6 +14,7 @@ export async function build(){
   const pages=[];
   for(const lang of locales){
     pages.push({path:pathFor('home',lang),lang,key:'home',html:homePage(lang)});
+    for(const key of ['venue','events','stay'])pages.push({path:pathFor(key,lang),lang,key,html:sectionPage(key,lang)});
     pages.push({path:pathFor('menu',lang),lang,key:'menu',html:menuPage(lang)});
     pages.push({path:pathFor('contacts',lang),lang,key:'contacts',html:contactsPage(lang)});
     for(const event of events)pages.push({path:pathFor(event.key,lang),lang,key:event.key,html:eventPage(event,lang)});
@@ -29,7 +31,8 @@ export async function build(){
   await rm(output,{recursive:true,force:true});
   await mkdir(output,{recursive:true});
   await cp(path.join(root,'public'),output,{recursive:true,filter:source=>!source.endsWith('.webp.json')});
-  await writeFile(path.join(output,'styles.css'),publishCss(await readFile(path.join(root,'src/client/styles.css'),'utf8')));
+  const styles=await Promise.all(['styles.css','section-pages.css'].map(file=>readFile(path.join(root,'src/client',file),'utf8')));
+  await writeFile(path.join(output,'styles.css'),publishCss(styles.join('\n')));
   await cp(path.join(root,'src/client/app.js'),path.join(output,'app.js'));
   for(const page of pages){
     const relative=page.path.endsWith('/')?page.path.slice(1)+'index.html':page.path.slice(1);

@@ -1,0 +1,32 @@
+/* Section pages reuse the established venue gallery and catalog cards. */
+.section-hub{padding-block:45px 110px}
+.section-hub .breadcrumbs{margin-bottom:38px}
+.section-hub .section-hub-heading{max-width:960px;margin-bottom:44px}
+.section-hub h1{max-width:960px;margin-bottom:24px;font-size:clamp(44px,4.4vw,64px);line-height:1.12;letter-spacing:-.025em}
+.section-hub .section-hub-heading>.section-lead{max-width:850px;font-size:23px;line-height:1.45}
+.section-hub .section-page-gallery{padding-block:0}
+.section-hub .section-page-gallery .gallery-heading{max-width:960px;margin-bottom:36px}
+.section-hub .section-page-gallery .section-lead{max-width:850px;font-size:23px;line-height:1.45}
+.section-hub .section-hub-contact{display:flex;justify-content:center;margin-top:42px}
+.section-hub .section-hub-contact>.button{max-width:100%}
+.section-hub .section-hub-related{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 40px;margin-top:48px}
+.section-hub .section-hub-related>.text-link{font-size:20px}
+
+@media(max-width:1050px){
+  .section-hub{padding-bottom:96px}
+  .section-hub .section-hub-heading{margin-bottom:36px}
+}
+
+@media(max-width:760px){
+  .section-hub{padding-block:22px 76px}
+  .section-hub .breadcrumbs{margin-bottom:28px;font-size:15px}
+  .section-hub h1{margin-bottom:20px;font-size:44px;line-height:1.12}
+  .section-hub .section-hub-heading{margin-bottom:30px}
+  .section-hub .section-hub-heading>.section-lead,
+  .section-hub .section-page-gallery .section-lead{font-size:20px;line-height:1.45}
+  .section-hub .section-page-gallery .gallery-heading{margin-bottom:28px}
+  .section-hub .section-hub-contact{margin-top:32px}
+  .section-hub .section-hub-contact>.button{width:100%;font-size:18px}
+  .section-hub .section-hub-related{justify-content:flex-start;gap:12px 28px;margin-top:34px}
+  .section-hub .section-hub-related>.text-link{font-size:18px}
+}
