@@ -1,4 +1,24 @@
 import {readFileSync} from 'node:fs';
+export const menuPageCopy={
+  ru:{
+    title:'Меню ArtEnergy в Пунта-Кане — кухня, бар и цены',
+    intro:'В меню ArtEnergy — шашлык, блюда домашней кухни, салаты, свежие соки, коктейли и напитки. Для детей предусмотрено отдельное меню, а к празднику можно заранее заказать торт.',
+    minimum:'При обычном посещении ArtEnergy действует минимальный заказ на еду и напитки. Вся сумма идёт на блюда и напитки из меню — отдельной платы за вход нет.',
+    description:'Меню кухни и бара ArtEnergy в Баваро, Пунта-Кана. Шашлык, домашние блюда, салаты, коктейли, детское меню и торты на заказ.',
+  },
+  en:{
+    title:'ArtEnergy menu in Punta Cana — food, bar and prices',
+    intro:'The ArtEnergy menu includes grilled skewers, home-style dishes, salads, fresh juices, cocktails and drinks. There is a separate children’s menu, and cakes for celebrations can be ordered in advance.',
+    minimum:'Regular visits to ArtEnergy require a minimum spend on food and drinks. The full amount goes toward dishes and drinks from the menu — there is no separate entrance fee.',
+    description:'Food and bar menu at ArtEnergy in Bávaro, Punta Cana. Grilled skewers, home-style dishes, salads, cocktails, a children’s menu and cakes made to order.',
+  },
+  es:{
+    title:'Menú de ArtEnergy en Punta Cana — cocina, bar y precios',
+    intro:'El menú de ArtEnergy incluye brochetas, platos caseros, ensaladas, jugos naturales, cócteles y bebidas. Hay un menú infantil y puedes encargar una tarta con antelación para tu celebración.',
+    minimum:'En las visitas habituales a ArtEnergy se aplica un consumo mínimo de comida y bebidas. El importe completo se destina a platos y bebidas del menú; no se cobra una entrada aparte.',
+    description:'Menú de cocina y bar de ArtEnergy en Bávaro, Punta Cana. Brochetas, platos caseros, ensaladas, cócteles, menú infantil y tartas por encargo.',
+  },
+};
 export const spaPageCopy={
   ru:{
     choose:'Выберите формат',
@@ -374,6 +394,8 @@ export const translations = {
   'Меню': ['Menu', 'Menú'],
   'Кухня': ['Food', 'Cocina'],
   'Напитки': ['Drinks', 'Bebidas'],
+  'Безалкогольные': ['Non-alcoholic drinks', 'Sin alcohol'],
+  'Бар и коктейли': ['Bar and cocktails', 'Bar y cócteles'],
   'Детское меню': ["Children’s menu", 'Menú infantil'],
   'Торты': ['Cakes', 'Tartas'],
   'Шашлык': ['Skewers', 'Brochetas'],

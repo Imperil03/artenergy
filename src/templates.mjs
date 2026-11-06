@@ -1,5 +1,5 @@
 import {copy,menu,assets,gallery,locales,origin,contact,events,rooms,spaServices,pathFor,whatsapp,translate,ui,eventText,altFor,roomText} from './model.mjs';
-import {contactPageCopy,spaPageCopy} from './translations.mjs';
+import {contactPageCopy,spaPageCopy,menuPageCopy} from './translations.mjs';
 import {basePath} from './deployment.mjs';
 
 export const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -140,9 +140,9 @@ export function contactsPage(lang){
   return shell({key:'contacts',lang,title:c.title+' · ArtEnergy',description:c.description,body});
 }
 export function menuPage(lang){
-  const u=ui[lang],t=s=>translate(s,lang);
-  const body=`<section class="inner-page menu-page"><div class="wrap"><nav class="breadcrumbs" aria-label="${esc(u.navigation)}"><a href="${pathFor('home',lang)}">${esc(u.home)}</a><span aria-hidden="true">/</span><span>${esc(t('Меню'))}</span></nav><h1>${esc(t('Меню'))}</h1><nav class="menu-tabs" data-menu-tabs aria-label="${esc(u.menuCategories)}">${Object.entries(menu).map(([key,cat],i)=>`<a href="#menu-${key}" data-menu-tab="${key}"${i===0?' class="is-active"':''}>${esc(t(cat.label))}</a>`).join('')}</nav><div class="menu-panels">${Object.entries(menu).map(([key,cat],i)=>`<section class="menu-panel${i===0?' is-active':''}" id="menu-${key}" data-menu-panel="${key}"><div class="menu-group-grid">${cat.groups.map(group=>`<section class="menu-group"><h2>${esc(t(group.title))}</h2>${dishRows(group.items,lang)}</section>`).join('')}</div>${cat.note?`<p class="menu-condition">${esc(t(cat.note))}</p>`:''}</section>`).join('')}</div><div class="menu-contact">${wa(lang,t('Уточнить заказ в WhatsApp'),'menu')}</div></div></section>`;
-  return shell({key:'menu',lang,title:u.menuTitle,description:u.menuDescription,body});
+  const u=ui[lang],t=s=>translate(s,lang),c=menuPageCopy[lang];
+  const body=`<section class="inner-page menu-page"><div class="wrap"><nav class="breadcrumbs" aria-label="${esc(u.navigation)}"><a href="${pathFor('home',lang)}">${esc(u.home)}</a><span aria-hidden="true">/</span><span>${esc(t('Меню'))}</span></nav><h1>${esc(t('Меню'))}</h1><p class="section-lead menu-intro">${esc(c.intro)}</p><p class="menu-visit-note">${esc(c.minimum)}</p><nav class="menu-tabs" data-menu-tabs aria-label="${esc(u.menuCategories)}">${Object.entries(menu).map(([key,cat],i)=>`<a href="#menu-${key}" data-menu-tab="${key}"${i===0?' class="is-active"':''}>${esc(t(cat.label))}</a>`).join('')}</nav><div class="menu-panels">${Object.entries(menu).map(([key,cat],i)=>`<section class="menu-panel${i===0?' is-active':''}" id="menu-${key}" data-menu-panel="${key}"><div class="menu-group-grid">${cat.groups.map(group=>`<section class="menu-group"><h2>${esc(t(group.title))}</h2>${dishRows(group.items,lang)}</section>`).join('')}</div>${cat.note?`<p class="menu-condition">${esc(t(cat.note))}</p>`:''}</section>`).join('')}</div></div></section>`;
+  return shell({key:'menu',lang,title:c.title,description:c.description,body});
 }
 
 function breadcrumbs(lang,label,anchor){

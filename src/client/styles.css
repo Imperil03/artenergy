@@ -236,6 +236,8 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
 .breadcrumbs{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:42px;font-size:16px;color:var(--muted)}
 .breadcrumbs a{text-decoration:underline}
 .inner-page h1{max-width:1120px;margin-bottom:30px;font-size:clamp(40px,4.4vw,64px)}
+.menu-intro{max-width:940px;margin-top:20px}
+.menu-visit-note{max-width:940px;margin-top:26px;padding:22px 24px;border-radius:12px;background:var(--paper);font-size:19px;line-height:1.5}
 .menu-tabs{display:flex;gap:40px;flex-wrap:wrap;margin-block:42px 58px;border-bottom:1px solid var(--line)}
 .menu-tabs a{display:inline-flex;align-items:center;min-height:50px;padding-bottom:14px;border-bottom:3px solid transparent;font-size:22px;font-weight:500;color:var(--ink)}
 .menu-tabs a.is-active{border-color:var(--green)}
@@ -355,6 +357,7 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
   .mobile-contact .button{width:100%;justify-content:space-between}.has-mobile-contact{padding-bottom:86px}
   .lightbox-shell{grid-template-columns:1fr;gap:0;padding:70px 12px 85px}.lightbox-close{top:17px;right:17px}.lightbox-figure{grid-column:1}.lightbox-figure figcaption{font-size:16px;gap:16px;padding-inline:8px}.lightbox-prev,.lightbox-next{position:absolute;bottom:24px}.lightbox-prev{left:calc(50% - 64px)}.lightbox-next{right:calc(50% - 64px)}
   .inner-page{padding-top:24px;padding-bottom:76px}.breadcrumbs{font-size:15px;margin-bottom:32px}.inner-page h1{font-size:38px;line-height:1.13;margin-bottom:26px}
+  .menu-intro{font-size:20px;line-height:1.5}.menu-visit-note{margin-top:22px;padding:20px;font-size:18px}
   .menu-tabs{gap:9px 22px;margin-block:28px 36px}.menu-tabs a{font-size:17px;min-height:44px;padding-bottom:9px}
   .menu-group-grid{grid-template-columns:1fr;gap:40px}.menu-group h2{font-size:25px;margin-bottom:22px}.menu-group .dish-row{padding-block:17px}.menu-group .dish-row dt{font-size:18px;line-height:24px}.menu-group .dish-row small{font-size:15px}.menu-condition{font-size:18px;line-height:25px;margin-top:28px}.menu-contact{margin-top:25px}.menu-contact .text-link{font-size:18px}
   .detail-intro{margin-bottom:36px}.detail-intro .section-lead{font-size:19px;line-height:26px;margin-bottom:28px}.detail-intro .button{width:100%}

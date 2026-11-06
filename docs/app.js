@@ -194,7 +194,7 @@ if(dialog&&typeof dialog.showModal==='function'){
   const previous=dialog.querySelector('[data-lightbox-prev]');
   const next=dialog.querySelector('[data-lightbox-next]');
   const close=dialog.querySelector('[data-lightbox-close]');
-  let collection=[],index=0,trigger=null,imageVersion=0,flight=null;
+  let collection=[],index=0,trigger=null,imageVersion=0,flight=null,swipeClickUntil=0;
   const stopFlight=()=>{
     if(!flight)return;
     const current=flight;flight=null;
@@ -266,18 +266,23 @@ if(dialog&&typeof dialog.showModal==='function'){
   });
   close.addEventListener('click',viewerMotion.dismiss);
   previous.addEventListener('click',()=>step(-1));next.addEventListener('click',()=>step(1));
-  dialog.addEventListener('click',event=>{if(event.target===dialog||event.target.classList.contains('lightbox-shell'))viewerMotion.dismiss();});
+  dialog.addEventListener('click',event=>{
+    if(event.target.closest('[data-lightbox-close],[data-lightbox-prev],[data-lightbox-next]'))return;
+    // A completed swipe can emit a delayed click on the same image.
+    if(performance.now()<swipeClickUntil){event.preventDefault();swipeClickUntil=0;return;}
+    viewerMotion.dismiss();
+  });
   dialog.addEventListener('keydown',event=>{
     if(event.key==='ArrowRight'&&collection.length>1){event.preventDefault();step(1);}
     if(event.key==='ArrowLeft'&&collection.length>1){event.preventDefault();step(-1);}
   });
-  dialog.addEventListener('close',()=>{stopFlight();motion.cancel(image);imageVersion++;document.body.classList.remove('is-locked');image.removeAttribute('src');trigger?.focus({preventScroll:true});});
+  dialog.addEventListener('close',()=>{stopFlight();motion.cancel(image);imageVersion++;swipeClickUntil=0;document.body.classList.remove('is-locked');image.removeAttribute('src');trigger?.focus({preventScroll:true});});
   let startX=0,startY=0;
-  image.addEventListener('touchstart',event=>{if(event.touches.length===1){startX=event.touches[0].clientX;startY=event.touches[0].clientY;}},{passive:true});
+  image.addEventListener('touchstart',event=>{swipeClickUntil=0;if(event.touches.length===1){startX=event.touches[0].clientX;startY=event.touches[0].clientY;}},{passive:true});
   image.addEventListener('touchend',event=>{
     if(collection.length<2||event.changedTouches.length!==1)return;
     const dx=event.changedTouches[0].clientX-startX,dy=event.changedTouches[0].clientY-startY;
-    if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)step(dx<0?1:-1);
+    if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){swipeClickUntil=performance.now()+700;step(dx<0?1:-1);}
   },{passive:true});
 }
 
