@@ -45,7 +45,7 @@
 .lodging-booking-copy{max-width:760px}
 .lodging-booking h2{margin-bottom:20px;font-size:40px;line-height:1.15}
 .lodging-booking-copy>p{font-size:21px;line-height:1.5}
-.lodging-booking-copy>.lodging-booking-note{margin-top:18px;font-size:18px;line-height:1.45}
+
 .lodging-booking-inner>.button{max-width:360px;gap:12px;padding-inline:20px;font-size:19px;line-height:1.35}
 
 @media(max-width:1050px){
@@ -95,6 +95,6 @@
   .lodging-booking-inner{gap:28px}
   .lodging-booking h2{font-size:32px}
   .lodging-booking-copy>p{font-size:20px}
-  .lodging-booking-copy>.lodging-booking-note{font-size:18px}
+
   .lodging-booking-inner>.button{width:100%;font-size:18px}
 }

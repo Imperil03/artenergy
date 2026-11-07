@@ -9,8 +9,6 @@
 .section-hub .section-page-gallery .section-lead{max-width:850px;font-size:23px;line-height:1.45}
 .section-hub .section-hub-contact{display:flex;justify-content:center;margin-top:42px}
 .section-hub .section-hub-contact>.button{max-width:100%}
-.section-hub .section-hub-related{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 40px;margin-top:48px}
-.section-hub .section-hub-related>.text-link{font-size:20px}
 
 @media(max-width:1050px){
   .section-hub{padding-bottom:96px}
@@ -27,8 +25,7 @@
   .section-hub .section-page-gallery .gallery-heading{margin-bottom:28px}
   .section-hub .section-hub-contact{margin-top:32px}
   .section-hub .section-hub-contact>.button{width:100%;font-size:18px}
-  .section-hub .section-hub-related{justify-content:flex-start;gap:12px 28px;margin-top:34px}
-  .section-hub .section-hub-related>.text-link{font-size:18px}
+
 }
 
 .section-hub.section-hub--venue{padding-bottom:0}

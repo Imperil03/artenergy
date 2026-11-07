@@ -10,6 +10,8 @@ import {editorialEventKeys,editorialEventPage} from '../src/event-editorial-page
 import {sectionPage} from '../src/section-pages.mjs';
 import {locales,events,spaServices,pathFor,legacySpaPath,origin} from '../src/model.mjs';
 import {basePath,noIndex,publishHtml,publishCss} from '../src/deployment.mjs';
+import {stylesheets,clientScripts} from './client-files.mjs';
+import {resourcePaths} from './resource-urls.mjs';
 
 export const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export const output=path.resolve(root,'dist');
@@ -35,15 +37,32 @@ export async function build(){
   for(const page of pages)page.html=publishHtml(page.html);
   // Only the generated dist directory inside this app is ever removed.
   if(output!==path.join(root,'dist')||!output.startsWith(root+path.sep))throw new Error('Unsafe output path');
-  const stat=await lstat(output).catch(()=>null);
-  if(stat?.isSymbolicLink())throw new Error('Refusing to replace a symlinked dist directory');
+  const outputInfo=await lstat(output).catch(()=>null);
+  if(outputInfo?.isSymbolicLink())throw new Error('Refusing to replace a symlinked dist directory');
   await rm(output,{recursive:true,force:true});
   await mkdir(output,{recursive:true});
-  await cp(path.join(root,'public'),output,{recursive:true,filter:source=>!source.endsWith('.webp.json')});
-  const styles=await Promise.all(['styles.css','section-pages.css','lodging-page.css','spa-page.css','birthday-page.css','navigation-dropdown.css','language-suggestion.css'].map(file=>readFile(path.join(root,'src/client',file),'utf8')));
-  await writeFile(path.join(output,'styles.css'),publishCss(styles.join('\n')));
-  const scripts=await Promise.all(['app.js','language-preference.js'].map(file=>readFile(path.join(root,'src/client',file),'utf8')));
-  await writeFile(path.join(output,'app.js'),scripts.join('\n\n'));
+  const styles=await Promise.all(stylesheets.map(file=>readFile(path.join(root,'src/client',file),'utf8')));
+  const css=publishCss(styles.join('\n'));
+  const publicRoot=path.join(root,'public');
+  const resources=resourcePaths(pages,css,origin,basePath);
+  resources.add('/fonts/OFL.txt');
+  const assetFiles=[];
+  for(const route of [...resources].sort()){
+    const source=path.resolve(publicRoot,'.'+route);
+    if(!source.startsWith(publicRoot+path.sep)||source.endsWith('.webp.json'))continue;
+    if(!(await lstat(source).catch(()=>null))?.isFile())continue;
+    const target=path.resolve(output,'.'+route);
+    if(!target.startsWith(output+path.sep))throw new Error('Unsafe resource path');
+    await mkdir(path.dirname(target),{recursive:true});
+    await cp(source,target);
+    const data=await readFile(source);
+    assetFiles.push({path:route,bytes:data.length,sha256:createHash('sha256').update(data).digest('hex')});
+  }
+  await writeFile(path.join(output,'styles.css'),css);
+  const scripts=await Promise.all(clientScripts.map(file=>readFile(path.join(root,'src/client',file),'utf8')));
+  const javascript=scripts.join('\n\n');
+  await writeFile(path.join(output,'app.js'),javascript);
+  const bundles=[['/styles.css',css],['/app.js',javascript]].map(([path,content])=>({path,bytes:Buffer.byteLength(content),sha256:createHash('sha256').update(content).digest('hex')}));
   for(const page of pages){
     const relative=page.path.endsWith('/')?page.path.slice(1)+'index.html':page.path.slice(1);
     const target=path.resolve(output,relative);
@@ -57,7 +76,7 @@ export async function build(){
   await writeFile(path.join(output,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`);
   const manifests=pages.map(({path,lang,key,redirectTo,html})=>({path,lang,key,...(redirectTo?{redirectTo}:{}),sha256:createHash('sha256').update(html).digest('hex')}));
   await writeFile(path.join(output,'.nojekyll'),'');
-  await writeFile(path.join(root,'build-manifest.json'),JSON.stringify({builtAt:new Date().toISOString(),siteUrl:origin,basePath,noIndex,pages:manifests},null,2));
+  await writeFile(path.join(root,'build-manifest.json'),JSON.stringify({builtAt:new Date().toISOString(),siteUrl:origin,basePath,noIndex,assetFiles,bundles,pages:manifests},null,2));
   console.log(`Built ${pages.length} HTML pages (${locales.join(', ')}) to ${output}`);
   return pages;
 }

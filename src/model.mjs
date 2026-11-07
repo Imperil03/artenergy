@@ -129,8 +129,3 @@ export function altFor(key,locale='ru') {
   const extra=key.match(/^gallery-extra-(\d+)$/);
   return extra?translate(gallery.expand_in_place[Number(extra[1])-1][1],locale):'ArtEnergy';
 }
-
-export function roomText(room,locale) {
-  const t=s=>translate(s,locale);
-  return {title:t(room.title)+' · ArtEnergy',description:room.index===0?({ru:'Открытое эко-бунгало в ArtEnergy, Баваро. 150 USD за 24 часа; питание отдельно.',en:'An open-air eco bungalow at ArtEnergy in Bávaro. 150 USD per 24 hours; meals charged separately.',es:'Eco bungaló abierto en ArtEnergy, Bávaro. 150 USD por 24 horas; comida aparte.'}[locale]):({ru:'Апартаменты на территории ArtEnergy в Баваро. Фотография интерьера и запрос стоимости на ваши даты.',en:'Apartments at ArtEnergy in Bávaro. View the interior and ask about rates for your dates.',es:'Apartamentos en ArtEnergy, Bávaro. Mira el interior y consulta la tarifa para tus fechas.'}[locale])};
-}

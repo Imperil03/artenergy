@@ -1,8 +1,11 @@
 import {readFile,readdir,stat} from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {Script} from 'node:vm';
 import {root,output} from './build.mjs';
 import {pathFor} from '../src/model.mjs';
+import {resourcePaths} from './resource-urls.mjs';
 const manifest=JSON.parse(await readFile(path.join(root,'build-manifest.json'),'utf8'));
 const origin=manifest.siteUrl||'https://artenergy.do';
 const basePath=manifest.basePath||'';
@@ -11,6 +14,7 @@ assert.ok(!manifest.pages.some(page=>page.key.startsWith('room-')),'No separate 
 for(const page of manifest.pages){
   const file=page.path.endsWith('/')?page.path.slice(1)+'index.html':page.path.slice(1);
   docs.set(page.path,await readFile(path.join(output,file),'utf8'));
+  assert.equal(createHash('sha256').update(docs.get(page.path)).digest('hex'),page.sha256,`${page.path}: fresh HTML matches build manifest`);
 }
 let links=0,images=0;
 for(const page of manifest.pages){
@@ -179,5 +183,21 @@ for(const page of manifest.pages){
 const sitemap=await readFile(path.join(output,'sitemap.xml'),'utf8');
 for(const page of manifest.pages)if(page.redirectTo)assert.ok(!sitemap.includes(`<loc>${origin+page.path}</loc>`),`${page.path}: alias excluded from sitemap`);
 const js=await readFile(path.join(output,'app.js'),'utf8');
+new Script(js,{filename:'app.js'});
 assert.ok(!/fetch\(|XMLHttpRequest|sendBeacon/.test(js),'No hidden submission/tracking network requests');
+const css=await readFile(path.join(output,'styles.css'),'utf8');
+for(const route of resourcePaths(manifest.pages.map(page=>({html:docs.get(page.path)})),css,origin,basePath)){
+  if(docs.has(route))continue;
+  const file=path.resolve(output,'.'+route);
+  assert.ok(file.startsWith(output+path.sep),`Resource remains inside build output: ${route}`);
+  assert.ok((await stat(file).catch(()=>null))?.isFile(),`Missing srcset, poster, CSS or metadata resource: ${route}`);
+}
+assert.ok(Array.isArray(manifest.assetFiles)&&Array.isArray(manifest.bundles),'Fresh build manifest includes media and bundle integrity');
+for(const asset of [...manifest.assetFiles,...manifest.bundles]){
+  const file=path.resolve(output,'.'+asset.path);
+  assert.ok(file.startsWith(output+path.sep));
+  const data=await readFile(file);
+  assert.equal(data.length,asset.bytes,`${asset.path}: asset size matches manifest`);
+  assert.equal(createHash('sha256').update(data).digest('hex'),asset.sha256,`${asset.path}: asset content matches manifest`);
+}
 console.log(`PASS: ${manifest.pages.length} pages, ${links} local links/assets, ${images} image tags; locales, prices, 16-photo galleries, 68-item menus and no forms/development copy.`);
