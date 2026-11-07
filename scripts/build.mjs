@@ -40,7 +40,7 @@ export async function build(){
   await rm(output,{recursive:true,force:true});
   await mkdir(output,{recursive:true});
   await cp(path.join(root,'public'),output,{recursive:true,filter:source=>!source.endsWith('.webp.json')});
-  const styles=await Promise.all(['styles.css','section-pages.css','lodging-page.css','spa-page.css','birthday-page.css'].map(file=>readFile(path.join(root,'src/client',file),'utf8')));
+  const styles=await Promise.all(['styles.css','section-pages.css','lodging-page.css','spa-page.css','birthday-page.css','navigation-dropdown.css'].map(file=>readFile(path.join(root,'src/client',file),'utf8')));
   await writeFile(path.join(output,'styles.css'),publishCss(styles.join('\n')));
   await cp(path.join(root,'src/client/app.js'),path.join(output,'app.js'));
   for(const page of pages){

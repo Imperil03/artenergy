@@ -30,7 +30,9 @@ for(const page of manifest.pages){
     for(const key of ['venue','events','menu','stay','spa','contacts'])assert.ok(pageHeader.includes(`href="${basePath+pathFor(key,page.lang)}"`),`${page.path}: section ${key} in header`);
     assert.ok(!/href="[^\"]*#/.test(pageHeader),`${page.path}: header links point to pages`);
     const desktopNav=pageHeader.match(/<nav class="desktop-nav"[\s\S]*?<\/nav>/)?.[0]||'';
-    assert.equal((desktopNav.match(/<a /g)||[]).length,6,`${page.path}: six sections without visit item`);
+    assert.equal((desktopNav.match(/data-nav-primary/g)||[]).length,6,`${page.path}: six primary sections without visit item`);
+    assert.equal((desktopNav.match(/data-event-link/g)||[]).length,6,`${page.path}: six event submenu links`);
+    for(const surface of ['desktop','mobile'])assert.ok(pageHeader.includes(`id="events-submenu-${surface}"`),`${page.path}: unique ${surface} event submenu`);
   }
   if(page.lang!=='ru')assert.ok(!/[А-Яа-яЁё]/.test(html),`${page.path}: no untranslated Cyrillic`);
   if(page.key!=='404'&&!page.redirectTo){
@@ -88,7 +90,19 @@ for(const page of manifest.pages){
     assert.equal((html.match(/class="dish-row"/g)||[]).length,68,`${page.path}: full menu`);
     assert.equal((html.match(/data-menu-panel=/g)||[]).length,5);
   }
-  if(page.key==='venue')assert.equal((html.match(/data-gallery="venue"/g)||[]).length,16,`${page.path}: venue gallery`);
+  if(page.key==='venue'){
+    assert.equal((html.match(/data-gallery="venue"/g)||[]).length,16,`${page.path}: venue gallery`);
+    assert.ok(!html.includes('id="venue-more"')&&!html.includes('data-gallery-toggle'),`${page.path}: all venue photos visible without expansion`);
+    const venue=html.slice(html.indexOf('id="gallery"'),html.indexOf('class="venue-visit-cta"'));
+    assert.equal((venue.match(/loading="eager"/g)||[]).length,16,`${page.path}: all gallery images requested immediately`);
+    assert.equal((venue.match(/fetchpriority="high"/g)||[]).length,1,`${page.path}: one primary image priority`);
+    assert.ok(html.includes('class="venue-visit-cta"')&&!html.includes('section-hub-related'),`${page.path}: closing visit CTA replaces old related links`);
+    if(page.lang==='ru'){
+      assert.ok(html.includes('<h1>Площадка ArtEnergy в Пунта-Кане</h1>'),`${page.path}: requested venue H1`);
+      assert.ok(html.includes('<title>Площадка ArtEnergy в Пунта-Кане — фото бассейнов и территории</title>'),`${page.path}: exact venue title`);
+      assert.ok(html.includes('content="Фотографии территории ArtEnergy в Баваро, Пунта-Кана. Два бассейна, крытые зоны отдыха, бар и тропический сад. Посмотрите площадку днём и вечером."'),`${page.path}: exact venue description`);
+    }
+  }
   if(page.key==='events'){
     assert.equal((html.match(/class="event-card"/g)||[]).length,6,`${page.path}: event catalog`);
     assert.equal((html.match(/<h2 class="event-card-title"/g)||[]).length,6,`${page.path}: event heading hierarchy`);

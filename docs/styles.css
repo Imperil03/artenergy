@@ -610,6 +610,31 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
   .section-hub .section-hub-related>.text-link{font-size:18px}
 }
 
+.section-hub.section-hub--venue{padding-bottom:0}
+.venue-visit-cta{margin-top:104px;padding-block:56px;background:var(--pale)}
+.venue-visit-cta-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:56px}
+.venue-visit-cta-copy{max-width:760px}
+.venue-visit-cta h2{margin-bottom:20px;font-size:40px;line-height:1.15}
+.venue-visit-cta-copy>p{font-size:21px;line-height:1.5}
+.venue-visit-cta-links{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:22px}
+.venue-visit-cta-links>.text-link{font-size:19px}
+.venue-visit-cta-inner>.button{max-width:360px;gap:12px;padding-inline:20px;font-size:19px;line-height:1.35}
+
+@media(max-width:1050px){
+  .venue-visit-cta{margin-top:80px}
+  .venue-visit-cta-inner{grid-template-columns:1fr;gap:30px}
+  .venue-visit-cta-inner>.button{justify-self:start;max-width:100%}
+}
+
+@media(max-width:760px){
+  .venue-visit-cta{margin-top:64px;padding-block:40px}
+  .venue-visit-cta h2{font-size:32px}
+  .venue-visit-cta-copy>p{font-size:20px}
+  .venue-visit-cta-links{gap:8px 24px;margin-top:18px}
+  .venue-visit-cta-links>.text-link{font-size:18px}
+  .venue-visit-cta-inner>.button{width:100%;font-size:18px;padding-inline:18px}
+}
+
 /* Accommodation: place, two options, ways to spend time, booking. */
 .lodging-page{padding-top:45px}
 .lodging-page .breadcrumbs{margin-bottom:38px}
@@ -893,3 +918,31 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
   .birthday-booking p{font-size:20px}
   .birthday-booking-inner>.button{width:100%;font-size:18px}
 }
+
+/* The main celebrations link remains a link; its chevron opens the six occasions. */
+.events-dropdown{position:relative;min-width:0}
+.events-dropdown-row{display:flex;align-items:center;min-width:0}
+.events-dropdown-toggle{display:grid;place-items:center;flex:none;width:44px;min-height:44px;padding:0;border:0;border-radius:8px;background:transparent;color:inherit;cursor:pointer}
+.events-dropdown-toggle svg{transition:transform var(--motion-fast) var(--motion-ease)}
+.events-dropdown-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+.events-dropdown-toggle:hover svg{opacity:.7}
+.events-dropdown-toggle:focus-visible{outline-offset:-3px}
+.events-parent-current{text-decoration:underline;text-underline-offset:7px;text-decoration-thickness:2px}
+.events-submenu{position:absolute;z-index:35;top:calc(100% + 8px);left:0;display:grid;width:min(340px,calc(100vw - 48px));max-height:calc(100svh - 120px);overflow-y:auto;padding:10px;border-radius:12px;background:var(--white);color:var(--ink);box-shadow:0 12px 28px rgba(9,38,24,.16);white-space:normal}
+.desktop-nav .events-submenu a{display:flex;align-items:center;min-height:44px;padding:12px 14px;border-radius:6px;font-size:17px;line-height:1.35;white-space:normal}
+.events-submenu a:is(:hover,:focus-visible),.events-submenu a[aria-current="page"]{background:var(--paper);color:var(--green)}
+.events-submenu a:focus-visible{outline-offset:-3px}
+
+@media(min-width:1201px) and (max-width:1360px){
+  .header-inner{gap:24px}
+  .desktop-nav{gap:14px}
+  .desktop-nav a[data-nav-primary]{font-size:16px}
+}
+@media(max-width:1200px){
+  .mobile-nav-panel .events-dropdown-row>[data-nav-primary]{display:flex;align-items:center;flex:1;min-width:0;min-height:44px}
+  .mobile-nav-panel .events-dropdown-toggle{margin-left:12px}
+  .mobile-nav-panel .events-submenu{position:static;width:100%;max-height:none;overflow:visible;margin:0 0 10px;padding:4px 0 8px 14px;border-left:1px solid var(--line);border-radius:0;background:transparent;box-shadow:none}
+  .mobile-nav-panel .events-dropdown .events-submenu a{display:flex;align-items:center;min-height:44px;padding:10px 12px;font-size:19px;line-height:1.4;white-space:normal}
+}
+@media(prefers-reduced-motion:reduce){.events-dropdown-toggle svg{transition:none}}
+[data-motion="reduce"] .events-dropdown-toggle svg{transition:none}

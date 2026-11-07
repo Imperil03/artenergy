@@ -1,12 +1,7 @@
 import {copy,events,pathFor,translate,ui} from './model.mjs';
 import {shell,gallerySection,eventCard,wa,local,esc} from './templates.mjs';
 import {lodgingPage} from './lodging-page.mjs';
-
-const venueTitles={
-  ru:'Площадка ArtEnergy',
-  en:'The ArtEnergy venue',
-  es:'El espacio ArtEnergy',
-};
+import {venuePageCopy} from './venue-copy.mjs';
 
 function breadcrumbs(key,lang){
   const label=translate({venue:'Площадка',events:'Праздники',stay:'Проживание'}[key],lang);
@@ -14,9 +9,9 @@ function breadcrumbs(key,lang){
 }
 
 function venuePage(lang){
-  const t=value=>translate(value,lang);
-  const body=`<article class="section-hub section-hub--venue"><div class="wrap">${breadcrumbs('venue',lang)}</div>${gallerySection(lang,{standalone:true})}<nav class="wrap section-hub-related" aria-label="${esc(ui[lang].navigation)}">${local(pathFor('menu',lang),t(copy.kitchen.cta))}${local(pathFor('stay',lang),t('Проживание'))}${local(pathFor('spa',lang),t(copy.bath.title))}</nav></article>`;
-  return shell({key:'venue',lang,title:venueTitles[lang],description:t(copy.gallery.body),body});
+  const c=venuePageCopy[lang];
+  const body=`<article class="section-hub section-hub--venue"><div class="wrap">${breadcrumbs('venue',lang)}</div>${gallerySection(lang,{standalone:true,allVisible:true,headingText:c.heading,introText:c.intro})}<section class="venue-visit-cta" aria-labelledby="venue-visit-title"><div class="wrap venue-visit-cta-inner"><div class="venue-visit-cta-copy"><h2 id="venue-visit-title">${esc(c.ctaHeading)}</h2><p>${esc(c.ctaBody)}</p><nav class="venue-visit-cta-links" aria-label="${esc(ui[lang].navigation)}">${local(pathFor('home',lang)+'#visit',c.visitLink)}${local(pathFor('events',lang),c.eventsLink)}</nav></div>${wa(lang,c.cta,'general','','button')}</div></section></article>`;
+  return shell({key:'venue',lang,title:c.title,description:c.description,body});
 }
 
 function eventsPage(lang){
