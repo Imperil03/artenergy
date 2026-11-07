@@ -365,8 +365,7 @@
         "price": "2 000 DOP",
         "unit": "за час",
         "detail": "",
-        "image": "hammam_illustration",
-        "illustration": true,
+        "image": "hammam",
         "intro": "Парная с высокой влажностью. Тариф — за час посещения.",
         "cta": "Записаться"
       }

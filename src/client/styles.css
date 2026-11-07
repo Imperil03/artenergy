@@ -431,6 +431,7 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
 .spa-card:hover{border-color:var(--green)}
 .spa-card-photo{position:relative;display:block;overflow:hidden}
 .spa-card-photo img{width:100%;height:380px;object-fit:cover;object-position:50% 50%}
+.spa-card[href$="#hammam"] .spa-card-photo img{object-position:50% 20%}
 .spa-card-content{display:flex;flex-direction:column;flex:1;padding:28px}
 .spa-card-heading{display:block;color:var(--ink);font-size:34px;font-weight:700;line-height:1.15;margin-bottom:16px}
 .spa-card-description{display:block;font-size:21px;line-height:1.4;margin-bottom:0}

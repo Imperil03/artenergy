@@ -1193,5 +1193,27 @@
       }
     ],
     "src": "/assets/spa-peeling-1536-199e917ceceb.webp"
+  },
+  "hammam": {
+    "width": 720,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 400,
+        "height": 711,
+        "url": "/assets/hammam-400-d25c5513ae6f.webp"
+      },
+      {
+        "width": 640,
+        "height": 1138,
+        "url": "/assets/hammam-640-d25c5513ae6f.webp"
+      },
+      {
+        "width": 720,
+        "height": 1280,
+        "url": "/assets/hammam-720-d25c5513ae6f.webp"
+      }
+    ],
+    "src": "/assets/hammam-720-d25c5513ae6f.webp"
   }
 }

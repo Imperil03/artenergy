@@ -118,6 +118,7 @@ const altText={
   contact:['Крытая зона у бассейна вечером','Covered poolside lounge in the evening','Zona cubierta junto a la piscina por la noche'],
   overview_day:['Общий вид ArtEnergy днём','Daytime view of ArtEnergy','Vista de ArtEnergy de día'],
   sauna:['Парная с деревянными полками','Steam room with wooden benches','Sauna con bancos de madera'],
+  hammam:['Хаммам ArtEnergy с мозаичным потолком','ArtEnergy hammam with a mosaic ceiling','Hammam de ArtEnergy con techo de mosaico'],
   terrace_night:['Вечерний вид с террасы','Evening view from the terrace','Vista nocturna desde la terraza'],
   lawn:['Лужайка и места для отдыха','Lawn and lounge areas','Césped y zonas de descanso'],
   cabana:['Крытая зона с вечерним освещением','Covered lounge with evening lighting','Zona cubierta con iluminación nocturna'],
