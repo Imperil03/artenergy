@@ -36,7 +36,9 @@ for(const page of manifest.pages){
     const desktopNav=pageHeader.match(/<nav class="desktop-nav"[\s\S]*?<\/nav>/)?.[0]||'';
     assert.equal((desktopNav.match(/data-nav-primary/g)||[]).length,6,`${page.path}: six primary sections without visit item`);
     assert.equal((desktopNav.match(/data-event-link/g)||[]).length,6,`${page.path}: six event submenu links`);
-    for(const surface of ['desktop','mobile'])assert.ok(pageHeader.includes(`id="events-submenu-${surface}"`),`${page.path}: unique ${surface} event submenu`);
+    assert.equal((desktopNav.match(/data-spa-link/g)||[]).length,2,`${page.path}: two SPA destinations`);
+    for(const kind of ['events','spa'])for(const surface of ['desktop','mobile'])assert.ok(pageHeader.includes(`id="nav-submenu-${kind}-${surface}"`),`${page.path}: unique ${surface} ${kind} submenu`);
+    assert.ok(pageHeader.includes(`href="${basePath+pathFor('spa-treatments',page.lang)}"`),`${page.path}: treatments in SPA navigation`);
     const suggestion=html.match(/<aside class="language-suggestion"[\s\S]*?<\/aside>/g)||[];
     assert.equal(suggestion.length,page.key==='404'?0:1,`${page.path}: one language suggestion on content pages`);
     if(suggestion.length){

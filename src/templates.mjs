@@ -2,18 +2,32 @@ import {copy,menu,assets,gallery,locales,origin,contact,events,rooms,spaServices
 import {contactPageCopy,spaPageCopy,menuPageCopy} from './translations.mjs';
 import {basePath} from './deployment.mjs';
 import {esc,icon,srcset,image,external,wa,local,alias,figure,breadcrumbs} from './components.mjs';
+import {socialLinks,socialLabel,configuredSocialLinks} from './social-links.mjs';
+import {spaPromotionCopy} from './spa-procedures-copy.mjs';
+
+const spaNavigationCopy={
+  ru:{label:'SPA и баня',treatments:'Массаж и SPA-процедуры',open:'Открыть подменю SPA',close:'Закрыть подменю SPA'},
+  en:{label:'SPA & steam bath',treatments:'Massage and SPA treatments',open:'Open SPA submenu',close:'Close SPA submenu'},
+  es:{label:'SPA y sauna',treatments:'Masajes y tratamientos SPA',open:'Abrir el submenú de SPA',close:'Cerrar el submenú de SPA'},
+};
+
+function navDropdown({kind,surface,link,children,labels}){
+  const panelId='nav-submenu-'+kind+'-'+surface;
+  return `<div class="nav-dropdown" data-nav-dropdown="${kind}" data-nav-surface="${surface}"><div class="nav-dropdown-row">${link}<button class="nav-dropdown-toggle" data-nav-toggle type="button" aria-expanded="false" aria-controls="${panelId}" aria-label="${esc(labels.open)}" data-open-label="${esc(labels.open)}" data-close-label="${esc(labels.close)}" hidden>${icon('down',16)}</button></div><div class="nav-submenu" data-nav-submenu id="${panelId}" hidden>${children}</div></div>`;
+}
 
 function navLinks(lang,key='home',surface='desktop'){
-  const t=s=>translate(s,lang);
-  const sections=[['Площадка','venue'],['Праздники','events'],['Кухня и бар','menu'],['Проживание','stay'],[copy.bath.title,'spa'],[contactPageCopy[lang].title,'contacts']];
-  const labels={ru:{open:'Открыть подменю праздников',close:'Закрыть подменю праздников'},en:{open:'Open celebrations submenu',close:'Close celebrations submenu'},es:{open:'Abrir el submenú de celebraciones',close:'Cerrar el submenú de celebraciones'}}[lang];
+  const t=s=>translate(s,lang),spaCopy=spaNavigationCopy[lang];
+  const sections=[[t('Площадка'),'venue'],[t('Праздники'),'events'],[t('Кухня и бар'),'menu'],[t('Проживание'),'stay'],[spaCopy.label,'spa'],[contactPageCopy[lang].title,'contacts']];
+  const eventLabels={ru:{open:'Открыть подменю праздников',close:'Закрыть подменю праздников'},en:{open:'Open celebrations submenu',close:'Close celebrations submenu'},es:{open:'Abrir el submenú de celebraciones',close:'Cerrar el submenú de celebraciones'}}[lang];
   return sections.map(([label,page])=>{
-    const parentCurrent=page==='events'&&key.startsWith('event-');
-    const link=`<a data-nav-primary href="${pathFor(page,lang)}"${key===page?' aria-current="page"':''}${parentCurrent?' class="events-parent-current"':''}>${esc(page==='contacts'?label:t(label))}</a>`;
-    if(page!=='events')return link;
-    const panelId='events-submenu-'+surface;
-    const children=copy.events.home_groups.map(group=>`<a data-event-link href="${pathFor(group.eventKey,lang)}"${key===group.eventKey?' aria-current="page"':''}>${esc(t(group.title))}</a>`).join('');
-    return `<div class="events-dropdown" data-events-dropdown data-events-surface="${surface}"><div class="events-dropdown-row">${link}<button class="events-dropdown-toggle" data-events-toggle type="button" aria-expanded="false" aria-controls="${panelId}" aria-label="${esc(labels.open)}" data-open-label="${esc(labels.open)}" data-close-label="${esc(labels.close)}" hidden>${icon('down',16)}</button></div><div class="events-submenu" data-events-submenu id="${panelId}" hidden>${children}</div></div>`;
+    const items=page==='events'?copy.events.home_groups.map(group=>({key:group.eventKey,label:t(group.title)})):page==='spa'?[{key:'spa',label:t(copy.bath.title)},{key:'spa-treatments',label:spaCopy.treatments}]:null;
+    const childCurrent=items?.some(item=>item.key===key);
+    const parentCurrent=(page==='events'&&key.startsWith('event-'))||(page==='spa'&&(key==='spa'||key==='spa-treatments'));
+    const link=`<a data-nav-primary href="${pathFor(page,lang)}"${key===page&&!childCurrent?' aria-current="page"':''}${parentCurrent?' class="nav-parent-current"':''}>${esc(label)}</a>`;
+    if(!items)return link;
+    const children=items.map(item=>`<a data-nav-child ${page==='events'?'data-event-link':'data-spa-link'} href="${pathFor(item.key,lang)}"${key===item.key?' aria-current="page"':''}>${esc(item.label)}</a>`).join('');
+    return navDropdown({kind:page,surface,link,children,labels:page==='events'?eventLabels:spaCopy});
   }).join('');
 }
 function languages(key,lang){
@@ -91,8 +105,8 @@ function spaCard(service,lang){
   return `<a class="spa-card" href="${pathFor(service.key,lang)}"><span class="spa-card-photo">${image(service.image,lang,{sizes:'(max-width: 760px) calc(100vw - 48px), 580px'})}<span class="room-open">${esc(t('Подробнее'))}${icon()}</span></span><div class="spa-card-content"><h3 class="spa-card-heading">${esc(t(service.title))}</h3><span class="bath-price">${esc(t(service.price))}<small>${esc(t(service.unit))}</small></span>${service.detail?`<p class="spa-card-description">${esc(t(service.detail))}</p>`:''}</div></a>`;
 }
 function bathSection(lang){
-  const t=value=>translate(value,lang);
-  return `<section class="section section--paper bath-section" id="bath"><div class="wrap"><h2>${esc(t(copy.bath.title))}</h2><p class="section-lead">${esc(t(copy.bath.body))}</p><div class="spa-grid">${spaServices.map(service=>spaCard(service,lang)).join('')}</div></div></section>`;
+  const t=value=>translate(value,lang),promo=spaPromotionCopy[lang];
+  return `<section class="section section--paper bath-section" id="bath"><div class="wrap"><h2>${esc(t(copy.bath.title))}</h2><p class="section-lead">${esc(t(copy.bath.body))}</p><div class="spa-grid">${spaServices.map(service=>spaCard(service,lang)).join('')}</div><div class="spa-teaser"><div><h3>${esc(promo.title)}</h3><p>${esc(promo.body)}</p></div>${local(pathFor('spa-treatments',lang),promo.link)}</div></div></section>`;
 }
 function organizersSection(lang){
   const t=value=>translate(value,lang);
@@ -106,8 +120,8 @@ function faqSection(lang){
 
 function footer(lang,key='home'){
   const t=s=>translate(s,lang);
-  if(key==='contacts')return `<footer class="contacts-footer"><div class="wrap"><a class="wordmark" href="${pathFor('home',lang)}">ArtEnergy</a><span>© 2026 ArtEnergy</span>${local(pathFor('home',lang),ui[lang].back,'text-link text-link--light')}</div></footer>`;
-  return `<footer class="contact-section" id="contact">${alias('book')}${alias('booking')}${image('contact',lang,{className:'contact-background',sizes:'100vw',alt:''})}<div class="contact-shade"></div><div class="wrap contact-inner"><h2>${esc(t(copy.contact.title))}</h2><address><p>${esc(t(copy.contact.address))}</p><a href="tel:+18297715555">${esc(contact.phone)}</a></address><div class="contact-actions">${wa(lang,t(copy.contact.cta),'general','','button')}${external(contact.map,t(copy.contact.route),'text-link text-link--light')}</div><div class="footer-meta"><span>© 2026 ArtEnergy</span><a href="mailto:${contact.email}">${contact.email}</a><a href="${contact.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a>${local(pathFor('contacts',lang),contactPageCopy[lang].title,'text-link text-link--light footer-contact-link')}${key==='home'?'':local(pathFor('home',lang),ui[lang].back,'text-link text-link--light')}</div></div></footer>`;
+  if(key==='contacts')return `<footer class="contacts-footer"><div class="wrap"><a class="wordmark" href="${pathFor('home',lang)}">ArtEnergy</a><span>© 2026 ArtEnergy</span>${local(pathFor('spa-treatments',lang),spaNavigationCopy[lang].treatments,'text-link text-link--light footer-treatment-link')}${socialLinks(lang)}${local(pathFor('home',lang),ui[lang].back,'text-link text-link--light')}</div></footer>`;
+  return `<footer class="contact-section" id="contact">${alias('book')}${alias('booking')}${image('contact',lang,{className:'contact-background',sizes:'100vw',alt:''})}<div class="contact-shade"></div><div class="wrap contact-inner"><h2>${esc(t(copy.contact.title))}</h2><address><p>${esc(t(copy.contact.address))}</p><a href="tel:+18297715555">${esc(contact.phone)}</a></address><div class="contact-actions">${wa(lang,t(copy.contact.cta),'general','','button')}${external(contact.map,t(copy.contact.route),'text-link text-link--light')}</div>${socialLinks(lang)}<div class="footer-meta"><span>© 2026 ArtEnergy</span><a href="mailto:${contact.email}">${contact.email}</a>${local(pathFor('spa-treatments',lang),spaNavigationCopy[lang].treatments,'text-link text-link--light footer-treatment-link')}${local(pathFor('contacts',lang),contactPageCopy[lang].title,'text-link text-link--light footer-contact-link')}${key==='home'?'':local(pathFor('home',lang),ui[lang].back,'text-link text-link--light')}</div></div></footer>`;
 }
 function stickyContact(lang){return `<div class="mobile-contact" data-mobile-contact hidden>${wa(lang,translate(copy.hero.primary,lang),'general','','button')}</div>`;}
 
@@ -118,7 +132,7 @@ function languageSuggestion(key,lang){
 
 function shell({key,lang,title,description,body,home=false,status=200}){
   const canonical=origin+pathFor(key,lang);
-  const schema=home?{'@context':'https://schema.org','@type':'LocalBusiness',name:'ArtEnergy',url:origin,telephone:contact.phone,email:contact.email,address:{'@type':'PostalAddress',streetAddress:'Calle Kiev 35',addressLocality:'Bávaro, Punta Cana',addressCountry:'DO'},image:origin+assets.hero.src,sameAs:[contact.instagram]}:key==='contacts'?{'@context':'https://schema.org','@type':'ContactPage',name:title,url:canonical}:null;
+  const schema=home?{'@context':'https://schema.org','@type':'LocalBusiness',name:'ArtEnergy',url:origin,telephone:contact.phone,email:contact.email,address:{'@type':'PostalAddress',streetAddress:'Calle Kiev 35',addressLocality:'Bávaro, Punta Cana',addressCountry:'DO'},image:origin+assets.hero.src,sameAs:configuredSocialLinks().map(([,url])=>url)}:key==='contacts'?{'@context':'https://schema.org','@type':'ContactPage',name:title,url:canonical}:null;
   return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><meta name="theme-color" content="#153d2c">${status===404?'<meta name="robots" content="noindex">':`<link rel="canonical" href="${canonical}">${locales.map(l=>`<link rel="alternate" hreflang="${l}" href="${origin+pathFor(key,l)}">`).join('')}<link rel="alternate" hreflang="x-default" href="${origin+pathFor(key,'ru')}">`}<meta property="og:type" content="website"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${origin+assets.hero.src}"><meta property="og:locale" content="${{ru:'ru_RU',en:'en_US',es:'es_DO'}[lang]}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="preload" href="/fonts/GolosText-variable.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="/styles.css"><script src="/app.js" defer></script>${schema?`<script type="application/ld+json">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>`:''}</head><body class="${home?'page-home':'page-inner'}" data-locale="${lang}" data-page="${key}">${header(key,lang)}<main id="main">${body}</main>${footer(lang,key)}${status===200?languageSuggestion(key,lang):''}${lightbox(lang)}${home?overviewDialog(lang)+stickyContact(lang):''}</body></html>`;
 }
 
@@ -127,7 +141,7 @@ export function homePage(lang){
 }
 export function contactsPage(lang){
   const c=contactPageCopy[lang];
-  const body=`<article class="contacts-page" id="contact"><div class="wrap">${breadcrumbs(lang,c.title,{current:true,ariaLabel:c.breadcrumb})}<div class="contacts-grid"><section class="contacts-main"><h1>${esc(c.title)}</h1><p class="contacts-lead">${esc(c.intro)}</p><div class="contacts-actions">${wa(lang,c.whatsapp,'general','','button')}</div><dl class="contacts-methods"><div class="contacts-phone"><dt>${esc(c.phone)}</dt><dd><a href="tel:+18297715555">${esc(contact.phone)}</a></dd></div><div><dt>${esc(c.email)}</dt><dd><a href="mailto:${esc(contact.email)}">${esc(contact.email)}</a></dd></div><div><dt>Instagram</dt><dd>${external(contact.instagram,'@artenergydr','contacts-social')}</dd></div></dl></section><aside class="contacts-location"><figure class="contacts-photo">${image('overview_day',lang,{sizes:'(max-width: 900px) calc(100vw - 48px), 560px',eager:true})}</figure><address id="contact-address"><strong>Calle Kiev 35</strong><span>${esc(c.region)}</span><span>${esc(c.country)}</span></address><button class="copy-address" type="button" hidden data-copy-address="${esc(contact.address)}" data-copy-target="contact-address" data-copy-success="${esc(c.copied)}" data-copy-selected="${esc(c.selected)}" data-copy-failed="${esc(c.failed)}">${icon('copy',20)}<span data-copy-label aria-live="polite">${esc(c.copy)}</span></button></aside></div></div><section class="contacts-map-section" id="contact-map"><div class="wrap"><div class="contacts-map-heading"><h2>${esc(c.directions)}</h2>${external(contact.mapSearch,c.maps,'text-link')}</div><div class="contacts-map"><iframe title="${esc(c.mapTitle)}" src="${esc(contact.mapEmbed+'&hl='+lang)}" width="1200" height="420" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div></section></article>`;
+  const body=`<article class="contacts-page" id="contact"><div class="wrap">${breadcrumbs(lang,c.title,{current:true,ariaLabel:c.breadcrumb})}<div class="contacts-grid"><section class="contacts-main"><h1>${esc(c.title)}</h1><p class="contacts-lead">${esc(c.intro)}</p><div class="contacts-actions">${wa(lang,c.whatsapp,'general','','button')}</div><dl class="contacts-methods"><div class="contacts-phone"><dt>${esc(c.phone)}</dt><dd><a href="tel:+18297715555">${esc(contact.phone)}</a></dd></div><div><dt>${esc(c.email)}</dt><dd><a href="mailto:${esc(contact.email)}">${esc(contact.email)}</a></dd></div><div><dt>${esc(socialLabel(lang))}</dt><dd>${socialLinks(lang)}</dd></div></dl></section><aside class="contacts-location"><figure class="contacts-photo">${image('overview_day',lang,{sizes:'(max-width: 900px) calc(100vw - 48px), 560px',eager:true})}</figure><address id="contact-address"><strong>Calle Kiev 35</strong><span>${esc(c.region)}</span><span>${esc(c.country)}</span></address><button class="copy-address" type="button" hidden data-copy-address="${esc(contact.address)}" data-copy-target="contact-address" data-copy-success="${esc(c.copied)}" data-copy-selected="${esc(c.selected)}" data-copy-failed="${esc(c.failed)}">${icon('copy',20)}<span data-copy-label aria-live="polite">${esc(c.copy)}</span></button></aside></div></div><section class="contacts-map-section" id="contact-map"><div class="wrap"><div class="contacts-map-heading"><h2>${esc(c.directions)}</h2>${external(contact.mapSearch,c.maps,'text-link')}</div><div class="contacts-map"><iframe title="${esc(c.mapTitle)}" src="${esc(contact.mapEmbed+'&hl='+lang)}" width="1200" height="420" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div></section></article>`;
   return shell({key:'contacts',lang,title:c.title+' · ArtEnergy',description:c.description,body});
 }
 export function menuPage(lang){

@@ -1,5 +1,6 @@
 import {readFileSync} from 'node:fs';
 import {translate, ui, spaPageCopy} from './translations.mjs';
+import {socials} from './socials.mjs';
 
 const read = name => JSON.parse(readFileSync(new URL(`./content/${name}`,import.meta.url),'utf8'));
 export const copy = read('copy.json');
@@ -9,7 +10,7 @@ export const gallery = read('gallery-catalog.json');
 export const locales=['ru','en','es'];
 export {origin} from './deployment.mjs';
 export const contact={
-  phone:'+1 829 771 5555',whatsapp:'https://wa.me/18297715555',email:'Arteenergy501@gmail.com',instagram:'https://www.instagram.com/artenergydr/',
+  phone:'+1 829 771 5555',whatsapp:'https://wa.me/18297715555',email:'Arteenergy501@gmail.com',instagram:socials.instagram,
   address:'Calle Kiev 35, Bávaro, Punta Cana, Dominican Republic',
   map:'https://www.google.com/maps/dir/?api=1&destination=Calle+Kiev+35,+Punta+Cana,+Dominican+Republic',
   mapSearch:'https://www.google.com/maps/search/?api=1&query=Calle+Kiev+35%2C+B%C3%A1varo%2C+Punta+Cana%2C+Dominican+Republic',
@@ -35,6 +36,7 @@ export function pathFor(key='home',locale='ru') {
   if(key==='menu') return prefix+'/menu/';
   if(key==='contacts') return prefix+({ru:'/kontakty/',en:'/contact/',es:'/contacto/'}[locale]);
   if(key==='spa')return prefix+'/spa/';
+  if(key==='spa-treatments')return prefix+({ru:'/spa-procedury/',en:'/spa-treatments/',es:'/tratamientos-spa/'}[locale]);
   if(key.startsWith('spa-')) {
     return prefix+'/spa/#'+(['banya','hammam'][Number(key.slice(4))]);
   }
@@ -55,7 +57,9 @@ export function legacySpaPath(index,locale='ru'){
 
 export function whatsapp(locale='ru',kind='general',name='') {
   const u=ui[locale];
-  const message=kind==='spa-service'?spaPageCopy[locale].waService+translate(name,locale):kind==='bath'?u.waBath:kind==='event'?u.waEvent+translate(name,locale):kind==='room'?u.waStay+translate(name,locale):kind==='menu'?u.waMenu:kind==='organizers'?u.waOrg:kind==='visit'?u.waVisit:u.waHello;
+  const treatment={ru:'Здравствуйте! Хочу уточнить процедуру в ArtEnergy: ',en:'Hello! I would like to ask about a treatment at ArtEnergy: ',es:'¡Hola! Quisiera consultar un tratamiento en ArtEnergy: '}[locale];
+  const treatments={ru:'Здравствуйте! Хочу записаться на SPA-процедуру в ArtEnergy. Процедура: Дата: Время: ',en:'Hello! I would like to book a SPA treatment at ArtEnergy. Treatment: Date: Time: ',es:'¡Hola! Quisiera reservar un tratamiento de spa en ArtEnergy. Tratamiento: Fecha: Hora: '}[locale];
+  const message=kind==='spa-treatment'?treatment+name:kind==='spa-treatments'?treatments:kind==='spa-service'?spaPageCopy[locale].waService+translate(name,locale):kind==='bath'?u.waBath:kind==='event'?u.waEvent+translate(name,locale):kind==='room'?u.waStay+translate(name,locale):kind==='menu'?u.waMenu:kind==='organizers'?u.waOrg:kind==='visit'?u.waVisit:u.waHello;
   return contact.whatsapp+'?text='+encodeURIComponent(message);
 }
 

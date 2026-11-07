@@ -38,9 +38,14 @@ export function paragraphs(items,className=''){
 
 export function restSection(lang,{prefix,content,items,group}){
   const t=value=>translate(value,lang);
-  return `<section class="${prefix}-rest section--paper" aria-labelledby="${prefix}-rest-title"><div class="wrap"><header class="${prefix}-rest-heading"><h2 id="${prefix}-rest-title">${esc(content.restHeading)}</h2><p class="section-lead">${esc(content.restIntro)}</p></header><div class="${prefix}-rest-grid">${items.map(([key,asset,caption,page])=>`<article class="${prefix}-rest-item">${photoLink(asset,t(caption),lang,group,'(max-width: 760px) calc(100vw - 48px), 380px')}<h3>${esc(content.rest[key].title)}</h3><p>${esc(content.rest[key].body)}</p>${page?local(pathFor(page,lang),content.rest[key].link):''}</article>`).join('')}</div></div></section>`;
+  return `<section class="${prefix}-rest section--paper" aria-labelledby="${prefix}-rest-title"><div class="wrap"><header class="${prefix}-rest-heading"><h2 id="${prefix}-rest-title">${esc(content.restHeading)}</h2><p class="section-lead">${esc(content.restIntro)}</p></header><div class="${prefix}-rest-grid">${items.map(([key,asset,caption,page,more=[]])=>`<article class="${prefix}-rest-item">${photoLink(asset,t(caption),lang,group,'(max-width: 760px) calc(100vw - 48px), 380px')}<h3>${esc(content.rest[key].title)}</h3><p>${esc(content.rest[key].body)}</p>${page?local(pathFor(page,lang),content.rest[key].link):''}${more.map(link=>local(pathFor(link.page,lang),link.label)).join('')}</article>`).join('')}</div></div></section>`;
 }
 
 export function bookingSection(lang,{prefix,heading,body,cta,kind='general',name=''}){
   return `<section class="${prefix}-booking" aria-labelledby="${prefix}-booking-title"><div class="wrap ${prefix}-booking-inner"><div class="${prefix}-booking-copy"><h2 id="${prefix}-booking-title">${esc(heading)}</h2><p>${esc(body)}</p></div>${wa(lang,cta,kind,name,'button')}</div></section>`;
+}
+
+export function serviceOfferSection(lang,{id,title,paragraphs:body,image,caption=title,group='spa',reverse=false,eager=false,price=null,unit='',detail='',cta,kind='general',name=''}){
+  const tariff=price?`<p class="spa-service-price">${esc(price)}${unit?` <span>${esc(unit)}</span>`:''}</p>`:'';
+  return `<section class="spa-service${reverse?' spa-service--reverse':''}" id="${esc(id)}" aria-labelledby="${esc(id)}-title"><div class="spa-service-media">${photoLink(image,caption,lang,group,'(max-width: 760px) calc(100vw - 48px), (max-width: 1050px) calc(100vw - 80px), 690px',{eager})}</div><div class="spa-service-copy"><h2 id="${esc(id)}-title">${esc(title)}</h2>${paragraphs(body,'spa-service-description')}${tariff}${detail?`<p class="spa-service-rate-details">${esc(detail)}</p>`:''}<div class="spa-service-action">${wa(lang,cta,kind,name,'button')}</div></div></section>`;
 }

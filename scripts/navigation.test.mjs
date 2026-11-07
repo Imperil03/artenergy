@@ -49,16 +49,16 @@ function fixture(){
   const mobile=element('details','mobile-nav'),mobileSummary=element('summary');mobile.append(mobileSummary);
   const language=element('details','language-picker'),languageSummary=element('summary');language.append(languageSummary);
   const outside=element('a');body.append(language,mobile,outside);
-  function dropdown(surface,parent){
-    const root=element('div','events-dropdown');root.attrs['data-events-dropdown']='';root.dataset.eventsSurface=surface;
+  function dropdown(surface,parent,kind='events'){
+    const root=element('div','nav-dropdown');root.attrs['data-nav-dropdown']=kind;root.dataset.navSurface=surface;
     const row=element('div'),primary=element('a'),button=element('button'),svg=element('svg'),svgPath=element('path'),panel=element('div');
-    primary.attrs['data-nav-primary']='';button.attrs['data-events-toggle']='';panel.attrs['data-events-submenu']='';
+    primary.attrs['data-nav-primary']='';button.attrs['data-nav-toggle']='';panel.attrs['data-nav-submenu']='';
     button.dataset={openLabel:'Open '+surface,closeLabel:'Close '+surface};button.attrs['aria-expanded']='false';button.attrs['aria-label']=button.dataset.openLabel;
     button.hidden=true;panel.hidden=true;button.append(svg.append(svgPath));row.append(primary,button);root.append(row,panel);parent.append(root);
-    const links=Array.from({length:6},()=>element('a'));panel.append(...links);
+    const links=Array.from({length:kind==='spa'?2:6},()=>element('a'));panel.append(...links);
     return {root,row,primary,button,svgPath,panel,links};
   }
-  const desktop=dropdown('desktop',body),small=dropdown('mobile',mobile);
+  const desktop=dropdown('desktop',body),small=dropdown('mobile',mobile),desktopSpa=dropdown('desktop',body,'spa'),smallSpa=dropdown('mobile',mobile,'spa');
   const media=new Map();
   function matchMedia(query){
     if(!media.has(query)){
@@ -71,8 +71,8 @@ function fixture(){
   function advance(ms){clock+=ms;let due;while((due=[...timers].find(([,timer])=>timer.at<=clock))){timers.delete(due[0]);due[1].fn();}}
   const context={document,window:{matchMedia},setTimeout(fn,delay){const id=++nextTimer;timers.set(id,{at:clock+delay,fn});return id;},clearTimeout(id){timers.delete(id);}};
   vm.runInNewContext(actualBlock,context,{filename:'actual-navigation-block.js'});
-  const click=target=>{const button=target.closest('[data-events-toggle]');button?.focus({keyboard:false});return emit(target,'click');};
-  return {document,body,mobile,mobileSummary,language,languageSummary,outside,desktop,small,emit,click,advance,media,context};
+  const click=target=>{const button=target.closest('[data-nav-toggle]');button?.focus({keyboard:false});return emit(target,'click');};
+  return {document,body,mobile,mobileSummary,language,languageSummary,outside,desktop,small,desktopSpa,smallSpa,emit,click,advance,media,context};
 }
 
 const results=[];
@@ -131,4 +131,27 @@ check('language picker Escape still closes and restores its summary focus',f=>{
   f.language.open=true;f.languageSummary.focus();f.emit(f.languageSummary,'keydown',{key:'Escape'});assert.equal(f.language.open,false);assert.equal(f.document.activeElement,f.languageSummary);
 });
 
-console.log(`PASS: ${results.length} actual navigation-handler checks.`);
+check('all four disclosure controls enhance with closed panels',f=>{
+  for(const menu of [f.desktop,f.small,f.desktopSpa,f.smallSpa]){assert.equal(menu.button.hidden,false);assert.equal(menu.panel.hidden,true);}
+});
+check('desktop SPA and occasions mutually close while parent links remain native',f=>{
+  f.click(f.desktopSpa.button);assert.equal(f.desktopSpa.panel.hidden,false);assert.equal(f.desktopSpa.links.length,2);
+  f.click(f.desktop.button);assert.equal(f.desktopSpa.panel.hidden,true);assert.equal(f.desktop.panel.hidden,false);
+  f.click(f.desktopSpa.button);assert.equal(f.desktop.panel.hidden,true);assert.equal(f.desktopSpa.panel.hidden,false);
+  const event=f.click(f.desktopSpa.primary);assert.equal(event.defaultPrevented,false);assert.equal(f.desktopSpa.panel.hidden,true);
+});
+check('SPA ArrowDown and Escape focus its own child and toggle',f=>{
+  f.desktopSpa.primary.focus();f.emit(f.desktopSpa.primary,'keydown',{key:'ArrowDown'});assert.equal(f.document.activeElement,f.desktopSpa.links[0]);
+  f.emit(f.desktopSpa.links[0],'keydown',{key:'Escape'});assert.equal(f.desktopSpa.panel.hidden,true);assert.equal(f.document.activeElement,f.desktopSpa.button);
+});
+check('mobile SPA replaces occasions inline and child navigation closes burger',f=>{
+  f.mobile.open=true;f.click(f.small.button);f.click(f.smallSpa.button);assert.equal(f.small.panel.hidden,true);assert.equal(f.smallSpa.panel.hidden,false);
+  const event=f.click(f.smallSpa.links[1]);assert.equal(event.defaultPrevented,false);assert.equal(f.mobile.open,false);assert.equal(f.smallSpa.panel.hidden,true);
+});
+check('SPA hover delay, outside and breakpoint closure use the shared handlers',f=>{
+  f.emit(f.desktopSpa.root,'pointerenter',{pointerType:'mouse'});assert.equal(f.desktopSpa.panel.hidden,false);
+  f.emit(f.desktopSpa.root,'pointerleave');f.advance(179);assert.equal(f.desktopSpa.panel.hidden,false);f.advance(1);assert.equal(f.desktopSpa.panel.hidden,true);
+  f.click(f.desktopSpa.button);f.click(f.outside);assert.equal(f.desktopSpa.panel.hidden,true);
+  f.mobile.open=true;f.click(f.smallSpa.button);f.media.get('(min-width:1201px)').set(true);assert.equal(f.smallSpa.panel.hidden,true);assert.equal(f.mobile.open,false);
+});
+console.log(`PASS: ${results.length} actual navigation-handler checks with both dropdown types.`);

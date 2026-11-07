@@ -1,6 +1,7 @@
 import {copy,rooms,translate,ui,altFor} from './model.mjs';
 import {shell} from './templates.mjs';
 import {photoLink,wa,esc,breadcrumbs,paragraphs,restSection,bookingSection} from './components.mjs';
+import {spaPromotionCopy} from './spa-procedures-copy.mjs';
 import {lodgingPageCopy} from './lodging-copy.mjs';
 
 // Additional room images must be distinct, verified views of this type.
@@ -17,6 +18,6 @@ function roomSection(room,lang){
 
 export function lodgingPage(lang){
   const c=lodgingPageCopy[lang],t=value=>translate(value,lang);
-  const body=`<article class="lodging-page"><div class="wrap">${breadcrumbs(lang,t('Проживание'),{current:true})}<header class="lodging-intro"><h1>${esc(c.heading)}</h1><p class="section-lead">${esc(c.intro)}</p></header><div class="lodging-scenery">${photoLink('overview_day',t('Территория'),lang,'lodging-grounds','(max-width: 760px) calc(100vw - 48px), 1180px',{eager:true})}</div><div class="lodging-offers">${rooms.map(room=>roomSection(room,lang)).join('')}</div></div>${restSection(lang,{prefix:'lodging',content:c,items:[['pool','pool','Бассейны',null],['kitchen','bar','Бар','menu'],['spa','sauna','Баня','spa']],group:'lodging-grounds'})}${bookingSection(lang,{prefix:'lodging',heading:c.bookingHeading,body:c.bookingBody,cta:c.bookingCta,kind:'room',name:copy.stay.title})}</article>`;
+  const body=`<article class="lodging-page"><div class="wrap">${breadcrumbs(lang,t('Проживание'),{current:true})}<header class="lodging-intro"><h1>${esc(c.heading)}</h1><p class="section-lead">${esc(c.intro)}</p></header><div class="lodging-scenery">${photoLink('overview_day',t('Территория'),lang,'lodging-grounds','(max-width: 760px) calc(100vw - 48px), 1180px',{eager:true})}</div><div class="lodging-offers">${rooms.map(room=>roomSection(room,lang)).join('')}</div></div>${restSection(lang,{prefix:'lodging',content:c,items:[['pool','pool','Бассейны',null],['kitchen','bar','Бар','menu'],['spa','sauna','Баня','spa',[{page:'spa-treatments',label:spaPromotionCopy[lang].link}]]],group:'lodging-grounds'})}${bookingSection(lang,{prefix:'lodging',heading:c.bookingHeading,body:c.bookingBody,cta:c.bookingCta,kind:'room',name:copy.stay.title})}</article>`;
   return shell({key:'stay',lang,title:c.title,description:c.description,body});
 }

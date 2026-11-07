@@ -873,22 +873,22 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
   .birthday-booking-inner>.button{width:100%;font-size:18px}
 }
 
-/* The main celebrations link remains a link; its chevron opens the six occasions. */
-.events-dropdown{position:relative;min-width:0}
-.events-dropdown-row{display:flex;align-items:center;min-width:0}
-.events-dropdown-toggle{display:grid;place-items:center;flex:none;width:44px;min-height:44px;padding:0;border:0;border-radius:8px;background:transparent;color:inherit;cursor:pointer}
+/* Primary navigation links remain links; separate controls open their child pages. */
+.nav-dropdown{position:relative;min-width:0}
+.nav-dropdown-row{display:flex;align-items:center;min-width:0}
+.nav-dropdown-toggle{display:grid;place-items:center;flex:none;width:44px;min-height:44px;padding:0;border:0;border-radius:8px;background:transparent;color:inherit;cursor:pointer}
 /* Fine-pointer desktop: a compact label/chevron group, still 44px high. */
-.desktop-nav .events-dropdown-row{gap:4px}
-.desktop-nav .events-dropdown-toggle{width:24px}
-.events-dropdown-toggle svg{transition:transform var(--motion-fast) var(--motion-ease)}
-.events-dropdown-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
-.events-dropdown-toggle:hover svg{opacity:.7}
-.events-dropdown-toggle:focus-visible{outline-offset:-3px}
-.events-parent-current{text-decoration:underline;text-underline-offset:7px;text-decoration-thickness:2px}
-.events-submenu{position:absolute;z-index:35;top:calc(100% + 8px);left:0;display:grid;width:min(340px,calc(100vw - 48px));max-height:calc(100svh - 120px);overflow-y:auto;padding:10px;border-radius:12px;background:var(--white);color:var(--ink);box-shadow:0 12px 28px rgba(9,38,24,.16);white-space:normal}
-.desktop-nav .events-submenu a{display:flex;align-items:center;min-height:44px;padding:12px 14px;border-radius:6px;font-size:17px;line-height:1.35;white-space:normal}
-.events-submenu a:is(:hover,:focus-visible),.events-submenu a[aria-current="page"]{background:var(--paper);color:var(--green)}
-.events-submenu a:focus-visible{outline-offset:-3px}
+.desktop-nav .nav-dropdown-row{gap:4px}
+.desktop-nav .nav-dropdown-toggle{width:24px}
+.nav-dropdown-toggle svg{transition:transform var(--motion-fast) var(--motion-ease)}
+.nav-dropdown-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+.nav-dropdown-toggle:hover svg{opacity:.7}
+.nav-dropdown-toggle:focus-visible{outline-offset:-3px}
+.nav-parent-current{text-decoration:underline;text-underline-offset:7px;text-decoration-thickness:2px}
+.nav-submenu{position:absolute;z-index:35;top:calc(100% + 8px);left:0;display:grid;width:min(340px,calc(100vw - 48px));max-height:calc(100svh - 120px);overflow-y:auto;padding:10px;border-radius:12px;background:var(--white);color:var(--ink);box-shadow:0 12px 28px rgba(9,38,24,.16);white-space:normal}
+.desktop-nav .nav-submenu a{display:flex;align-items:center;min-height:44px;padding:12px 14px;border-radius:6px;font-size:17px;line-height:1.35;white-space:normal}
+.nav-submenu a:is(:hover,:focus-visible),.nav-submenu a[aria-current="page"]{background:var(--paper);color:var(--green)}
+.nav-submenu a:focus-visible{outline-offset:-3px}
 
 @media(min-width:1201px) and (max-width:1360px){
   .header-inner{gap:24px}
@@ -896,16 +896,16 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
   .desktop-nav a[data-nav-primary]{font-size:16px}
 }
 @media(any-pointer:coarse){
-  .desktop-nav .events-dropdown-toggle{width:44px}
+  .desktop-nav .nav-dropdown-toggle{width:44px}
 }
 @media(max-width:1200px){
-  .mobile-nav-panel .events-dropdown-row>[data-nav-primary]{display:flex;align-items:center;flex:1;min-width:0;min-height:44px}
-  .mobile-nav-panel .events-dropdown-toggle{margin-left:12px}
-  .mobile-nav-panel .events-submenu{position:static;width:100%;max-height:none;overflow:visible;margin:0 0 10px;padding:4px 0 8px 14px;border-left:1px solid var(--line);border-radius:0;background:transparent;box-shadow:none}
-  .mobile-nav-panel .events-dropdown .events-submenu a{display:flex;align-items:center;min-height:44px;padding:10px 12px;font-size:19px;line-height:1.4;white-space:normal}
+  .mobile-nav-panel .nav-dropdown-row>[data-nav-primary]{display:flex;align-items:center;flex:1;min-width:0;min-height:44px}
+  .mobile-nav-panel .nav-dropdown-toggle{margin-left:12px}
+  .mobile-nav-panel .nav-submenu{position:static;width:100%;max-height:none;overflow:visible;margin:0 0 10px;padding:4px 0 8px 14px;border-left:1px solid var(--line);border-radius:0;background:transparent;box-shadow:none}
+  .mobile-nav-panel .nav-dropdown .nav-submenu a{display:flex;align-items:center;min-height:44px;padding:10px 12px;font-size:19px;line-height:1.4;white-space:normal}
 }
-@media(prefers-reduced-motion:reduce){.events-dropdown-toggle svg{transition:none}}
-[data-motion="reduce"] .events-dropdown-toggle svg{transition:none}
+@media(prefers-reduced-motion:reduce){.nav-dropdown-toggle svg{transition:none}}
+[data-motion="reduce"] .nav-dropdown-toggle svg{transition:none}
 
 /* A dismissible language suggestion stays secondary to page content and navigation. */
 .language-suggestion{position:fixed;z-index:20;right:24px;bottom:calc(24px + env(safe-area-inset-bottom));display:grid;grid-template-columns:minmax(0,1fr) 44px;align-items:start;gap:8px;width:min(400px,calc(100vw - 48px));max-height:calc(100svh - 48px - env(safe-area-inset-bottom));overflow:auto;padding:20px;border-radius:12px;background:var(--white);color:var(--ink);box-shadow:0 8px 28px rgba(9,38,24,.18)}
@@ -922,3 +922,26 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
   .has-mobile-contact .language-suggestion{bottom:calc(100px + env(safe-area-inset-bottom));max-height:calc(100svh - 116px - env(safe-area-inset-bottom))}
 }
 @media print{.language-suggestion{display:none!important}}
+
+/* The three offers use the shared SPA layout; the bath link stays compact. */
+.spa-procedures-bath{margin-top:120px}
+.spa-teaser{display:flex;align-items:center;justify-content:space-between;gap:32px;margin-top:40px;padding-top:32px;border-top:1px solid var(--line)}
+.spa-teaser>div{max-width:760px}
+.spa-teaser h3{margin-bottom:14px;font-size:28px;line-height:1.2}
+.spa-teaser p{font-size:20px;line-height:1.5}
+.spa-teaser>.text-link{flex:none;font-size:19px}
+@media(max-width:760px){.spa-teaser{align-items:flex-start;flex-direction:column;gap:18px;margin-top:32px;padding-top:26px}.spa-teaser h3{font-size:26px}.spa-teaser p{font-size:19px}}
+.spa-procedures-bath .text-link{margin-top:26px;font-size:20px}
+@media(max-width:1050px){.spa-procedures-bath{margin-top:104px}}
+@media(max-width:760px){.spa-procedures-bath{margin-top:80px}.spa-procedures-bath .text-link{font-size:19px}}
+
+.social-links{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.social-link{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--green);font-size:18px;font-weight:500;line-height:1.3;transition:background var(--motion-fast) ease}
+.social-link>svg{flex:none}
+.social-link>span{font-size:inherit;color:inherit}
+.social-link:hover{background:var(--pale)}
+.contact-inner>.social-links{margin-top:26px}
+.contact-section .social-link,.contacts-footer .social-link{border-color:rgba(255,255,255,.45);color:var(--white)}
+.contact-section .social-link:hover,.contacts-footer .social-link:hover{background:rgba(255,255,255,.12)}
+.contacts-footer .footer-treatment-link{margin-left:0}
+@media(max-width:760px){.social-link{font-size:17px}.contact-inner>.social-links{margin-top:24px}}

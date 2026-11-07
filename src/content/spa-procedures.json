@@ -1,0 +1,22 @@
+{
+  "services": [
+    {
+      "id": "massage",
+      "image": "covered",
+      "price": null,
+      "duration": null
+    },
+    {
+      "id": "body-peeling",
+      "image": "organizers",
+      "price": null,
+      "duration": null
+    },
+    {
+      "id": "steam-treatment",
+      "image": "sauna",
+      "price": null,
+      "duration": null
+    }
+  ]
+}

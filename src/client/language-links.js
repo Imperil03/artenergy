@@ -6,7 +6,7 @@ function syncLanguageLinks(hash){
 }
 
 function initServiceLanguageLinks(){
-  const anchors={spa:['#banya','#hammam'],stay:['#bungalow','#apartments']}[document.body.dataset.page];
+  const anchors={spa:['#banya','#hammam'],stay:['#bungalow','#apartments'],'spa-treatments':['#massage','#body-peeling','#steam-treatment']}[document.body.dataset.page];
   if(!anchors)return;
   const sync=()=>syncLanguageLinks(anchors.includes(location.hash)?location.hash:'');
   window.addEventListener('hashchange',sync);sync();

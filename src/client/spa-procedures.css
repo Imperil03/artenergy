@@ -1,0 +1,11 @@
+/* The three offers use the shared SPA layout; the bath link stays compact. */
+.spa-procedures-bath{margin-top:120px}
+.spa-teaser{display:flex;align-items:center;justify-content:space-between;gap:32px;margin-top:40px;padding-top:32px;border-top:1px solid var(--line)}
+.spa-teaser>div{max-width:760px}
+.spa-teaser h3{margin-bottom:14px;font-size:28px;line-height:1.2}
+.spa-teaser p{font-size:20px;line-height:1.5}
+.spa-teaser>.text-link{flex:none;font-size:19px}
+@media(max-width:760px){.spa-teaser{align-items:flex-start;flex-direction:column;gap:18px;margin-top:32px;padding-top:26px}.spa-teaser h3{font-size:26px}.spa-teaser p{font-size:19px}}
+.spa-procedures-bath .text-link{margin-top:26px;font-size:20px}
+@media(max-width:1050px){.spa-procedures-bath{margin-top:104px}}
+@media(max-width:760px){.spa-procedures-bath{margin-top:80px}.spa-procedures-bath .text-link{font-size:19px}}

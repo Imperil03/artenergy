@@ -1,0 +1,10 @@
+.social-links{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.social-link{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--green);font-size:18px;font-weight:500;line-height:1.3;transition:background var(--motion-fast) ease}
+.social-link>svg{flex:none}
+.social-link>span{font-size:inherit;color:inherit}
+.social-link:hover{background:var(--pale)}
+.contact-inner>.social-links{margin-top:26px}
+.contact-section .social-link,.contacts-footer .social-link{border-color:rgba(255,255,255,.45);color:var(--white)}
+.contact-section .social-link:hover,.contacts-footer .social-link:hover{background:rgba(255,255,255,.12)}
+.contacts-footer .footer-treatment-link{margin-left:0}
+@media(max-width:760px){.social-link{font-size:17px}.contact-inner>.social-links{margin-top:24px}}

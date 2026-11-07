@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {homePage,menuPage,contactsPage,eventPage,spaRedirect,errorPage} from '../src/templates.mjs';
 import {spaPage} from '../src/spa-page.mjs';
+import {spaProceduresPage} from '../src/spa-procedures-page.mjs';
 import {birthdayPage} from '../src/birthday-page.mjs';
 import {childrenPartyPage} from '../src/children-page.mjs';
 import {editorialEventKeys,editorialEventPage} from '../src/event-editorial-pages.mjs';
@@ -15,7 +16,7 @@ import {resourcePaths} from './resource-urls.mjs';
 
 export const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export const output=path.resolve(root,'dist');
-const buildDate='2026-11-06';
+const buildDate='2026-11-07';
 function renderEvent(event,lang){
   if(event.key==='event-0')return birthdayPage(lang);
   if(event.key==='event-1')return childrenPartyPage(lang);
@@ -31,6 +32,7 @@ export async function build(){
     pages.push({path:pathFor('contacts',lang),lang,key:'contacts',html:contactsPage(lang)});
     for(const event of events)pages.push({path:pathFor(event.key,lang),lang,key:event.key,html:renderEvent(event,lang)});
     pages.push({path:pathFor('spa',lang),lang,key:'spa',html:spaPage(lang)});
+    pages.push({path:pathFor('spa-treatments',lang),lang,key:'spa-treatments',html:spaProceduresPage(lang)});
     for(const service of spaServices)pages.push({path:legacySpaPath(service.index,lang),lang,key:service.key,redirectTo:pathFor(service.key,lang),html:spaRedirect(service,lang)});
     pages.push({path:pathFor('404',lang),lang,key:'404',html:errorPage(lang)});
   }
