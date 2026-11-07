@@ -642,14 +642,17 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
   .section-hub .section-hub-related>.text-link{font-size:18px}
 }
 
-/* One accommodation page, with a distinct photo section for each option. */
+/* Accommodation: place, two options, ways to spend time, booking. */
 .lodging-page{padding-top:45px}
 .lodging-page .breadcrumbs{margin-bottom:38px}
-.lodging-intro{max-width:1100px;margin-bottom:64px}
+.lodging-intro{max-width:1100px;margin-bottom:40px}
 .lodging-intro h1{max-width:1080px;margin-bottom:26px;font-size:clamp(44px,4.4vw,64px);line-height:1.12;letter-spacing:-.025em}
-.lodging-intro .section-lead{max-width:820px;font-size:23px;line-height:1.45}
+.lodging-intro .section-lead{max-width:920px;font-size:23px;line-height:1.45}
+.lodging-scenery{margin-bottom:112px}
+.lodging-scenery>.photo-link{aspect-ratio:2;border-radius:12px}
+.lodging-scenery img{object-position:50% 58%}
 .lodging-offers{display:grid;gap:120px}
-.lodging-offer{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);align-items:center;gap:48px;width:100%;scroll-margin-top:40px}
+.lodging-offer{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);align-items:center;gap:48px;scroll-margin-top:40px}
 .lodging-offer--reverse{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr)}
 .lodging-offer--reverse .lodging-media{grid-column:2;grid-row:1}
 .lodging-offer--reverse .lodging-copy{grid-column:1;grid-row:1}
@@ -659,65 +662,83 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
 .lodging-media>.photo-link:is(:hover,:focus-visible) img{transform:none}
 .lodging-copy{min-width:0;padding-block:16px}
 .lodging-copy h2{margin-bottom:26px;font-size:clamp(32px,3.1vw,44px);line-height:1.12}
-.lodging-description{font-size:22px;line-height:1.45}
-.lodging-description+.lodging-description{margin-top:16px}
-.lodging-price{margin-top:34px;color:var(--ink);font-size:38px;font-weight:600;line-height:1.18;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.lodging-description{font-size:21px;line-height:1.5}
+.lodging-description+.lodging-description{margin-top:18px}
+.lodging-price{margin-top:32px;color:var(--ink);font-size:38px;font-weight:600;line-height:1.18;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
 .lodging-price span{display:block;margin-top:7px;font-size:20px;font-weight:400;line-height:1.4;letter-spacing:0}
 .lodging-price--request{font-size:32px;line-height:1.25}
-.lodging-meal-note{margin-top:20px;font-size:19px;line-height:1.5}
-.lodging-action{margin-top:32px}
+.lodging-action{margin-top:30px}
 .lodging-action>.button{max-width:100%;gap:12px;padding-inline:18px;font-size:19px;line-height:1.35}
 .lodging-action>.button>span{min-width:0}
 .lodging-additional{margin-top:24px}
 .lodging-additional h3{margin-bottom:14px;font-size:21px;font-weight:500;line-height:1.35;letter-spacing:0}
 .lodging-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .lodging-gallery>.photo-link{aspect-ratio:3/2;border-radius:8px}
-.lodging-conditions{margin-top:120px;padding-block:90px 104px}
-.lodging-conditions h2{margin-bottom:28px;font-size:clamp(34px,3.75vw,48px)}
-.lodging-services-note{font-size:22px;line-height:1.45}
-.lodging-spa-link{margin-top:12px}
-.lodging-spa-link>.text-link,.lodging-condition-link>.text-link{font-size:20px}
-.lodging-conditions .faq-list{margin-top:42px}
-.lodging-conditions .faq-list summary{font-size:25px;line-height:1.35}
-.lodging-conditions .faq-list p{font-size:21px;line-height:1.5}
-.lodging-condition-link{margin-top:12px}
+.lodging-rest{margin-top:120px;padding-block:96px 104px}
+.lodging-rest-heading{max-width:900px;margin-bottom:44px}
+.lodging-rest-heading h2{margin-bottom:24px;font-size:clamp(36px,3.5vw,50px)}
+.lodging-rest-heading>.section-lead{margin-top:0;font-size:23px;line-height:1.45}
+.lodging-rest-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.lodging-rest-item{display:flex;flex-direction:column;min-width:0}
+.lodging-rest-item>.photo-link{aspect-ratio:4/3;border-radius:10px}
+.lodging-rest-item h3{margin-top:24px;margin-bottom:18px;font-size:27px;line-height:1.2}
+.lodging-rest-item>p{font-size:20px;line-height:1.5}
+.lodging-rest-item>.text-link{align-self:flex-start;margin-top:22px;font-size:19px}
+.lodging-booking{margin-block:104px 0;padding-block:56px;background:var(--pale)}
+.lodging-booking-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:56px}
+.lodging-booking-copy{max-width:760px}
+.lodging-booking h2{margin-bottom:20px;font-size:40px;line-height:1.15}
+.lodging-booking-copy>p{font-size:21px;line-height:1.5}
+.lodging-booking-copy>.lodging-booking-note{margin-top:18px;font-size:18px;line-height:1.45}
+.lodging-booking-inner>.button{max-width:360px;gap:12px;padding-inline:20px;font-size:19px;line-height:1.35}
 
 @media(max-width:1050px){
-  .lodging-intro{margin-bottom:52px}
+  .lodging-intro{margin-bottom:36px}
+  .lodging-scenery{margin-bottom:96px}
   .lodging-offers{gap:104px}
   .lodging-offer,.lodging-offer--reverse{grid-template-columns:1fr;gap:34px;max-width:820px;margin-inline:auto}
   .lodging-offer--reverse .lodging-media,.lodging-offer--reverse .lodging-copy{grid-column:auto;grid-row:auto}
   .lodging-copy{padding-block:0}
   .lodging-copy h2{font-size:42px}
-  .lodging-price{margin-top:28px}
-  .lodging-action{margin-top:28px}
-  .lodging-conditions{margin-top:104px;padding-block:80px 92px}
+  .lodging-rest{margin-top:104px;padding-block:80px}
+  .lodging-rest-grid{gap:24px}
+  .lodging-rest-item h3{font-size:25px}
+  .lodging-rest-item>p{font-size:19px}
+  .lodging-booking{margin-top:80px}
+  .lodging-booking-inner{grid-template-columns:1fr;gap:30px}
+  .lodging-booking-inner>.button{justify-self:start;max-width:100%}
 }
-
 @media(max-width:760px){
   .lodging-page{padding-top:22px}
   .lodging-page .breadcrumbs{margin-bottom:28px;font-size:15px}
-  .lodging-intro{margin-bottom:36px}
+  .lodging-intro{margin-bottom:30px}
   .lodging-intro h1{margin-bottom:22px;font-size:clamp(36px,8.5vw,44px);line-height:1.13}
   .lodging-intro .section-lead{font-size:20px;line-height:1.45}
+  .lodging-scenery{margin-bottom:72px}
+  .lodging-scenery>.photo-link{aspect-ratio:4/3}
   .lodging-offers{gap:80px}
   .lodging-offer{gap:28px;scroll-margin-top:24px}
   .lodging-copy h2{margin-bottom:20px;font-size:34px}
-  .lodging-description{font-size:20px;line-height:1.45}
+  .lodging-description{font-size:20px;line-height:1.5}
   .lodging-price{margin-top:26px;font-size:34px}
   .lodging-price span{font-size:19px}
   .lodging-price--request{font-size:28px}
-  .lodging-meal-note{margin-top:16px;font-size:18px;line-height:1.5}
   .lodging-action{margin-top:26px}
   .lodging-action>.button{width:100%;font-size:18px;padding-inline:18px}
-  .lodging-additional{margin-top:20px}
-  .lodging-additional h3{font-size:19px}
   .lodging-gallery{gap:12px}
-  .lodging-conditions{margin-top:80px;padding-block:60px 72px}
-  .lodging-conditions h2{margin-bottom:24px;font-size:32px}
-  .lodging-services-note{font-size:19px;line-height:1.5}
-  .lodging-spa-link>.text-link,.lodging-condition-link>.text-link{font-size:18px}
-  .lodging-conditions .faq-list{margin-top:30px}
-  .lodging-conditions .faq-list summary{font-size:21px;line-height:1.35}
-  .lodging-conditions .faq-list p{font-size:19px;line-height:1.5}
+  .lodging-rest{margin-top:80px;padding-block:64px}
+  .lodging-rest-heading{margin-bottom:32px}
+  .lodging-rest-heading h2{font-size:34px;margin-bottom:20px}
+  .lodging-rest-heading>.section-lead{font-size:20px}
+  .lodging-rest-grid{grid-template-columns:1fr;gap:44px}
+  .lodging-rest-item>.photo-link{aspect-ratio:3/2}
+  .lodging-rest-item h3{font-size:27px;margin-top:22px;margin-bottom:16px}
+  .lodging-rest-item>p{font-size:20px}
+  .lodging-rest-item>.text-link{margin-top:18px}
+  .lodging-booking{margin-top:64px;padding-block:44px}
+  .lodging-booking-inner{gap:28px}
+  .lodging-booking h2{font-size:32px}
+  .lodging-booking-copy>p{font-size:20px}
+  .lodging-booking-copy>.lodging-booking-note{font-size:18px}
+  .lodging-booking-inner>.button{width:100%;font-size:18px}
 }

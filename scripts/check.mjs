@@ -98,6 +98,13 @@ for(const page of manifest.pages){
     assert.equal((html.match(/class="lodging-offer(?: lodging-offer--reverse)?"/g)||[]).length,2,`${page.path}: two full accommodation sections`);
     assert.ok(html.includes('150 USD'),`${page.path}: confirmed bungalow price`);
     assert.ok(!html.includes('class="room-card"'),`${page.path}: no intermediate catalog`);
+    assert.equal((html.match(/class="lodging-rest-item"/g)||[]).length,3,`${page.path}: three photographic rest blocks`);
+    assert.ok(html.includes('class="lodging-scenery"')&&html.includes('class="lodging-booking"'),`${page.path}: scenery and compact booking`);
+    assert.ok(!html.includes('lodging-conditions')&&!html.includes('class="faq-list"'),`${page.path}: no retired FAQ block`);
+    if(page.lang==='ru'){
+      assert.ok(html.includes('<title>Проживание в Пунта-Кане — бунгало и апартаменты | ArtEnergy</title>'),`${page.path}: exact requested title`);
+      assert.ok(html.includes('content="Бунгало и апартаменты в ArtEnergy, Баваро, Пунта-Кана. Фото, условия проживания и стоимость. Эко-бунгало — 150 USD за 24 часа. Бронирование через WhatsApp."'),`${page.path}: exact requested description`);
+    }
     if(page.lang==='ru')assert.ok(html.includes('<h1>Проживание в Пунта-Кане — бунгало и апартаменты</h1>'),`${page.path}: requested H1`);
   }
   if(page.key==='contacts'){

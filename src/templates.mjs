@@ -41,8 +41,8 @@ function overviewDialog(lang){
   const t=s=>translate(s,lang);
   return `<dialog class="overview-dialog" data-overview-dialog aria-labelledby="overview-title"><div class="overview-shell"><div class="overview-heading"><h2 id="overview-title">${esc(t('Видеообзор ArtEnergy'))}</h2><button class="icon-button" type="button" data-overview-close aria-label="${esc(t('Закрыть видео'))}">${icon('close',26)}</button></div><video data-overview-video controls playsinline preload="none" poster="${assets.hero_mobile.src}" aria-label="${esc(t('Видеообзор ArtEnergy'))}"></video><p class="overview-error" data-overview-error hidden>${esc(t('Не удалось загрузить видео.'))} <a href="/video/overview.mp4">${esc(t('Открыть видео отдельно'))}</a></p></div></dialog>`;
 }
-function photoLink(key,label,lang,group='venue',sizes){
-  return `<a class="photo-link" href="${assets[key].src}" data-gallery="${group}" data-caption="${esc(label)}">${image(key,lang,{sizes})}<span class="photo-zoom" aria-hidden="true">${icon('arrow',20)}</span></a>`;
+function photoLink(key,label,lang,group='venue',sizes,imageOptions={}){
+  return `<a class="photo-link" href="${assets[key].src}" data-gallery="${group}" data-caption="${esc(label)}">${image(key,lang,{sizes,...imageOptions})}<span class="photo-zoom" aria-hidden="true">${icon('arrow',20)}</span></a>`;
 }
 function figure(key,label,lang,group='venue',sizes,description='',showCaption=true){
   return `<figure class="venue-photo">${photoLink(key,label,lang,group,sizes)}${showCaption?`<figcaption><span>${esc(label)}</span>${description?`<p class="photo-description">${esc(description)}</p>`:''}</figcaption>`:''}</figure>`;
