@@ -118,10 +118,17 @@ for(const page of manifest.pages){
     assert.ok(!/24\/7|24×7|around the clock|круглосуточно/.test(html),`${page.path}: no unconfirmed opening hours`);
   }
   if(page.key==='spa'){
-    assert.equal((html.match(/class="spa-offer"/g)||[]).length,2,`${page.path}: both options together`);
+    assert.equal((html.match(/class="spa-service(?: spa-service--reverse)?"/g)||[]).length,2,`${page.path}: two full SPA sections`);
+    assert.equal((html.match(/class="spa-rest-item"/g)||[]).length,3,`${page.path}: three related rest blocks`);
     for(const id of ['banya','hammam'])assert.ok(html.includes(`id="${id}"`),`${page.path}: direct service anchor`);
     for(const price of ['6 000 DOP','2 000 DOP'])assert.ok(html.includes(price),`${page.path}: service prices`);
-    assert.ok(html.includes({ru:'Минимальное время — 3 часа',en:'Minimum booking — 3 hours',es:'Tiempo mínimo — 3 horas'}[page.lang]),`${page.path}: minimum bath duration`);
+    assert.ok(html.includes('class="spa-booking"'),`${page.path}: compact booking section`);
+    assert.ok(!/spa-editorial|spa-before|spa-offer-caption|class="faq-list"/.test(html),`${page.path}: no retired text/FAQ or price overlays`);
+    if(page.lang==='ru'){
+      assert.ok(html.includes('Минимальная продолжительность бронирования — 3 часа.'),`${page.path}: minimum bath duration`);
+      assert.ok(html.includes('<title>Баня и хаммам в Пунта-Кане — фото, цены | ArtEnergy</title>'),`${page.path}: requested title`);
+      assert.ok(html.includes('content="Баня и хаммам в ArtEnergy, Баваро, Пунта-Кана. Баня — 6 000 DOP за 3 часа, хаммам — 2 000 DOP за час. Фотографии, условия и запись через WhatsApp."'),`${page.path}: requested description`);
+    }
     assert.ok(!html.includes('image-note'),`${page.path}: no removed visible illustration badge`);
   }
 }

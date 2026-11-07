@@ -576,38 +576,6 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
 @media(max-width:1050px){.contacts-grid{gap:44px}.contacts-methods{grid-template-columns:1fr;gap:18px;margin-top:28px}.contacts-phone{grid-column:auto}.contacts-methods>div{padding-top:16px}.contacts-methods .contacts-phone dd{font-size:28px}.contacts-main h1{font-size:62px}.contacts-lead{font-size:21px}.contacts-actions>.text-link{font-size:18px}}
 @media(max-width:900px){.contacts-grid{grid-template-columns:1fr;gap:48px}.contacts-methods{grid-template-columns:1fr 1fr}.contacts-phone{grid-column:1/-1}.contacts-photo{aspect-ratio:16/10}.contacts-location address{margin-top:22px}.contacts-map-section{margin-top:72px;padding-block:64px}}
 @media(max-width:760px){.contacts-page{padding-top:22px}.contacts-page .breadcrumbs{margin-bottom:30px}.contacts-main h1{font-size:46px;margin-bottom:20px}.contacts-lead{font-size:20px;line-height:1.45}.contacts-actions{margin-top:24px;gap:10px}.contacts-actions>.button{width:100%}.contacts-methods{grid-template-columns:1fr;gap:16px;margin-top:26px}.contacts-phone{grid-column:auto}.contacts-methods dt{font-size:14px;margin-bottom:3px}.contacts-methods dd{font-size:19px}.contacts-methods .contacts-phone dd{font-size:28px}.contacts-grid{gap:36px}.contacts-photo{aspect-ratio:4/3}.contacts-location address strong{font-size:28px}.contacts-location address{font-size:18px}.contacts-map-section{margin-top:56px;padding-block:48px}.contacts-map-heading{align-items:flex-start;flex-direction:column;gap:16px;margin-bottom:24px}.contacts-map-heading h2{font-size:32px}.contacts-map iframe{height:360px}.contacts-footer{padding-block:30px}.contacts-footer>.wrap{gap:18px 24px}.contacts-footer .wordmark{font-size:27px}.contacts-footer .text-link{margin-left:0;width:100%;font-size:17px}}
-/* Unified bath and hammam section */
-.spa-combined{padding-top:30px}
-.spa-combined .breadcrumbs{margin-bottom:32px}
-.spa-intro h1{font-size:clamp(44px,5vw,72px);line-height:1.08;margin-bottom:20px}
-.spa-intro .section-lead{max-width:860px;font-size:23px;line-height:1.45}
-.spa-section-links{display:flex;flex-wrap:wrap;gap:14px 28px;margin-top:20px}
-.spa-section-links a{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:var(--green);font-size:18px;font-weight:500;text-decoration:underline;text-underline-offset:6px}
-.spa-offers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin-top:28px}
-.spa-offer{display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line);border-radius:12px;scroll-margin-top:30px;background:var(--white)}
-.spa-offer-image{position:relative;isolation:isolate}
-.spa-offer-image .photo-link{height:340px}
-.spa-offer-image::after{content:"";position:absolute;inset:20% 0 0;pointer-events:none;background:linear-gradient(transparent,rgba(0,0,0,.9))}
-.spa-offer-caption{position:absolute;left:28px;right:28px;bottom:24px;z-index:1;color:var(--white);pointer-events:none}
-.spa-offer-caption h2{font-size:34px;color:var(--white);margin-bottom:12px}
-.spa-offer-caption p{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;font-size:36px;font-weight:700;line-height:1.2;font-variant-numeric:tabular-nums}
-.spa-offer-caption p span{font-size:19px;font-weight:400}
-.spa-offer-image .photo-zoom{top:14px;bottom:auto;z-index:2}
-.spa-offer-body{display:flex;flex-direction:column;flex:1;padding:28px;font-size:21px;line-height:1.45}
-.spa-offer-detail{margin-top:16px;color:var(--muted);font-size:19px}
-.spa-offer-action{margin-top:auto;padding-top:28px}
-.spa-offer-action .button{max-width:100%}
-.spa-editorial{margin-top:104px;font-size:21px;line-height:1.6}
-.spa-editorial section+section{margin-top:64px}
-.spa-editorial h2{font-size:40px;line-height:1.15;margin-bottom:24px}
-.spa-editorial p+p{margin-top:20px}
-.spa-editorial a{color:var(--green);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
-.spa-editorial a:hover{color:var(--link-hover)}
-.spa-before{margin-top:104px;padding-block:88px}
-.spa-before h2{font-size:44px;margin-bottom:32px}
-@media(max-width:1050px){.spa-offers{gap:24px}.spa-offer-caption{left:22px;right:22px}.spa-offer-caption h2{font-size:30px}.spa-offer-caption p{font-size:31px}.spa-offer-caption p span{font-size:17px}.spa-offer-body{padding:24px;font-size:20px}.spa-offer-action .button{font-size:18px;gap:12px;padding-inline:18px}}
-@media(max-width:760px){.spa-combined{padding-top:22px}.spa-combined .breadcrumbs{margin-bottom:28px}.spa-intro h1{font-size:44px;margin-bottom:20px}.spa-intro .section-lead{font-size:20px}.spa-section-links{margin-top:18px;gap:24px}.spa-offers{grid-template-columns:1fr;gap:28px;margin-top:24px}.spa-offer-image .photo-link{height:280px}.spa-offer-caption{left:22px;right:22px;bottom:20px}.spa-offer-caption h2{font-size:30px}.spa-offer-caption p{font-size:30px}.spa-offer-caption p span{font-size:17px}.spa-offer-body{padding:22px;font-size:19px}.spa-offer-detail{font-size:18px}.spa-offer-action{padding-top:24px}.spa-offer-action .button{width:100%;font-size:17px}.spa-before{margin-top:64px;padding-block:56px}.spa-before h2{font-size:32px;margin-bottom:26px}}
-@media(max-width:760px){.spa-editorial{margin-top:64px;font-size:19px;line-height:1.55}.spa-editorial section+section{margin-top:48px}.spa-editorial h2{font-size:32px;margin-bottom:20px}.spa-editorial p+p{margin-top:18px}}
 
 /* Section pages reuse the established venue gallery and catalog cards. */
 .section-hub{padding-block:45px 110px}
@@ -741,4 +709,92 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
   .lodging-booking-copy>p{font-size:20px}
   .lodging-booking-copy>.lodging-booking-note{font-size:18px}
   .lodging-booking-inner>.button{width:100%;font-size:18px}
+}
+
+/* Two full SPA offers, related rest options, and one booking section. */
+.spa-service-page{padding-top:45px}
+.spa-service-page .breadcrumbs{margin-bottom:38px}
+.spa-service-intro{max-width:1080px;margin-bottom:64px}
+.spa-service-intro h1{margin-bottom:26px;font-size:clamp(44px,4.4vw,64px);line-height:1.12;letter-spacing:-.025em}
+.spa-service-intro>.section-lead{max-width:900px;font-size:23px;line-height:1.45}
+.spa-services{display:grid;gap:120px}
+.spa-service{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);align-items:center;gap:56px;scroll-margin-top:40px}
+.spa-service--reverse{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}
+.spa-service--reverse .spa-service-media{grid-column:2;grid-row:1}
+.spa-service--reverse .spa-service-copy{grid-column:1;grid-row:1}
+.spa-service-media,.spa-service-copy{min-width:0}
+.spa-service-media>.photo-link{border-radius:12px}
+.spa-service-media>.photo-link img{width:100%;height:auto;object-fit:contain}
+.spa-service-media>.photo-link:is(:hover,:focus-visible) img{transform:none}
+.spa-service-copy{padding-block:12px}
+.spa-service-copy h2{margin-bottom:26px;font-size:clamp(34px,3.1vw,44px);line-height:1.12}
+.spa-service-description{font-size:21px;line-height:1.5}
+.spa-service-description+.spa-service-description{margin-top:18px}
+.spa-service-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;margin-top:32px;color:var(--ink);font-size:38px;line-height:1.2;font-weight:600;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.spa-service-price span{font-size:20px;font-weight:400;letter-spacing:0}
+.spa-service-rate-details{margin-top:18px;color:var(--muted);font-size:19px;line-height:1.5}
+.spa-service-action{margin-top:30px}
+.spa-service-action>.button{max-width:100%;gap:12px;padding-inline:18px;font-size:19px;line-height:1.35}
+.spa-service-action>.button>span{min-width:0}
+.spa-rest{margin-top:120px;padding-block:96px 104px}
+.spa-rest-heading{max-width:900px;margin-bottom:44px}
+.spa-rest-heading h2{margin-bottom:24px;font-size:clamp(36px,3.5vw,50px)}
+.spa-rest-heading>.section-lead{margin-top:0;font-size:23px;line-height:1.45}
+.spa-rest-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.spa-rest-item{display:flex;flex-direction:column;min-width:0}
+.spa-rest-item>.photo-link{aspect-ratio:4/3;border-radius:10px}
+.spa-rest-item h3{margin-top:24px;margin-bottom:18px;font-size:27px;line-height:1.2}
+.spa-rest-item>p{font-size:20px;line-height:1.5}
+.spa-rest-item>.text-link{align-self:flex-start;margin-top:22px;font-size:19px}
+.spa-booking{margin-top:104px;padding-block:56px;background:var(--pale)}
+.spa-booking-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:56px}
+.spa-booking-copy{max-width:760px}
+.spa-booking h2{margin-bottom:20px;font-size:40px;line-height:1.15}
+.spa-booking-copy>p{font-size:21px;line-height:1.5}
+.spa-booking-inner>.button{max-width:360px;gap:12px;padding-inline:20px;font-size:19px;line-height:1.35}
+
+@media(max-width:1050px){
+  .spa-service-intro{margin-bottom:52px}
+  .spa-services{gap:104px}
+  .spa-service,.spa-service--reverse{grid-template-columns:1fr;gap:34px;max-width:820px;margin-inline:auto}
+  .spa-service--reverse .spa-service-media,.spa-service--reverse .spa-service-copy{grid-column:auto;grid-row:auto}
+  .spa-service-copy{padding-block:0}
+  .spa-service-copy h2{font-size:42px}
+  .spa-rest{margin-top:104px;padding-block:80px}
+  .spa-rest-grid{gap:24px}
+  .spa-rest-item h3{font-size:25px}
+  .spa-rest-item>p{font-size:19px}
+  .spa-booking{margin-top:80px}
+  .spa-booking-inner{grid-template-columns:1fr;gap:30px}
+  .spa-booking-inner>.button{justify-self:start;max-width:100%}
+}
+@media(max-width:760px){
+  .spa-service-page{padding-top:22px}
+  .spa-service-page .breadcrumbs{margin-bottom:28px;font-size:15px}
+  .spa-service-intro{margin-bottom:36px}
+  .spa-service-intro h1{margin-bottom:22px;font-size:clamp(36px,8.5vw,44px);line-height:1.13}
+  .spa-service-intro>.section-lead{font-size:20px;line-height:1.45}
+  .spa-services{gap:80px}
+  .spa-service{gap:28px;scroll-margin-top:24px}
+  .spa-service-copy h2{margin-bottom:20px;font-size:34px}
+  .spa-service-description{font-size:20px}
+  .spa-service-price{margin-top:26px;font-size:34px}
+  .spa-service-price span{font-size:19px}
+  .spa-service-rate-details{font-size:18px}
+  .spa-service-action{margin-top:26px}
+  .spa-service-action>.button{width:100%;font-size:18px;padding-inline:18px}
+  .spa-rest{margin-top:80px;padding-block:64px}
+  .spa-rest-heading{margin-bottom:32px}
+  .spa-rest-heading h2{font-size:34px;margin-bottom:20px}
+  .spa-rest-heading>.section-lead{font-size:20px}
+  .spa-rest-grid{grid-template-columns:1fr;gap:44px}
+  .spa-rest-item>.photo-link{aspect-ratio:3/2}
+  .spa-rest-item h3{font-size:27px;margin-top:22px;margin-bottom:16px}
+  .spa-rest-item>p{font-size:20px}
+  .spa-rest-item>.text-link{margin-top:18px}
+  .spa-booking{margin-top:64px;padding-block:44px}
+  .spa-booking-inner{gap:28px}
+  .spa-booking h2{font-size:32px}
+  .spa-booking-copy>p{font-size:20px}
+  .spa-booking-inner>.button{width:100%;font-size:18px}
 }
