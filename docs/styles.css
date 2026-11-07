@@ -923,6 +923,9 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
 .events-dropdown{position:relative;min-width:0}
 .events-dropdown-row{display:flex;align-items:center;min-width:0}
 .events-dropdown-toggle{display:grid;place-items:center;flex:none;width:44px;min-height:44px;padding:0;border:0;border-radius:8px;background:transparent;color:inherit;cursor:pointer}
+/* Fine-pointer desktop: a compact label/chevron group, still 44px high. */
+.desktop-nav .events-dropdown-row{gap:4px}
+.desktop-nav .events-dropdown-toggle{width:24px}
 .events-dropdown-toggle svg{transition:transform var(--motion-fast) var(--motion-ease)}
 .events-dropdown-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
 .events-dropdown-toggle:hover svg{opacity:.7}
@@ -937,6 +940,9 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
   .header-inner{gap:24px}
   .desktop-nav{gap:14px}
   .desktop-nav a[data-nav-primary]{font-size:16px}
+}
+@media(any-pointer:coarse){
+  .desktop-nav .events-dropdown-toggle{width:44px}
 }
 @media(max-width:1200px){
   .mobile-nav-panel .events-dropdown-row>[data-nav-primary]{display:flex;align-items:center;flex:1;min-width:0;min-height:44px}

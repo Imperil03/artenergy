@@ -35,7 +35,7 @@ function navLinks(lang,key='home',surface='desktop'){
   }).join('');
 }
 function languages(key,lang){
-  return `<nav class="languages" aria-label="${esc(ui[lang].language)}">${locales.map(l=>`<a href="${pathFor(key,l)}" lang="${l}" hreflang="${l}"${lang===l?' aria-current="page"':''}>${l.toUpperCase()}</a>`).join('')}</nav>`;
+  return `<nav class="languages" aria-label="${esc(ui[lang].language)}">${['es','en','ru'].map(l=>`<a href="${pathFor(key,l)}" lang="${l}" hreflang="${l}"${lang===l?' aria-current="page"':''}>${l.toUpperCase()}</a>`).join('')}</nav>`;
 }
 function header(key,lang){
   const u=ui[lang];
