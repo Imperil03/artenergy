@@ -33,3 +33,10 @@ export const venuePageCopy = {
     eventsLink: 'Celebraciones y encuentros',
   },
 };
+
+export const venueFacts=[
+  {value:'≈ 1 700',units:{ru:'м²',en:'m²',es:'m²'},labels:{ru:'Площадь территории',en:'Grounds area',es:'Superficie del recinto'}},
+  {value:'2',units:{ru:'бассейна',en:'pools',es:'piscinas'},labels:{ru:'На территории комплекса',en:'On the grounds',es:'En el recinto'}},
+  {value:'8',units:{ru:'апартаментов',en:'apartments',es:'apartamentos'},labels:{ru:'Для проживания',en:'For overnight stays',es:'Para alojamiento'}},
+  {value:'3',units:{ru:'бунгало',en:'bungalows',es:'bungalows'},labels:{ru:'Для проживания',en:'For overnight stays',es:'Para alojamiento'}},
+];

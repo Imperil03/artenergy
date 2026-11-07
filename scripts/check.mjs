@@ -5,12 +5,14 @@ import {createHash} from 'node:crypto';
 import {Script} from 'node:vm';
 import {root,output} from './build.mjs';
 import {pathFor} from '../src/model.mjs';
+import {workingHoursCopy} from '../src/translations.mjs';
 import {resourcePaths} from './resource-urls.mjs';
 const manifest=JSON.parse(await readFile(path.join(root,'build-manifest.json'),'utf8'));
 const origin=manifest.siteUrl||'https://artenergy.do';
 const basePath=manifest.basePath||'';
 const docs=new Map();
 assert.ok(!manifest.pages.some(page=>page.key.startsWith('room-')),'No separate lodging pages or redirect aliases');
+assert.ok(!manifest.pages.some(page=>['event-5','event-7'].includes(page.key)),'Retired event pages are absent');
 for(const page of manifest.pages){
   const file=page.path.endsWith('/')?page.path.slice(1)+'index.html':page.path.slice(1);
   docs.set(page.path,await readFile(path.join(output,file),'utf8'));
@@ -77,6 +79,7 @@ for(const page of manifest.pages){
   }
   for(const match of html.matchAll(/<img\b[^>]*>/g)){images++;assert.match(match[0],/\balt="[^"]*"/);}
   if(page.key==='home'){
+    assert.ok(html.includes(workingHoursCopy[page.lang].visit),`${page.path}: supplied advance-booking opening hours`);
     assert.ok(!html.includes('Кухня · Напитки · Бар · Детское меню · Торты'),`${page.path}: no removed category enumeration`);
     assert.equal((html.match(/data-gallery="venue"/g)||[]).length,16);
     assert.equal((html.match(/class="event-card"/g)||[]).length,6);
@@ -107,7 +110,8 @@ for(const page of manifest.pages){
     assert.equal((html.match(/data-gallery="venue"/g)||[]).length,16,`${page.path}: venue gallery`);
     assert.ok(!html.includes('id="venue-more"')&&!html.includes('data-gallery-toggle'),`${page.path}: all venue photos visible without expansion`);
     const venue=html.slice(html.indexOf('id="gallery"'),html.indexOf('class="venue-visit-cta"'));
-    assert.equal((venue.match(/loading="eager"/g)||[]).length,16,`${page.path}: all gallery images requested immediately`);
+    assert.equal((venue.match(/loading="eager"/g)||[]).length,1,`${page.path}: only the first gallery image loads eagerly`);
+    assert.equal((venue.match(/loading="lazy"/g)||[]).length,15,`${page.path}: remaining gallery images load lazily`);
     assert.equal((venue.match(/fetchpriority="high"/g)||[]).length,1,`${page.path}: one primary image priority`);
     assert.ok(html.includes('class="venue-visit-cta"')&&!html.includes('section-hub-related'),`${page.path}: closing visit CTA replaces old related links`);
     if(page.lang==='ru'){
@@ -138,8 +142,7 @@ for(const page of manifest.pages){
       assert.ok(html.includes('<h1>Детский праздник в Пунта-Кане</h1>'),`${page.path}: child party H1`);
       assert.ok(html.includes('<title>Детский день рождения и праздники в Пунта-Кане | ArtEnergy</title>'),`${page.path}: exact child party title`);
       assert.ok(html.includes('content="Детский праздник в ArtEnergy, Баваро, Пунта-Кана. Площадка с бассейнами, зонами отдыха, детским меню и праздничными тортами. Фото, условия проведения и бронирование."'),`${page.path}: exact child party description`);
-      assert.ok(html.includes('Дети должны находиться под постоянным присмотром взрослых.'),`${page.path}: approved supervision text`);
-      assert.ok(!html.includes('Прыжки и ныряние в бассейны запрещены.'),`${page.path}: removed child-page fragment`);
+      assert.ok(html.includes('Дети должны постоянно находиться под присмотром взрослых. Прыжки и ныряние в бассейны запрещены.'),`${page.path}: latest supplied child supervision and pool rules`);
       assert.ok(html.includes('Условия посещения для детей уточняются отдельно.'),`${page.path}: approved child pricing text`);
     }
   }
@@ -165,7 +168,7 @@ for(const page of manifest.pages){
     assert.ok(/<iframe\b[^>]*title="[^"]+"[^>]*src="https:\/\/www\.google\.com\/maps\?/.test(html),`${page.path}: named location map`);
     assert.ok(html.includes('class="contacts-footer"')&&!html.includes('class="contact-section"'),`${page.path}: no duplicate contact footer`);
     assert.ok(html.includes('"@type":"ContactPage"'),`${page.path}: contact page semantics`);
-    assert.ok(!/24\/7|24×7|around the clock|круглосуточно/.test(html),`${page.path}: no unconfirmed opening hours`);
+    assert.ok(html.includes(workingHoursCopy[page.lang].contact),`${page.path}: supplied appointment-based opening hours`);
   }
   if(page.key==='spa'){
     assert.equal((html.match(/class="spa-service(?: spa-service--reverse)?"/g)||[]).length,2,`${page.path}: two full SPA sections`);

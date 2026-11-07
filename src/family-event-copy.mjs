@@ -5,11 +5,10 @@ export const familyEventCopy = {
       intro: 'Проведите свадебное торжество в ArtEnergy — среди пальм, рядом с бассейнами и крытыми зонами отдыха. Здесь можно собраться с близкими за праздничным ужином или устроить вечеринку с собственной программой. Формат мероприятия и условия использования площадки согласуются заранее.',
       heroCta: 'Обсудить свадьбу',
       galleryTitle: 'Фотографии площадки',
-      planTitle: 'Как провести свадьбу в ArtEnergy',
+      planTitle: 'Как организовать свадебное торжество',
       planParagraphs: [
-        'В ArtEnergy можно организовать камерный праздник для близких или более масштабную встречу с друзьями и родственниками. На территории есть два бассейна, тропический сад и крытые зоны отдыха, где гости могут провести время вместе.',
-        'Днём можно устроить фотосессию среди пальм, а вечером собраться на праздничный ужин с поздравлениями и музыкой.',
-        'Если вы планируете свадебную церемонию на территории, оформление, приглашённого ведущего, фотографа или музыкальное сопровождение, расскажите о своих планах заранее. Мы обсудим возможности площадки и условия проведения мероприятия.',
+        'В ArtEnergy можно устроить свадебный ужин, провести время с гостями и сделать фотографии на территории среди пальм. Для праздника подойдёт как небольшая встреча с близкими, так и мероприятие с собственной программой.',
+        'Если вы планируете провести здесь свадебную церемонию, заранее обсудите возможность её организации, оформление площадки и работу приглашённых специалистов.',
       ],
       foodTitle: 'Свадебный ужин и праздничный торт',
       foodParagraphs: [
@@ -46,11 +45,10 @@ export const familyEventCopy = {
       intro: 'Celebrate your wedding at ArtEnergy — among palm trees, beside pools and covered lounge areas. Gather with loved ones for a wedding dinner or have a party with your own programme. The event format and arrangements for using the venue are agreed in advance.',
       heroCta: 'Discuss your wedding',
       galleryTitle: 'Photos of the venue',
-      planTitle: 'How to celebrate your wedding at ArtEnergy',
+      planTitle: 'How to organise your wedding celebration',
       planParagraphs: [
-        'ArtEnergy can host an intimate celebration with loved ones or a larger gathering of friends and relatives. The grounds have two pools, a tropical garden and covered lounge areas where guests can spend time together.',
-        'During the day, you can have a photo session among the palm trees; in the evening, gather for a wedding dinner with congratulations and music.',
-        'If you are planning a wedding ceremony on the grounds, decorations, an outside host, a photographer or musical entertainment, tell us your plans in advance. We will discuss what the venue can accommodate and the arrangements for your event.',
+        'At ArtEnergy, you can hold a wedding dinner, spend time with your guests and take photos among the palm trees on the grounds. The venue suits both a small gathering with loved ones and an event with your own programme.',
+        'If you plan to hold your wedding ceremony here, discuss the possibility of organising it, the decorations and the work of outside professionals in advance.',
       ],
       foodTitle: 'Wedding dinner and celebration cake',
       foodParagraphs: [
@@ -87,11 +85,10 @@ export const familyEventCopy = {
       intro: 'Celebra tu boda en ArtEnergy — entre palmeras, junto a las piscinas y las zonas de descanso cubiertas. Puedes reunirte con tus seres queridos para una cena de celebración u organizar una fiesta con tu propio programa. El formato del evento y las condiciones de uso del espacio se acuerdan con antelación.',
       heroCta: 'Hablar sobre la boda',
       galleryTitle: 'Fotos del espacio',
-      planTitle: 'Cómo celebrar una boda en ArtEnergy',
+      planTitle: 'Cómo organizar la celebración de tu boda',
       planParagraphs: [
-        'En ArtEnergy puedes organizar una celebración íntima con tus seres queridos o una reunión más grande con amigos y familiares. El recinto cuenta con dos piscinas, un jardín tropical y zonas de descanso cubiertas donde los invitados pueden pasar tiempo juntos.',
-        'Durante el día puedes hacer una sesión de fotos entre las palmeras y, por la noche, reunirte para una cena de celebración con felicitaciones y música.',
-        'Si planeas una ceremonia de boda en el recinto, decoración, un presentador invitado, un fotógrafo o acompañamiento musical, cuéntanos tus planes con antelación. Hablaremos sobre las posibilidades del espacio y las condiciones para celebrar el evento.',
+        'En ArtEnergy puedes celebrar una cena de boda, pasar tiempo con tus invitados y hacerte fotos entre las palmeras del recinto. El espacio es adecuado tanto para una pequeña reunión con tus seres queridos como para un evento con tu propio programa.',
+        'Si planeas celebrar aquí la ceremonia de boda, consulta con antelación la posibilidad de organizarla, la decoración del espacio y el trabajo de los profesionales invitados.',
       ],
       foodTitle: 'Cena de boda y tarta de celebración',
       foodParagraphs: [
@@ -130,11 +127,10 @@ export const familyEventCopy = {
       intro: 'Отметьте юбилей в ArtEnergy — на тропической площадке с бассейнами, крытыми зонами отдыха, кухней и баром. Пригласите родных и друзей, устройте праздничный ужин и проведите день вместе в Баваро, среди пальм и зелени.',
       heroCta: 'Обсудить проведение юбилея',
       galleryTitle: 'Фотографии площадки',
-      planTitle: 'Как провести юбилей в ArtEnergy',
+      planTitle: 'Праздничный ужин и поздравления',
       planParagraphs: [
-        'Для юбилея можно выбрать спокойный семейный обед или вечерний праздник с друзьями, музыкой и поздравлениями. На территории ArtEnergy есть крытые зоны с диванами и столиками, бассейны и открытые пространства для отдыха.',
-        'Гости смогут пообщаться за праздничным столом, сделать фотографии среди тропической зелени и провести время у бассейна.',
-        'Если вы планируете пригласить ведущего, подготовить музыкальную программу или украсить место проведения, расскажите о своих пожеланиях заранее. Возможность размещения оборудования, оформления и проведения программы согласуется с администрацией.',
+        'Юбилей можно отметить за семейным обедом или устроить вечерний праздник с друзьями. Соберите близких за одним столом, подготовьте поздравления и проведите время вместе.',
+        'Если планируете ведущего, музыкальную программу или оформление, согласуйте необходимые условия заранее.',
       ],
       foodTitle: 'Праздничный стол и торт',
       foodParagraphs: [
@@ -168,11 +164,10 @@ export const familyEventCopy = {
       intro: 'Celebrate your milestone birthday at ArtEnergy — a tropical venue with pools, covered lounge areas, a kitchen and bar. Invite family and friends, enjoy a celebration dinner and spend the day together in Bávaro, among palm trees and greenery.',
       heroCta: 'Discuss your milestone birthday',
       galleryTitle: 'Photos of the venue',
-      planTitle: 'How to celebrate a milestone birthday at ArtEnergy',
+      planTitle: 'Celebration dinner and congratulations',
       planParagraphs: [
-        'For a milestone birthday, choose a quiet family lunch or an evening celebration with friends, music and congratulations. ArtEnergy has covered areas with sofas and small tables, pools and open spaces for relaxation.',
-        'Guests can talk around the celebration table, take photos among tropical greenery and spend time by the pool.',
-        'If you are planning to invite a host, prepare a music programme or decorate the venue, tell us your preferences in advance. The placement of equipment, decorations and the programme are agreed with the administrator.',
+        'Celebrate a milestone birthday over a family lunch or hold an evening party with friends. Bring your loved ones around one table, prepare your congratulations and spend time together.',
+        'If you are planning a host, a music programme or decorations, agree the necessary arrangements in advance.',
       ],
       foodTitle: 'Celebration food and cake',
       foodParagraphs: [
@@ -206,11 +201,10 @@ export const familyEventCopy = {
       intro: 'Celebra un cumpleaños especial en ArtEnergy — un espacio tropical con piscinas, zonas de descanso cubiertas, cocina y bar. Invita a familiares y amigos, organiza una cena de celebración y pasa el día con ellos en Bávaro, entre palmeras y vegetación.',
       heroCta: 'Hablar sobre la celebración de cumpleaños',
       galleryTitle: 'Fotos del espacio',
-      planTitle: 'Cómo celebrar un cumpleaños especial en ArtEnergy',
+      planTitle: 'Cena de celebración y felicitaciones',
       planParagraphs: [
-        'Para un cumpleaños especial puedes elegir un almuerzo familiar tranquilo o una celebración nocturna con amigos, música y felicitaciones. ArtEnergy cuenta con zonas cubiertas con sofás y mesitas, piscinas y espacios abiertos para descansar.',
-        'Los invitados podrán conversar alrededor de la mesa de celebración, hacerse fotos entre la vegetación tropical y pasar tiempo junto a la piscina.',
-        'Si planeas invitar a un presentador, preparar un programa musical o decorar el lugar, cuéntanos tus preferencias con antelación. La colocación de equipos, la decoración y el programa se acuerdan con la administración.',
+        'Puedes celebrar un cumpleaños especial con un almuerzo familiar u organizar una fiesta por la noche con amigos. Reúne a tus seres queridos en una misma mesa, prepara las felicitaciones y pasa tiempo con ellos.',
+        'Si planeas contar con un presentador, un programa musical o decoración, acuerda las condiciones necesarias con antelación.',
       ],
       foodTitle: 'Comida y tarta para la celebración',
       foodParagraphs: [

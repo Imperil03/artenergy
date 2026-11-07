@@ -56,7 +56,7 @@ const approvedRu={
       "heading": "Массаж",
       "paragraphs": [
         "Во время массажа специалист работает с мышцами и мягкими тканями тела. Перед сеансом можно обсудить, каким зонам уделить больше внимания и какую интенсивность воздействия вы предпочитаете.",
-        "Массаж можно запланировать отдельно или дополнить им посещение бани и хаммама. Доступные техники и продолжительность сеанса согласуются при записи."
+        "Доступные техники и продолжительность сеанса согласуются при записи."
       ],
       "cta": "Записаться на массаж"
     },
@@ -64,7 +64,7 @@ const approvedRu={
       "heading": "Пилинг тела",
       "paragraphs": [
         "Пилинг помогает удалить ороговевшие клетки с поверхности кожи. Во время процедуры используют отшелушивающий состав, которым обрабатывают кожу, после чего средство удаляют.",
-        "Такой уход можно включить в SPA-программу вместе с массажем или посещением хаммама. Конкретный вид пилинга, состав средства и участки обработки подбираются с учётом особенностей кожи."
+        "Конкретный вид пилинга, состав средства и участки обработки подбираются с учётом особенностей кожи."
       ],
       "cta": "Записаться на пилинг"
     },
@@ -167,7 +167,7 @@ for(const lang of ['ru','en','es']){
  const related=[spaPage(lang),lodgingPage(lang),sectionPage('venue',lang)];for(const page of related)hasLink(main(page),routes[lang]);
  for(const page of [html,home,...related,contactsPage(lang)]){
   hasLink(footer(page),routes[lang]);
-  assert(!/\b1[\s\u00a0]?700\s*(?:м²|m²)|\b8\s+(?:апартамент|apartments|apartamentos)|\b3\s+(?:бунгало|bungalows)|\b24\s*\/\s*7\b|(?:более|больше) шести/i.test(text(main(page))));
+  assert(!/(?:более|больше) шести/i.test(text(main(page))));
   const social=anchors(page).filter(a=>/\bclass="[^"]*\bsocial-link\b/.test(a.attributes));assert(social.length);
   for(const link of social)assert.equal(link.href,'https://www.instagram.com/artenergydr/');
  }

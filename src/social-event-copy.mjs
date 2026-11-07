@@ -5,11 +5,10 @@ export const socialEventCopy = {
       intro: 'Соберите коллег в ArtEnergy — на площадке с бассейнами, крытыми зонами отдыха, кухней и баром. Здесь можно устроить неформальную встречу команды, отметить завершение проекта или провести корпоратив с собственной программой.',
       heroCta: 'Обсудить корпоратив',
       galleryTitle: 'Фотографии площадки',
-      planTitle: 'Как провести корпоратив в ArtEnergy',
+      planTitle: 'Встреча команды и собственная программа',
       planParagraphs: [
-        'В ArtEnergy можно провести несколько часов с коллегами у бассейна или организовать вечернюю встречу с ужином и музыкой.',
-        'На территории есть два бассейна, крытые зоны со столиками и диванами, бар и открытые пространства среди пальм. Гости могут общаться, отдыхать у воды и проводить время вместе.',
-        'Если вы планируете тимбилдинг, командные игры, конкурсы или выступления, можно подготовить собственную программу. Возможность проведения отдельных активностей, приглашения ведущего и размещения необходимого оборудования согласуется заранее.',
+        'Корпоратив можно провести как неформальную встречу с общим ужином или дополнить собственной программой: командными играми, конкурсами, выступлениями и награждением сотрудников.',
+        'Если для мероприятия нужны микрофоны, колонки или другое оборудование, заранее уточните возможность их использования на площадке. Ведущих, диджеев и других специалистов можно пригласить по предварительному согласованию.',
       ],
       foodTitle: 'Еда и напитки для вашей компании',
       foodParagraphs: [
@@ -44,11 +43,10 @@ export const socialEventCopy = {
       intro: 'Bring your colleagues together at ArtEnergy — a venue with pools, covered lounge areas, a kitchen and a bar. Hold an informal team gathering, celebrate the completion of a project or run a corporate event with your own programme.',
       heroCta: 'Discuss a corporate event',
       galleryTitle: 'Photos of the venue',
-      planTitle: 'How to hold a corporate event at ArtEnergy',
+      planTitle: 'A team gathering with your own programme',
       planParagraphs: [
-        'Spend a few hours by the pool with colleagues at ArtEnergy, or arrange an evening gathering with dinner and music.',
-        'The grounds have two pools, covered areas with tables and sofas, a bar and open spaces among the palms. Guests can socialise, relax by the water and spend time together.',
-        'If you are planning team building, team games, competitions or performances, you can prepare your own programme. Individual activities, an invited host and the placement of any equipment must be agreed in advance.',
+        'Hold your corporate event as an informal gathering with a group dinner, or add your own programme: team games, competitions, performances and employee awards.',
+        'If your event needs microphones, speakers or other equipment, check in advance whether they can be used at the venue. Hosts, DJs and other professionals can be invited by prior arrangement.',
       ],
       foodTitle: 'Food and drinks for your group',
       foodParagraphs: [
@@ -83,11 +81,10 @@ export const socialEventCopy = {
       intro: 'Reúne a tus compañeros en ArtEnergy, un espacio con piscinas, zonas de descanso cubiertas, cocina y bar. Aquí puedes organizar un encuentro informal del equipo, celebrar la finalización de un proyecto o realizar un evento corporativo con tu propio programa.',
       heroCta: 'Consultar un evento corporativo',
       galleryTitle: 'Fotos del espacio',
-      planTitle: 'Cómo realizar un evento corporativo en ArtEnergy',
+      planTitle: 'Reunión de equipo con tu propio programa',
       planParagraphs: [
-        'En ArtEnergy puedes pasar unas horas con tus compañeros junto a la piscina u organizar un encuentro por la tarde con cena y música.',
-        'El recinto cuenta con dos piscinas, zonas cubiertas con mesas y sofás, un bar y espacios al aire libre entre palmeras. Los invitados pueden conversar, descansar junto al agua y pasar tiempo juntos.',
-        'Si planeas actividades de integración, juegos de equipo, concursos o actuaciones, puedes preparar tu propio programa. Las actividades concretas, la participación de un presentador y la colocación del equipo necesario se acuerdan con antelación.',
+        'Puedes organizar el evento corporativo como una reunión informal con una cena de grupo o añadir tu propio programa: juegos de equipo, concursos, actuaciones y entrega de premios a los empleados.',
+        'Si el evento requiere micrófonos, altavoces u otros equipos, consulta con antelación la posibilidad de utilizarlos en el recinto. Puedes invitar a presentadores, DJ y otros profesionales previo acuerdo.',
       ],
       foodTitle: 'Comida y bebidas para tu grupo',
       foodParagraphs: [
@@ -124,11 +121,10 @@ export const socialEventCopy = {
       intro: 'Соберитесь с друзьями в ArtEnergy — на тропической площадке с бассейнами, крытыми зонами отдыха и баром. Здесь можно провести вечер за ужином и коктейлями, пообщаться или устроить вечеринку со своей программой.',
       heroCta: 'Обсудить вечеринку',
       galleryTitle: 'Фотографии площадки',
-      planTitle: 'Как провести вечеринку в ArtEnergy',
+      planTitle: 'Вечер с друзьями в ArtEnergy',
       planParagraphs: [
-        'Встреча с друзьями не всегда требует особого повода. Можно собраться после рабочего дня, отметить начало отпуска или провести выходной большой компанией.',
-        'В ArtEnergy есть два бассейна, крытые зоны с диванами и столиками, бар и открытые пространства среди пальм. Вечером территория выглядит особенно интересно благодаря освещению бассейнов и зон отдыха.',
-        'Если планируете танцы, собственный плейлист или хотите пригласить диджея, заранее расскажите о своих планах. Музыкальную программу и возможность использования оборудования необходимо согласовать с администрацией.',
+        'Для встречи с друзьями необязательно готовить праздничную программу. Можно собраться за ужином, заказать напитки и провести вечер у бассейна.',
+        'Если планируете танцы, собственный плейлист или выступление диджея, заранее согласуйте музыкальную программу и условия её проведения.',
       ],
       foodTitle: 'Еда и напитки для вашей компании',
       foodParagraphs: [
@@ -168,11 +164,10 @@ export const socialEventCopy = {
       intro: 'Get together with friends at ArtEnergy — a tropical venue with pools, covered lounge areas and a bar. Spend the evening over dinner and cocktails, catch up or hold a party with your own programme.',
       heroCta: 'Discuss your party',
       galleryTitle: 'Photos of the venue',
-      planTitle: 'How to hold a party at ArtEnergy',
+      planTitle: 'An evening with friends at ArtEnergy',
       planParagraphs: [
-        'Meeting friends does not always need a special occasion. Get together after work, celebrate the start of a holiday or spend a day off with a large group.',
-        'ArtEnergy has two pools, covered areas with sofas and tables, a bar and open spaces among the palms. In the evening, lighting around the pools and lounge areas gives the grounds a distinctive atmosphere.',
-        'If you are planning dancing, your own playlist or an invited DJ, tell us your plans in advance. The music programme and any use of equipment must be agreed with the administrator.',
+        'A gathering with friends does not need a celebration programme. Meet for dinner, order drinks and spend the evening by the pool.',
+        'If you are planning dancing, your own playlist or a DJ performance, agree the music programme and arrangements in advance.',
       ],
       foodTitle: 'Food and drinks for your group',
       foodParagraphs: [
@@ -212,11 +207,10 @@ export const socialEventCopy = {
       intro: 'Reúnete con tus amigos en ArtEnergy, un espacio tropical con piscinas, zonas de descanso cubiertas y bar. Aquí puedes pasar la velada cenando y tomando cócteles, conversar u organizar una fiesta con tu propio programa.',
       heroCta: 'Consultar tu fiesta',
       galleryTitle: 'Fotos del espacio',
-      planTitle: 'Cómo organizar una fiesta en ArtEnergy',
+      planTitle: 'Una noche con amigos en ArtEnergy',
       planParagraphs: [
-        'Una reunión con amigos no siempre necesita un motivo especial. Pueden reunirse después del trabajo, celebrar el comienzo de las vacaciones o pasar un día libre con un grupo grande.',
-        'ArtEnergy cuenta con dos piscinas, zonas cubiertas con sofás y mesas, un bar y espacios al aire libre entre palmeras. Por la noche, la iluminación de las piscinas y las zonas de descanso da un ambiente especial al recinto.',
-        'Si planeas bailar, utilizar tu propia lista de música o invitar a un DJ, cuéntanos tus planes con antelación. El programa musical y la posibilidad de utilizar equipos deben acordarse con la administración.',
+        'Para reunirte con amigos no hace falta preparar un programa de celebración. Puedes reunir a tus amigos para cenar, pedir bebidas y pasar la noche junto a la piscina.',
+        'Si planeas bailar, poner tu propia lista de música o contar con la actuación de un DJ, acuerda con antelación el programa musical y las condiciones para realizarlo.',
       ],
       foodTitle: 'Comida y bebidas para tu grupo',
       foodParagraphs: [

@@ -9,6 +9,13 @@
 .section-hub .section-page-gallery .section-lead{max-width:850px;font-size:23px;line-height:1.45}
 .section-hub .section-hub-contact{display:flex;justify-content:center;margin-top:42px}
 .section-hub .section-hub-contact>.button{max-width:100%}
+.venue-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;margin:0 0 44px;padding:0}
+.venue-facts>div{display:flex;flex-direction:column;min-width:0}
+.venue-facts dt{order:2;margin-top:10px;color:var(--body);font-size:17px;line-height:1.4}
+.venue-facts dd{order:1;display:flex;align-items:baseline;gap:8px;margin:0;color:var(--ink);font-size:clamp(32px,4.5vw,48px);font-weight:600;line-height:1.12;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.venue-facts-unit{font-size:20px;font-weight:400;letter-spacing:0}
+@media(max-width:900px){.venue-facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 32px}}
+@media(max-width:760px){.venue-facts{gap:26px 20px;margin-bottom:32px}.venue-facts dd{gap:4px;font-size:clamp(26px,8vw,30px)}.venue-facts-unit{font-size:clamp(14px,4vw,16px)}.venue-facts dt{font-size:16px}}
 
 @media(max-width:1050px){
   .section-hub{padding-bottom:96px}

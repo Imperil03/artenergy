@@ -4,12 +4,11 @@ export const childrenPartyCopy = {
     intro: 'Отметьте день рождения ребёнка или устройте семейный праздник в ArtEnergy. На территории есть бассейны, крытые зоны отдыха, кухня и бар с детским меню. Здесь можно собрать детей и взрослых, устроить праздничный обед и провести время на свежем воздухе.',
     heroCta: 'Обсудить детский праздник',
     galleryTitle: 'Фотографии площадки',
-    planTitle: 'Как провести детский праздник в ArtEnergy',
+    planTitle: 'Как организовать детский праздник',
     planParagraphs: [
-      'Соберите друзей и близких, подготовьте поздравления, игры и праздничную программу. На территории ArtEnergy можно провести время у бассейнов, организовать угощение для гостей и отдохнуть в крытых зонах среди пальм.',
-      'Если вы планируете пригласить аниматора, украсить площадку или провести тематическую вечеринку, расскажите об этом заранее. Мы обсудим ваши пожелания и возможности проведения праздника.',
+      'Для дня рождения ребёнка можно подготовить игры, поздравления и развлечения с учётом возраста гостей. Если планируете пригласить аниматора или оформить площадку в определённой тематике, заранее согласуйте возможность проведения такой программы.',
     ],
-    safetyNote: 'Дети должны находиться под постоянным присмотром взрослых.',
+    safetyNote: 'Дети должны постоянно находиться под присмотром взрослых. Прыжки и ныряние в бассейны запрещены.',
     foodTitle: 'Детское меню и праздничный торт',
     foodParagraphs: [
       'Для маленьких гостей в ArtEnergy предусмотрено отдельное меню: гамбургеры, чизбургеры, куриные наггетсы, картофель фри и соки. Взрослые могут выбрать блюда из основного меню кухни и бара.',
@@ -37,12 +36,11 @@ export const childrenPartyCopy = {
     intro: 'Celebrate your child’s birthday or hold a family celebration at ArtEnergy. The grounds have pools, covered leisure areas, a kitchen and a bar with a children’s menu. Bring children and adults together, enjoy a celebration lunch and spend time outdoors.',
     heroCta: 'Discuss your children’s party',
     galleryTitle: 'Photos of the venue',
-    planTitle: 'How to hold a children’s party at ArtEnergy',
+    planTitle: 'How to organise a children’s party',
     planParagraphs: [
-      'Gather friends and family, prepare birthday wishes, games and a party programme. At ArtEnergy, you can spend time by the pools, arrange food for your guests and relax in covered areas among the palm trees.',
-      'If you plan to invite a children’s entertainer, decorate the venue or hold a themed party, tell us in advance. We will discuss your ideas and what can be arranged for the celebration.',
+      'For a child’s birthday, prepare games, congratulations and entertainment suited to the guests’ ages. If you plan to invite an entertainer or decorate the venue around a theme, agree in advance whether this programme can be held.',
     ],
-    safetyNote: 'Children must be supervised by adults at all times.',
+    safetyNote: 'Children must be under constant adult supervision. Jumping and diving into the pools are prohibited.',
     foodTitle: 'Children’s menu and celebration cake',
     foodParagraphs: [
       'ArtEnergy has a separate menu for younger guests: hamburgers, cheeseburgers, chicken nuggets, fries and juices. Adults can choose dishes from the main kitchen and bar menu.',
@@ -70,12 +68,11 @@ export const childrenPartyCopy = {
     intro: 'Celebra un cumpleaños infantil o una fiesta familiar en ArtEnergy. El recinto cuenta con piscinas, zonas de descanso cubiertas, cocina y bar con menú infantil. Aquí puedes reunir a niños y adultos, organizar un almuerzo de celebración y disfrutar al aire libre.',
     heroCta: 'Hablar de tu fiesta infantil',
     galleryTitle: 'Fotografías del recinto',
-    planTitle: 'Cómo organizar una fiesta infantil en ArtEnergy',
+    planTitle: 'Cómo organizar una fiesta infantil',
     planParagraphs: [
-      'Reúne a amigos y familiares, prepara felicitaciones, juegos y un programa para la fiesta. En ArtEnergy puedes disfrutar junto a las piscinas, organizar la comida para los invitados y descansar en zonas cubiertas entre palmeras.',
-      'Si tienes pensado invitar a un animador infantil, decorar el recinto u organizar una fiesta temática, cuéntanoslo con antelación. Hablaremos de tus ideas y de lo que se puede organizar para la celebración.',
+      'Para el cumpleaños de un niño puedes preparar juegos, felicitaciones y actividades adaptadas a la edad de los invitados. Si planeas invitar a un animador o decorar el espacio con una temática concreta, acuerda con antelación la posibilidad de realizar ese programa.',
     ],
-    safetyNote: 'Los niños deben estar bajo la supervisión constante de adultos.',
+    safetyNote: 'Los niños deben estar siempre bajo la supervisión de adultos. Está prohibido saltar y zambullirse en las piscinas.',
     foodTitle: 'Menú infantil y pastel de celebración',
     foodParagraphs: [
       'ArtEnergy tiene un menú especial para los más pequeños: hamburguesas, hamburguesas con queso, nuggets de pollo, papas fritas y jugos. Los adultos pueden elegir platos del menú principal de cocina y bar.',

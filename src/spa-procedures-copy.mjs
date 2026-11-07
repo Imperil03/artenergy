@@ -31,7 +31,7 @@ export const spaProceduresCopy = {
         "heading": "Массаж",
         "paragraphs": [
           "Во время массажа специалист работает с мышцами и мягкими тканями тела. Перед сеансом можно обсудить, каким зонам уделить больше внимания и какую интенсивность воздействия вы предпочитаете.",
-          "Массаж можно запланировать отдельно или дополнить им посещение бани и хаммама. Доступные техники и продолжительность сеанса согласуются при записи."
+          "Доступные техники и продолжительность сеанса согласуются при записи."
         ],
         "cta": "Записаться на массаж"
       },
@@ -39,7 +39,7 @@ export const spaProceduresCopy = {
         "heading": "Пилинг тела",
         "paragraphs": [
           "Пилинг помогает удалить ороговевшие клетки с поверхности кожи. Во время процедуры используют отшелушивающий состав, которым обрабатывают кожу, после чего средство удаляют.",
-          "Такой уход можно включить в SPA-программу вместе с массажем или посещением хаммама. Конкретный вид пилинга, состав средства и участки обработки подбираются с учётом особенностей кожи."
+          "Конкретный вид пилинга, состав средства и участки обработки подбираются с учётом особенностей кожи."
         ],
         "cta": "Записаться на пилинг"
       },
@@ -102,7 +102,7 @@ export const spaProceduresCopy = {
         "heading": "Massage",
         "paragraphs": [
           "During a massage, the practitioner works on the muscles and soft tissues of the body. Before the session, you can discuss which areas need more attention and the level of pressure you prefer.",
-          "You can plan a massage on its own or add it to a visit to the banya and hammam. Available techniques and the duration of the session are agreed when booking."
+          "Available techniques and the duration of the session are agreed when booking."
         ],
         "cta": "Book a massage"
       },
@@ -110,7 +110,7 @@ export const spaProceduresCopy = {
         "heading": "Body peeling",
         "paragraphs": [
           "Peeling helps remove dead skin cells from the surface of the skin. During the treatment, an exfoliating product is applied to the skin and then removed.",
-          "You can include this care in a SPA programme alongside a massage or hammam visit. The type of peeling, the product and the areas treated are chosen with your skin’s characteristics in mind."
+          "The type of peeling, the product and the areas treated are chosen with your skin’s characteristics in mind."
         ],
         "cta": "Book body peeling"
       },
@@ -173,7 +173,7 @@ export const spaProceduresCopy = {
         "heading": "Masaje",
         "paragraphs": [
           "Durante el masaje, el especialista trabaja los músculos y los tejidos blandos del cuerpo. Antes de la sesión puedes comentar a qué zonas prestar más atención y qué intensidad prefieres.",
-          "Puedes programar un masaje por separado o complementar con él una visita a la banya y al hammam. Las técnicas disponibles y la duración de la sesión se acuerdan al reservar."
+          "Las técnicas disponibles y la duración de la sesión se acuerdan al reservar."
         ],
         "cta": "Reservar un masaje"
       },
@@ -181,7 +181,7 @@ export const spaProceduresCopy = {
         "heading": "Exfoliación corporal",
         "paragraphs": [
           "La exfoliación ayuda a eliminar las células muertas de la superficie de la piel. Durante el tratamiento se aplica un producto exfoliante sobre la piel y después se retira.",
-          "Puedes incluir este cuidado en un programa SPA junto con un masaje o una visita al hammam. El tipo de exfoliación, el producto y las zonas tratadas se eligen teniendo en cuenta las características de la piel."
+          "El tipo de exfoliación, el producto y las zonas tratadas se eligen teniendo en cuenta las características de la piel."
         ],
         "cta": "Reservar una exfoliación"
       },

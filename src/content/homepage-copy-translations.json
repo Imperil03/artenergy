@@ -95,10 +95,6 @@
     "An open-air bungalow without conventional windows.",
     "Un bungaló abierto, sin ventanas convencionales."
   ],
-  "Размещение в помещении на территории ArtEnergy.": [
-    "Indoor accommodation on the ArtEnergy grounds.",
-    "Alojamiento interior dentro del recinto de ArtEnergy."
-  ],
   "Узнать о проживании": [
     "Ask about accommodation",
     "Consultar alojamiento"
@@ -167,14 +163,6 @@
     "Children’s parties",
     "Fiestas infantiles"
   ],
-  "День рождения ребёнка в окружении пальм, с бассейнами и местом для семейного праздника.": [
-    "A child’s birthday among the palms, with pools and space for a family celebration.",
-    "El cumpleaños de tu hijo entre palmeras, con piscinas y espacio para una celebración familiar."
-  ],
-  "Площадка для свадебного торжества с близкими.": [
-    "A venue for a wedding celebration with your loved ones.",
-    "Un espacio para celebrar tu boda con los tuyos."
-  ],
   "Юбилеи и семейные праздники": [
     "Milestones and family celebrations",
     "Fechas especiales y celebraciones familiares"
@@ -191,10 +179,6 @@
     "Friends and parties",
     "Encuentros con amigos y fiestas"
   ],
-  "Соберитесь своей компанией на несколько часов или проведите вместе целый день.": [
-    "Get together with your group for a few hours or spend the whole day together.",
-    "Reúnete con tu grupo unas horas o pasad juntos todo el día."
-  ],
   "В ArtEnergy можно провести праздник или собраться своей компанией. Выберите подходящий формат — обсудим условия на вашу дату.": [
     "Celebrate an occasion or gather with your own group at ArtEnergy. Choose the format that suits you — we will discuss arrangements for your date.",
     "En ArtEnergy puedes celebrar una ocasión especial o reunirte con tu grupo. Elige el formato que prefieras y consultamos las condiciones para tu fecha."
@@ -202,5 +186,21 @@
   "Площадка с бассейнами для отдыха и праздников": [
     "A poolside venue for relaxation and celebrations",
     "Un espacio con piscinas para descansar y celebrar"
+  ],
+  "Апартаменты для ночёвки или нескольких дней. Фотографии и условия размещения.": [
+    "Apartments for an overnight stay or a few days. Photos and accommodation details.",
+    "Apartamentos para una noche o varios días. Fotos y condiciones del alojamiento."
+  ],
+  "Детский день рождения с отдельным меню, праздничным тортом и возможностью провести свою программу.": [
+    "A child’s birthday with a separate menu, a celebration cake and the option to run your own programme.",
+    "Un cumpleaños infantil con un menú separado, una tarta de celebración y la posibilidad de preparar tu propio programa."
+  ],
+  "Крытые зоны отдыха, кухня и бар для свадебного ужина или встречи с близкими.": [
+    "Covered lounge areas, a kitchen and bar for a wedding dinner or a gathering with loved ones.",
+    "Zonas de descanso cubiertas, cocina y bar para una cena de boda o una reunión con tus seres queridos."
+  ],
+  "Встреча с друзьями у бассейна, ужин или вечеринка со своей программой.": [
+    "Meet friends by the pool, have dinner or hold a party with your own programme.",
+    "Una reunión con amigos junto a la piscina, una cena o una fiesta con tu propio programa."
   ]
 }

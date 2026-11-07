@@ -6,8 +6,8 @@ export const birthdayPageCopy = {
     galleryTitle: 'Фотографии площадки',
     planTitle: 'Как провести день рождения в ArtEnergy',
     planParagraphs: [
-      'В ArtEnergy можно собраться небольшой компанией или пригласить больше гостей. На территории есть два бассейна, места для отдыха среди пальм и крытые зоны с диванами.',
-      'Вы можете провести день у бассейна, устроить праздничный обед или ужин, а также подготовить собственную программу с поздравлениями и музыкой. Если планируете оформление, приглашённых специалистов или другие элементы праздника, заранее расскажите о своих пожеланиях — согласуем возможности площадки.',
+      'На день рождения можно приехать днём, отдохнуть у бассейна, а затем собраться за праздничным столом. Формат встречи выбираете сами — от спокойного обеда с близкими до вечеринки с друзьями.',
+      'Если хотите украсить место проведения, включить свою музыку или пригласить фотографа и ведущего, согласуйте эти детали заранее.',
     ],
     foodTitle: 'Еда, напитки и праздничный торт',
     foodParagraphs: [
@@ -38,8 +38,8 @@ export const birthdayPageCopy = {
     galleryTitle: 'Photos of the venue',
     planTitle: 'How to celebrate your birthday at ArtEnergy',
     planParagraphs: [
-      'Come to ArtEnergy with a small group or invite more guests. The grounds have two pools, places to relax among the palm trees and covered areas with sofas.',
-      'Spend the day by the pool, enjoy a birthday lunch or dinner, or prepare your own programme with birthday wishes and music. If you are planning decorations, outside professionals or other elements of the celebration, tell us your ideas in advance — we will discuss what the venue can accommodate.',
+      'For a birthday, you can arrive during the day, relax by the pool and then gather around a celebration table. Choose your own format — from a quiet lunch with loved ones to a party with friends.',
+      'If you would like to decorate the venue, play your own music or invite a photographer and a host, agree these details in advance.',
     ],
     foodTitle: 'Food, drinks and birthday cake',
     foodParagraphs: [
@@ -70,8 +70,8 @@ export const birthdayPageCopy = {
     galleryTitle: 'Fotografías del recinto',
     planTitle: 'Cómo celebrar tu cumpleaños en ArtEnergy',
     planParagraphs: [
-      'Puedes venir a ArtEnergy con un grupo pequeño o invitar a más personas. En el recinto hay dos piscinas, espacios para descansar entre palmeras y zonas cubiertas con sofás.',
-      'Puedes pasar el día junto a la piscina, organizar un almuerzo o una cena de cumpleaños y preparar tu propio programa con felicitaciones y música. Si tienes pensado incluir decoración, profesionales externos u otros elementos de la celebración, cuéntanos tus ideas con antelación para acordar qué se puede organizar en el recinto.',
+      'Para un cumpleaños puedes venir durante el día, descansar junto a la piscina y después reunirte alrededor de la mesa de celebración. Tú eliges el formato: desde un almuerzo tranquilo con tus seres queridos hasta una fiesta con amigos.',
+      'Si quieres decorar el lugar, poner tu propia música o invitar a un fotógrafo y a un presentador, acuerda estos detalles con antelación.',
     ],
     foodTitle: 'Comida, bebidas y pastel de cumpleaños',
     foodParagraphs: [

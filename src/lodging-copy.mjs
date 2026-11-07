@@ -8,7 +8,6 @@ export const lodgingPageCopy = {
       bungalow: {
         paragraphs: [
           'Эко-бунгало подойдёт тем, кто хочет провести время ближе к природе. Это открытая постройка без привычных окон, со спальным местом и занавесями. Вокруг — тропический сад ArtEnergy, пальмы и дорожки, ведущие к зонам отдыха.',
-          'Такой вариант стоит выбрать, если вам нравится отдых на открытом воздухе и хочется попробовать необычный формат проживания в Пунта-Кане.',
         ],
         price: 'Стоимость — 150 USD за 24 часа.',
         cta: 'Выбрать эко-бунгало',
@@ -16,7 +15,7 @@ export const lodgingPageCopy = {
       apartments: {
         paragraphs: [
           'Апартаменты — вариант для тех, кто предпочитает проживание в отдельном закрытом помещении. Они расположены на территории ArtEnergy, рядом с бассейнами и зонами отдыха.',
-          'Здесь можно отдохнуть после дня, проведённого на территории, или остаться на несколько ночей. Посмотрите фотографии интерьера, чтобы выбрать подходящий вариант размещения.',
+          'Посмотрите фотографии интерьера, чтобы выбрать подходящий вариант размещения.',
         ],
         price: 'Стоимость — по запросу.',
         cta: 'Узнать об апартаментах',
@@ -53,7 +52,6 @@ export const lodgingPageCopy = {
       bungalow: {
         paragraphs: [
           'The eco-bungalow suits those who want to spend time closer to nature. It is an open structure without conventional windows, with a sleeping area and curtains. Around it are ArtEnergy’s tropical garden, palm trees and paths leading to the leisure areas.',
-          'Choose this option if you enjoy spending time outdoors and would like to try an unusual way to stay in Punta Cana.',
         ],
         price: 'Price — 150 USD per 24 hours.',
         cta: 'Choose an eco-bungalow',
@@ -61,7 +59,7 @@ export const lodgingPageCopy = {
       apartments: {
         paragraphs: [
           'The apartments suit those who prefer a separate, enclosed indoor space. They are on the ArtEnergy grounds, near the pools and leisure areas.',
-          'Relax here after a day on the grounds or stay for several nights. Browse the interior photos to choose the accommodation that suits you.',
+          'Browse the interior photos to choose the accommodation that suits you.',
         ],
         price: 'Price — on request.',
         cta: 'Ask about apartments',
@@ -98,7 +96,6 @@ export const lodgingPageCopy = {
       bungalow: {
         paragraphs: [
           'El eco-bungalow es una opción para quienes quieren pasar tiempo cerca de la naturaleza. Es una construcción abierta, sin ventanas convencionales, con un espacio para dormir y cortinas. A su alrededor están el jardín tropical de ArtEnergy, las palmeras y los senderos que llevan a las zonas de descanso.',
-          'Elige esta opción si disfrutas del aire libre y quieres probar una forma diferente de alojarte en Punta Cana.',
         ],
         price: 'Precio — 150 USD por 24 horas.',
         cta: 'Elegir un eco-bungalow',
@@ -106,7 +103,7 @@ export const lodgingPageCopy = {
       apartments: {
         paragraphs: [
           'Los apartamentos son una opción para quienes prefieren alojarse en un espacio interior independiente y cerrado. Se encuentran dentro de ArtEnergy, cerca de las piscinas y las zonas de descanso.',
-          'Aquí puedes descansar después de un día en el recinto o quedarte varias noches. Mira las fotos del interior para elegir el alojamiento que más te convenga.',
+          'Mira las fotos del interior para elegir el alojamiento que más te convenga.',
         ],
         price: 'Precio — a consultar.',
         cta: 'Consultar sobre los apartamentos',

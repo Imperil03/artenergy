@@ -2,7 +2,7 @@ import {mkdir,readFile,writeFile,rm,cp,lstat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
-import {homePage,menuPage,contactsPage,eventPage,spaRedirect,errorPage} from '../src/templates.mjs';
+import {homePage,menuPage,contactsPage,spaRedirect,errorPage} from '../src/templates.mjs';
 import {spaPage} from '../src/spa-page.mjs';
 import {spaProceduresPage} from '../src/spa-procedures-page.mjs';
 import {birthdayPage} from '../src/birthday-page.mjs';
@@ -21,7 +21,7 @@ function renderEvent(event,lang){
   if(event.key==='event-0')return birthdayPage(lang);
   if(event.key==='event-1')return childrenPartyPage(lang);
   if(editorialEventKeys.includes(event.key))return editorialEventPage(event.key,lang);
-  return eventPage(event,lang);
+  throw new Error('Missing event renderer: '+event.key);
 }
 export async function build(){
   const pages=[];

@@ -142,7 +142,9 @@ h2+.section-lead{margin-top:-20px;margin-bottom:44px}
 .event-card:hover .event-card-title{text-underline-offset:6px}
 
 /* Visit rates */
-.rates-table{width:100%;margin-top:42px;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.visit-section .section-lead{margin-bottom:18px}
+.visit-hours{font-size:21px;line-height:1.45}
+.rates-table{width:100%;margin-top:28px;border-collapse:collapse;font-variant-numeric:tabular-nums}
 .rates-table thead{border-top:2px solid var(--ink)}
 .rates-table thead th{width:50%;padding:23px 0 27px;text-align:left;font-size:18px;line-height:1.35;font-weight:500;color:var(--muted)}
 .rates-table thead th:last-child{text-align:right;max-width:260px}
@@ -308,7 +310,7 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
 
   .event-card-title,.event-card:nth-child(-n+2) .event-card-title{margin-top:14px;gap:8px}
 
-  .rates-table{margin-top:34px}.rates-table thead th{padding-block:22px;font-size:15px;width:auto}.rates-table thead th:first-child{width:42%}.rates-table tbody th{font-size:21px;padding-block:20px}.rates-table td{font-size:22px;padding-block:20px}
+  .rates-table thead th{padding-block:22px;font-size:15px;width:auto}.rates-table thead th:first-child{width:42%}.rates-table tbody th{font-size:21px;padding-block:20px}.rates-table td{font-size:22px;padding-block:20px}
   .rate-notes{font-size:18px;line-height:25px;margin-block:28px}.rate-notes p+p{margin-top:16px}
 
   .dish-row{gap:12px;padding-block:16px 14px}.dish-row dt{font-size:18px;line-height:24px}.dish-row dd{font-size:18px;line-height:24px}.dish-row small{font-size:15px;line-height:20px;margin-top:5px}
@@ -501,6 +503,7 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
 .contacts-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:72px;align-items:start}
 .contacts-main h1{font-size:clamp(48px,5vw,72px);line-height:1.08;margin-bottom:22px}
 .contacts-lead{max-width:42ch;font-size:23px;line-height:1.45}
+.contacts-hours{margin-top:26px;font-size:19px;line-height:1.5}
 .contacts-actions{display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin-top:28px}
 
 .contacts-methods{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:26px 24px;margin-top:34px}

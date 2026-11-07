@@ -2,12 +2,16 @@ import {copy,events,pathFor,translate,ui} from './model.mjs';
 import {shell,gallerySection,eventCard} from './templates.mjs';
 import {wa,local,esc,breadcrumbs} from './components.mjs';
 import {lodgingPage} from './lodging-page.mjs';
-import {venuePageCopy} from './venue-copy.mjs';
+import {venuePageCopy,venueFacts} from './venue-copy.mjs';
 import {spaPromotionCopy} from './spa-procedures-copy.mjs';
+
+function venueFactsBlock(lang){
+  return `<dl class="venue-facts">${venueFacts.map(fact=>`<div><dt>${esc(fact.labels[lang])}</dt><dd><span class="venue-facts-value">${esc(fact.value)}</span> <span class="venue-facts-unit">${esc(fact.units[lang])}</span></dd></div>`).join('')}</dl>`;
+}
 
 function venuePage(lang){
   const c=venuePageCopy[lang];
-  const body=`<article class="section-hub section-hub--venue"><div class="wrap">${breadcrumbs(lang,translate('Площадка',lang),{current:true})}</div>${gallerySection(lang,{standalone:true,allVisible:true,headingText:c.heading,introText:c.intro})}<section class="venue-visit-cta" aria-labelledby="venue-visit-title"><div class="wrap venue-visit-cta-inner"><div class="venue-visit-cta-copy"><h2 id="venue-visit-title">${esc(c.ctaHeading)}</h2><p>${esc(c.ctaBody)}</p><nav class="venue-visit-cta-links" aria-label="${esc(ui[lang].navigation)}">${local(pathFor('home',lang)+'#visit',c.visitLink)}${local(pathFor('events',lang),c.eventsLink)}${local(pathFor('spa-treatments',lang),spaPromotionCopy[lang].title)}</nav></div>${wa(lang,c.cta,'general','','button')}</div></section></article>`;
+  const body=`<article class="section-hub section-hub--venue"><div class="wrap">${breadcrumbs(lang,translate('Площадка',lang),{current:true})}</div>${gallerySection(lang,{standalone:true,allVisible:true,headingText:c.heading,introText:c.intro,afterIntro:venueFactsBlock(lang)})}<section class="venue-visit-cta" aria-labelledby="venue-visit-title"><div class="wrap venue-visit-cta-inner"><div class="venue-visit-cta-copy"><h2 id="venue-visit-title">${esc(c.ctaHeading)}</h2><p>${esc(c.ctaBody)}</p><nav class="venue-visit-cta-links" aria-label="${esc(ui[lang].navigation)}">${local(pathFor('home',lang)+'#visit',c.visitLink)}${local(pathFor('events',lang),c.eventsLink)}${local(pathFor('spa-treatments',lang),spaPromotionCopy[lang].title)}</nav></div>${wa(lang,c.cta,'general','','button')}</div></section></article>`;
   return shell({key:'venue',lang,title:c.title,description:c.description,body});
 }
 
