@@ -3,25 +3,27 @@ export const lodgingPageCopy = {
     heading: 'Проживание в Пунта-Кане — бунгало и апартаменты',
     title: 'Проживание в Пунта-Кане — бунгало и апартаменты | ArtEnergy',
     description: 'Бунгало и апартаменты в ArtEnergy, Баваро, Пунта-Кана. Фото, условия проживания и стоимость. Эко-бунгало — 150 USD за 24 часа. Бронирование через WhatsApp.',
-    intro: 'Остановитесь в ArtEnergy в Баваро. На территории среди пальм и тропической зелени расположены эко-бунгало и апартаменты. Выберите открытое бунгало для отдыха ближе к природе или апартаменты, если предпочитаете проживание в помещении.',
+    intro: 'Останьтесь в ArtEnergy на ночь или на несколько дней. На территории среди пальм и тропической зелени расположены эко-бунгало и апартаменты. Выберите открытое бунгало для отдыха ближе к природе или привычный формат проживания в отдельном помещении.',
     options: {
       bungalow: {
         paragraphs: [
-          'Эко-бунгало подойдёт тем, кто хочет провести время ближе к природе. Это открытая постройка без привычных окон, со спальным местом и занавесями. На территории — тропический сад ArtEnergy, пальмы и дорожки, ведущие к зонам отдыха.',
+          'Эко-бунгало подойдёт тем, кто хочет провести время ближе к природе. Это открытая постройка без привычных окон, со спальным местом и занавесями. Вокруг — тропический сад ArtEnergy, пальмы и дорожки, ведущие к зонам отдыха.',
           'Такой вариант стоит выбрать, если вам нравится отдых на открытом воздухе и хочется попробовать необычный формат проживания в Пунта-Кане.',
         ],
+        price: 'Стоимость — 150 USD за 24 часа.',
         cta: 'Выбрать эко-бунгало',
       },
       apartments: {
         paragraphs: [
-          'Апартаменты — альтернатива открытому бунгало для тех, кому ближе проживание в помещении. Этот вариант также предлагается на территории ArtEnergy.',
-          'Здесь можно отдохнуть после дня, проведённого на территории. Посмотрите фотографию интерьера и напишите нам желаемые даты — уточним наличие, длительность и стоимость проживания.',
+          'Апартаменты — вариант для тех, кто предпочитает проживание в отдельном закрытом помещении. Они расположены на территории ArtEnergy, рядом с бассейнами и зонами отдыха.',
+          'Здесь можно отдохнуть после дня, проведённого на территории, или остаться на несколько ночей. Посмотрите фотографии интерьера, чтобы выбрать подходящий вариант размещения.',
         ],
+        price: 'Стоимость — по запросу.',
         cta: 'Узнать об апартаментах',
       },
     },
     restHeading: 'Отдых на территории ArtEnergy',
-    restIntro: 'На территории ArtEnergy — тропический сад, бассейны и крытые зоны отдыха. Здесь можно дополнить проживание едой из меню и банными процедурами.',
+    restIntro: 'Во время проживания вы будете находиться среди тропического сада, рядом с бассейнами, крытыми зонами отдыха и другими пространствами ArtEnergy.',
     rest: {
       pool: {
         title: 'Два бассейна и тропический сад',
@@ -41,31 +43,32 @@ export const lodgingPageCopy = {
     bookingHeading: 'Как забронировать проживание',
     bookingBody: 'Напишите нам в WhatsApp, укажите даты поездки, количество гостей и интересующий вариант — бунгало или апартаменты. Мы уточним наличие мест, стоимость и условия размещения.',
     bookingCta: 'Уточнить свободные даты',
-    bookingNote: 'Ночной и суточный тариф посещения не включает проживание.',
   },
   en: {
     heading: 'Stays in Punta Cana — bungalows and apartments',
     title: 'Stays in Punta Cana — bungalows and apartments | ArtEnergy',
     description: 'Bungalows and apartments at ArtEnergy in Bávaro, Punta Cana. Photos, accommodation details and prices. Eco-bungalow: 150 USD per 24 hours. Book via WhatsApp.',
-    intro: 'Stay at ArtEnergy in Bávaro. Our eco-bungalows and apartments sit among palm trees and tropical greenery. Choose an open-air bungalow for a stay closer to nature or an apartment if you prefer to stay indoors.',
+    intro: 'Stay at ArtEnergy for a night or a few days. Our eco-bungalows and apartments sit among palm trees and tropical greenery. Choose an open-air bungalow for a stay closer to nature or a more familiar stay in a private indoor space.',
     options: {
       bungalow: {
         paragraphs: [
-          'The eco-bungalow suits those who want to spend time closer to nature. It is an open structure without conventional windows, with a sleeping area and curtains. The grounds include ArtEnergy’s tropical garden, palm trees and paths leading to the leisure areas.',
+          'The eco-bungalow suits those who want to spend time closer to nature. It is an open structure without conventional windows, with a sleeping area and curtains. Around it are ArtEnergy’s tropical garden, palm trees and paths leading to the leisure areas.',
           'Choose this option if you enjoy spending time outdoors and would like to try an unusual way to stay in Punta Cana.',
         ],
+        price: 'Price — 150 USD per 24 hours.',
         cta: 'Choose an eco-bungalow',
       },
       apartments: {
         paragraphs: [
-          'The apartments offer an alternative to an open-air bungalow for those who prefer to stay indoors. This option is also available on the ArtEnergy grounds.',
-          'Relax here after a day on the grounds. View the interior photo and message us with your preferred dates — we will confirm availability, the length of your stay and prices.',
+          'The apartments suit those who prefer a separate, enclosed indoor space. They are on the ArtEnergy grounds, near the pools and leisure areas.',
+          'Relax here after a day on the grounds or stay for several nights. Browse the interior photos to choose the accommodation that suits you.',
         ],
+        price: 'Price — on request.',
         cta: 'Ask about apartments',
       },
     },
     restHeading: 'Enjoy the ArtEnergy grounds',
-    restIntro: 'The ArtEnergy grounds include a tropical garden, pools and covered leisure areas. You can add food from the menu and bathhouse sessions to your stay.',
+    restIntro: 'During your stay, you will be surrounded by a tropical garden, near the pools, covered leisure areas and other ArtEnergy spaces.',
     rest: {
       pool: {
         title: 'Two pools and a tropical garden',
@@ -85,31 +88,32 @@ export const lodgingPageCopy = {
     bookingHeading: 'How to book your stay',
     bookingBody: 'Message us on WhatsApp with your travel dates, number of guests and preferred option — a bungalow or an apartment. We will confirm availability, prices and accommodation details.',
     bookingCta: 'Check available dates',
-    bookingNote: 'Night and 24-hour admission rates do not include accommodation.',
   },
   es: {
     heading: 'Alojamiento en Punta Cana — bungalows y apartamentos',
     title: 'Alojamiento en Punta Cana — bungalows y apartamentos | ArtEnergy',
     description: 'Bungalows y apartamentos en ArtEnergy, Bávaro, Punta Cana. Fotos, condiciones y precios del alojamiento. Eco-bungalow: 150 USD por 24 horas. Reservas por WhatsApp.',
-    intro: 'Alójate en ArtEnergy, en Bávaro. Los eco-bungalows y apartamentos se encuentran entre palmeras y vegetación tropical. Elige un bungalow abierto para descansar cerca de la naturaleza o un apartamento si prefieres alojarte en un espacio interior.',
+    intro: 'Quédate en ArtEnergy una noche o varios días. Los eco-bungalows y apartamentos se encuentran entre palmeras y vegetación tropical. Elige un bungalow abierto para descansar cerca de la naturaleza o un alojamiento más convencional en un espacio interior independiente.',
     options: {
       bungalow: {
         paragraphs: [
-          'El eco-bungalow es una opción para quienes quieren pasar tiempo cerca de la naturaleza. Es una construcción abierta, sin ventanas convencionales, con un espacio para dormir y cortinas. En el recinto están el jardín tropical de ArtEnergy, las palmeras y los senderos que llevan a las zonas de descanso.',
+          'El eco-bungalow es una opción para quienes quieren pasar tiempo cerca de la naturaleza. Es una construcción abierta, sin ventanas convencionales, con un espacio para dormir y cortinas. A su alrededor están el jardín tropical de ArtEnergy, las palmeras y los senderos que llevan a las zonas de descanso.',
           'Elige esta opción si disfrutas del aire libre y quieres probar una forma diferente de alojarte en Punta Cana.',
         ],
+        price: 'Precio — 150 USD por 24 horas.',
         cta: 'Elegir un eco-bungalow',
       },
       apartments: {
         paragraphs: [
-          'Los apartamentos son una alternativa al bungalow abierto para quienes prefieren alojarse en un espacio interior. Esta opción también está disponible en ArtEnergy.',
-          'Aquí puedes descansar después de un día en el recinto. Mira la foto del interior y escríbenos con las fechas que prefieres: te confirmaremos la disponibilidad, la duración y el precio de la estancia.',
+          'Los apartamentos son una opción para quienes prefieren alojarse en un espacio interior independiente y cerrado. Se encuentran dentro de ArtEnergy, cerca de las piscinas y las zonas de descanso.',
+          'Aquí puedes descansar después de un día en el recinto o quedarte varias noches. Mira las fotos del interior para elegir el alojamiento que más te convenga.',
         ],
+        price: 'Precio — a consultar.',
         cta: 'Consultar sobre los apartamentos',
       },
     },
     restHeading: 'Disfruta de los espacios de ArtEnergy',
-    restIntro: 'ArtEnergy cuenta con un jardín tropical, piscinas y zonas de descanso cubiertas. Puedes complementar tu estancia con comida del menú y sesiones de baño de vapor.',
+    restIntro: 'Durante tu estancia estarás en un jardín tropical, cerca de las piscinas, las zonas de descanso cubiertas y otros espacios de ArtEnergy.',
     rest: {
       pool: {
         title: 'Dos piscinas y un jardín tropical',
@@ -129,6 +133,5 @@ export const lodgingPageCopy = {
     bookingHeading: 'Cómo reservar tu estancia',
     bookingBody: 'Escríbenos por WhatsApp e indica las fechas de tu viaje, el número de huéspedes y la opción que te interesa: bungalow o apartamento. Te confirmaremos la disponibilidad, el precio y las condiciones del alojamiento.',
     bookingCta: 'Consultar fechas disponibles',
-    bookingNote: 'Las tarifas de acceso nocturno y de 24 horas no incluyen alojamiento.',
   },
 };

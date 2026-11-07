@@ -16,6 +16,7 @@
 .birthday-feature-copy>p{font-size:21px;line-height:1.5}
 .birthday-feature-copy>p+p{margin-top:20px}
 .birthday-feature-copy>.birthday-practical-note{font-size:18px;line-height:1.5;color:var(--muted)}
+.birthday-feature-copy>.birthday-safety-note{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);font-size:19px;font-weight:500;line-height:1.5;color:var(--ink)}
 .birthday-feature-copy>.text-link{margin-top:26px;font-size:20px}
 .birthday-feature-media>.photo-link{border-radius:12px}
 .birthday-feature-media>.photo-link img{width:100%;height:auto;object-fit:contain}
