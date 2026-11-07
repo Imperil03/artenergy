@@ -44,7 +44,7 @@ export function pathFor(key='home',locale='ru') {
   }
   if(key.startsWith('room-')) {
     const i=Number(key.slice(5));
-    return prefix+({ru:'/prozhivanie/',en:'/stays/',es:'/alojamiento/'}[locale])+({ru:['eko-bungalo','apartamenty'],en:['eco-bungalow','apartments'],es:['eco-bungalow','apartamentos']}[locale][i])+'/';
+    return pathFor('stay',locale)+'#'+['bungalow','apartments'][i];
   }
   return prefix+'/404.html';
 }

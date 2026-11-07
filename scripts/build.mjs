@@ -2,9 +2,9 @@ import {mkdir,readFile,writeFile,rm,cp,lstat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
-import {homePage,menuPage,contactsPage,eventPage,roomPage,spaPage,spaRedirect,errorPage} from '../src/templates.mjs';
+import {homePage,menuPage,contactsPage,eventPage,spaPage,spaRedirect,errorPage} from '../src/templates.mjs';
 import {sectionPage} from '../src/section-pages.mjs';
-import {locales,events,rooms,spaServices,pathFor,legacySpaPath,origin} from '../src/model.mjs';
+import {locales,events,spaServices,pathFor,legacySpaPath,origin} from '../src/model.mjs';
 import {basePath,noIndex,publishHtml,publishCss} from '../src/deployment.mjs';
 
 export const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -18,7 +18,6 @@ export async function build(){
     pages.push({path:pathFor('menu',lang),lang,key:'menu',html:menuPage(lang)});
     pages.push({path:pathFor('contacts',lang),lang,key:'contacts',html:contactsPage(lang)});
     for(const event of events)pages.push({path:pathFor(event.key,lang),lang,key:event.key,html:eventPage(event,lang)});
-    for(const room of rooms)pages.push({path:pathFor(room.key,lang),lang,key:room.key,html:roomPage(room,lang)});
     pages.push({path:pathFor('spa',lang),lang,key:'spa',html:spaPage(lang)});
     for(const service of spaServices)pages.push({path:legacySpaPath(service.index,lang),lang,key:service.key,redirectTo:pathFor(service.key,lang),html:spaRedirect(service,lang)});
     pages.push({path:pathFor('404',lang),lang,key:'404',html:errorPage(lang)});
@@ -31,7 +30,7 @@ export async function build(){
   await rm(output,{recursive:true,force:true});
   await mkdir(output,{recursive:true});
   await cp(path.join(root,'public'),output,{recursive:true,filter:source=>!source.endsWith('.webp.json')});
-  const styles=await Promise.all(['styles.css','section-pages.css'].map(file=>readFile(path.join(root,'src/client',file),'utf8')));
+  const styles=await Promise.all(['styles.css','section-pages.css','lodging-page.css'].map(file=>readFile(path.join(root,'src/client',file),'utf8')));
   await writeFile(path.join(output,'styles.css'),publishCss(styles.join('\n')));
   await cp(path.join(root,'src/client/app.js'),path.join(output,'app.js'));
   for(const page of pages){

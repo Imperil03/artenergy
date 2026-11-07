@@ -7,6 +7,7 @@ const manifest=JSON.parse(await readFile(path.join(root,'build-manifest.json'),'
 const origin=manifest.siteUrl||'https://artenergy.do';
 const basePath=manifest.basePath||'';
 const docs=new Map();
+assert.ok(!manifest.pages.some(page=>page.key.startsWith('room-')),'No separate lodging pages or redirect aliases');
 for(const page of manifest.pages){
   const file=page.path.endsWith('/')?page.path.slice(1)+'index.html':page.path.slice(1);
   docs.set(page.path,await readFile(path.join(output,file),'utf8'));
@@ -37,7 +38,7 @@ for(const page of manifest.pages){
     for(const lang of ['ru','en','es'])assert.ok(html.includes(`hreflang="${lang}"`),`${page.path}: language alternative`);
   }
   if(page.redirectTo){
-    const canonical=origin+(page.lang==='ru'?'':`/${page.lang}`)+'/spa/';
+    const canonical=origin+pathFor('spa',page.lang);
     assert.ok(html.includes(`rel="canonical" href="${canonical}"`),`${page.path}: alias canonical without fragment`);
     assert.ok(html.includes(`content="0;url=${basePath+page.redirectTo}"`),`${page.path}: same-site deployment-aware redirect`);
     assert.ok(html.includes('content="noindex, follow"'),`${page.path}: aliases not indexable`);
@@ -93,9 +94,11 @@ for(const page of manifest.pages){
     assert.equal((html.match(/<h2 class="event-card-title"/g)||[]).length,6,`${page.path}: event heading hierarchy`);
   }
   if(page.key==='stay'){
-    assert.equal((html.match(/class="room-card"/g)||[]).length,2,`${page.path}: accommodation catalog`);
-    assert.equal((html.match(/<h2 class="room-card-title"/g)||[]).length,2,`${page.path}: accommodation heading hierarchy`);
-    assert.ok(!html.includes('class="room-open"'),`${page.path}: no removed room overlay`);
+    for(const id of ['bungalow','apartments'])assert.ok(html.includes(`id="${id}"`),`${page.path}: independent accommodation section`);
+    assert.equal((html.match(/class="lodging-offer(?: lodging-offer--reverse)?"/g)||[]).length,2,`${page.path}: two full accommodation sections`);
+    assert.ok(html.includes('150 USD'),`${page.path}: confirmed bungalow price`);
+    assert.ok(!html.includes('class="room-card"'),`${page.path}: no intermediate catalog`);
+    if(page.lang==='ru')assert.ok(html.includes('<h1>Проживание в Пунта-Кане — бунгало и апартаменты</h1>'),`${page.path}: requested H1`);
   }
   if(page.key==='contacts'){
     assert.ok(html.includes('href="tel:+18297715555"'),`${page.path}: callable phone`);

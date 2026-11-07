@@ -339,10 +339,11 @@ if(copyAddress){
   copyAddress.hidden=false;
 }
 
-// Keep the selected service when switching the language of the shared SPA page.
-if(document.body.dataset.page==='spa'){
-  const syncSpaLanguage=()=>document.querySelectorAll('.languages a').forEach(link=>{
-    const url=new URL(link.href);url.hash=['#banya','#hammam'].includes(location.hash)?location.hash:'';link.href=url.pathname+url.hash;
+// Keep the selected option when switching languages on a shared service page.
+const serviceAnchors={spa:['#banya','#hammam'],stay:['#bungalow','#apartments']}[document.body.dataset.page];
+if(serviceAnchors){
+  const syncServiceLanguage=()=>document.querySelectorAll('.languages a').forEach(link=>{
+    const url=new URL(link.href);url.hash=serviceAnchors.includes(location.hash)?location.hash:'';link.href=url.pathname+url.hash;
   });
-  window.addEventListener('hashchange',syncSpaLanguage);syncSpaLanguage();
+  window.addEventListener('hashchange',syncServiceLanguage);syncServiceLanguage();
 }

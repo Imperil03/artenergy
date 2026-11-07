@@ -1,5 +1,6 @@
-import {copy,events,rooms,pathFor,translate,ui} from './model.mjs';
-import {shell,gallerySection,eventCard,roomCard,wa,local,esc} from './templates.mjs';
+import {copy,events,pathFor,translate,ui} from './model.mjs';
+import {shell,gallerySection,eventCard,wa,local,esc} from './templates.mjs';
+import {lodgingPage} from './lodging-page.mjs';
 
 const venueTitles={
   ru:'Площадка ArtEnergy',
@@ -29,14 +30,8 @@ function eventsPage(lang){
   return shell({key:'events',lang,title:t(copy.events.title)+' · ArtEnergy',description:t(copy.events.body),body});
 }
 
-function staysPage(lang){
-  const t=value=>translate(value,lang);
-  const body=`<article class="section-hub section-hub--stay"><div class="wrap">${breadcrumbs('stay',lang)}<header class="section-hub-heading"><h1>${esc(t(copy.stay.title))}</h1><p class="section-lead">${esc(t(copy.stay.intro))}</p></header><div class="room-grid">${rooms.map(room=>roomCard(room,lang,false,'h2')).join('')}</div><div class="section-hub-contact">${wa(lang,t(copy.stay.cta),'room',copy.stay.title,'button')}</div></div></article>`;
-  return shell({key:'stay',lang,title:t(copy.stay.title)+' · ArtEnergy',description:t(copy.stay.intro),body});
-}
-
 export function sectionPage(key,lang){
-  const render={venue:venuePage,events:eventsPage,stay:staysPage}[key];
+  const render={venue:venuePage,events:eventsPage,stay:lodgingPage}[key];
   if(!render)throw new Error('Unknown section page: '+key);
   return render(lang);
 }

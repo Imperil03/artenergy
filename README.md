@@ -25,7 +25,7 @@ git commit -m "Update ArtEnergy website"
 git push
 ```
 
-Pages публикует `main` → `/docs`. Команда `pages` собирает 60 HTML-файлов (51 содержательная страница, три 404 и шесть redirect-страниц), проверяет ссылки и ресурсы, затем обновляет `docs/`. Внутренние адреса и ресурсы адаптируются к префиксу `/artenergy/`.
+Pages публикует `main` → `/docs`. Команда `pages` собирает 54 HTML-файла (45 содержательных страниц, три 404 и шесть прежних SPA aliases), проверяет ссылки и ресурсы, затем обновляет `docs/`. Внутренние адреса и ресурсы адаптируются к префиксу `/artenergy/`.
 
 Адрес сборки задаётся через `SITE_URL`; для этой публикации используется `https://imperil03.github.io/artenergy/`. Версия для просмотра содержит `noindex, nofollow`; поисковая индексация основного домена не переносится на GitHub Pages. Для другого целевого сайта настройте `SITE_URL` и `SITE_NOINDEX` при сборке.
 
@@ -37,7 +37,9 @@ Pages публикует `main` → `/docs`. Команда `pages` собира
 
 ## Общие разделы
 
-Площадка: `/ploshchadka/`, `/en/venue/`, `/es/espacio/`. Праздники: `/sobytiya/`, `/en/events/`, `/es/eventos/`. Проживание: `/prozhivanie/`, `/en/stays/`, `/es/alojamiento/`. Они используют существующие галерею и карточки; главное меню ведёт прямо на страницы разделов. Шаблоны — `src/section-pages.mjs`, дополнительные стили — `src/client/section-pages.css`.
+Площадка: `/ploshchadka/`, `/en/venue/`, `/es/espacio/`. Праздники: `/sobytiya/`, `/en/events/`, `/es/eventos/`. Проживание: `/prozhivanie/`, `/en/stays/`, `/es/alojamiento/`. Главное меню ведёт прямо на страницы разделов. Шаблоны — `src/section-pages.mjs`, дополнительные стили — `src/client/section-pages.css`.
+
+Проживание объединено в одну подробную страницу на каждом языке: бунгало и апартаменты, фотографии, цены, WhatsApp и условия. Реализация — `src/lodging-page.mjs` и `src/client/lodging-page.css`. Для тестового GitHub Pages отдельные URL проживания и их перенаправления не создаются.
 
 ## Баня и хаммам
 
