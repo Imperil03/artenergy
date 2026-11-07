@@ -1,21 +1,22 @@
 {
+  "heroImage": "spa_treatment_hero",
   "services": [
     {
       "id": "massage",
-      "image": "covered",
-      "price": null,
+      "image": "spa_massage",
+      "price": "2 500 DOP",
       "duration": null
     },
     {
       "id": "body-peeling",
-      "image": "organizers",
-      "price": null,
+      "image": "spa_peeling",
+      "price": "1 500 DOP",
       "duration": null
     },
     {
       "id": "steam-treatment",
       "image": "sauna",
-      "price": null,
+      "price": "2 000 DOP",
       "duration": null
     }
   ]

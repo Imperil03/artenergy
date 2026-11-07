@@ -65,6 +65,10 @@ export async function build(){
   const javascript=scripts.join('\n\n');
   await writeFile(path.join(output,'app.js'),javascript);
   const bundles=[['/styles.css',css],['/app.js',javascript]].map(([path,content])=>({path,bytes:Buffer.byteLength(content),sha256:createHash('sha256').update(content).digest('hex')}));
+  for(const page of pages)for(const bundle of bundles){
+    const attribute=bundle.path.endsWith('.css')?'href':'src';
+    page.html=page.html.replace(`${attribute}="${basePath+bundle.path}"`,`${attribute}="${basePath+bundle.path}?v=${bundle.sha256.slice(0,12)}"`);
+  }
   for(const page of pages){
     const relative=page.path.endsWith('/')?page.path.slice(1)+'index.html':page.path.slice(1);
     const target=path.resolve(output,relative);

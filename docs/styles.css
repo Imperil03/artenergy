@@ -923,17 +923,80 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
 }
 @media print{.language-suggestion{display:none!important}}
 
-/* The three offers use the shared SPA layout; the bath link stays compact. */
-.spa-procedures-bath{margin-top:120px}
+/* SPA keeps the shared typography and booking, with prices before treatment details. */
+.spa-treatments-hero{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);align-items:center;gap:48px}
+.spa-treatments-hero-copy,.spa-treatments-hero-media{min-width:0}
+.spa-treatments-hero h1{max-width:15ch;margin-bottom:24px;font-size:clamp(42px,4.2vw,60px);line-height:1.1}
+.spa-treatments-hero p{font-size:21px;line-height:1.5}
+.spa-treatments-hero-media{height:100%;min-height:300px;aspect-ratio:4/3;overflow:hidden;border-radius:12px}
+.spa-treatments-hero-media img{width:100%;height:100%;object-fit:cover;object-position:center}
+.spa-treatments-pricing{margin-top:64px}
+.spa-treatments-pricing h2{margin-bottom:24px;font-size:38px;line-height:1.2}
+.spa-treatments-prices{width:100%;border-collapse:collapse;table-layout:fixed;font-variant-numeric:tabular-nums}
+.spa-treatments-prices thead th{padding:14px 20px 18px 0;border-bottom:1px solid var(--ink);color:var(--muted);font-size:16px;font-weight:400;text-align:left}
+.spa-treatments-prices thead th:first-child{width:24%}
+.spa-treatments-prices thead th:last-child{width:20%;padding-right:0;text-align:right}
+.spa-treatments-prices tbody th,.spa-treatments-prices tbody td{padding:22px 20px 22px 0;border-bottom:1px solid var(--line);text-align:left}
+.spa-treatments-prices tbody th{color:var(--ink);font-size:23px;font-weight:500;line-height:1.3}
+.spa-treatments-prices .spa-treatments-price-description{font-size:18px;line-height:1.45}
+.spa-treatments-prices .spa-treatments-price-value{padding-right:0;text-align:right;color:var(--ink);font-size:30px;font-weight:600;line-height:1.2;white-space:nowrap}
+.spa-treatments-price-note{max-width:900px;margin-top:22px;font-size:18px;line-height:1.5;color:var(--muted)}
+.spa-treatments-details{display:grid;gap:64px;margin-top:72px}
+.spa-treatments-primary{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:center;gap:48px}
+.spa-treatments-service-media,.spa-treatments-service-copy{min-width:0}
+.spa-treatments-service-media>.photo-link{aspect-ratio:3/2;border-radius:12px}
+.spa-treatments-primary .spa-treatments-service-media>.photo-link{aspect-ratio:4/3}
+.spa-treatments-service-media img{object-position:center}
+.spa-treatments-service-copy h2{margin-bottom:22px;font-size:34px;line-height:1.15}
+.spa-treatments-primary h2{font-size:42px}
+.spa-treatments-service-copy .spa-service-description{font-size:20px;line-height:1.55}
+.spa-treatments-service-copy .spa-service-description+.spa-service-description{margin-top:18px}
+.spa-treatments-service-action{margin-top:26px}
+.spa-treatments-service-action>.button{max-width:100%;gap:12px;padding-inline:20px;font-size:19px;line-height:1.35}
+.spa-treatments-secondary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px;align-items:start}
+.spa-treatments-secondary .spa-treatments-service-copy{margin-top:26px}
+.spa-treatments-rest{margin-top:80px;padding-block:72px;background:var(--paper)}
+.spa-treatments-rest-heading{max-width:900px;margin-bottom:36px}
+.spa-treatments-rest-heading h2{margin-bottom:20px;font-size:40px;line-height:1.15}
+.spa-treatments-rest-heading>p{font-size:21px;line-height:1.5}
+.spa-treatments-rest-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px}
+.spa-treatments-rest-item{min-width:0}
+.spa-treatments-rest-item>.photo-link{aspect-ratio:2/1;border-radius:10px}
+.spa-treatments-rest-item h3{margin-top:22px;margin-bottom:16px;font-size:27px;line-height:1.2}
+.spa-treatments-rest-item>p{font-size:20px;line-height:1.5}
+.spa-treatments-rest-item>.text-link{margin-top:20px;font-size:19px}
+.spa-procedures-page .spa-booking{margin-top:0}
+@media(max-width:1050px){
+ .spa-treatments-hero{gap:32px}.spa-treatments-hero h1{font-size:46px}.spa-treatments-hero p{font-size:20px}
+ .spa-treatments-pricing{margin-top:56px}.spa-treatments-prices .spa-treatments-price-value{font-size:27px}
+ .spa-treatments-details{margin-top:64px;gap:56px}.spa-treatments-primary{gap:32px}.spa-treatments-primary h2{font-size:38px}
+ .spa-treatments-secondary{gap:30px}.spa-treatments-rest{margin-top:72px;padding-block:64px}.spa-treatments-rest-grid{gap:30px}
+}
+@media(max-width:760px){
+ .spa-treatments-hero{grid-template-columns:1fr;gap:26px}.spa-treatments-hero h1{max-width:none;font-size:38px;margin-bottom:20px}.spa-treatments-hero p{font-size:20px}
+ .spa-treatments-hero-media{height:auto;min-height:0;aspect-ratio:1.7}
+ .spa-treatments-pricing{margin-top:44px}.spa-treatments-pricing h2{font-size:30px;margin-bottom:18px}
+ .spa-treatments-prices{display:block}.spa-treatments-prices thead{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+ .spa-treatments-prices tbody{display:grid}.spa-treatments-prices tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;padding:20px 0;border-bottom:1px solid var(--line)}
+ .spa-treatments-prices tbody th,.spa-treatments-prices tbody td{min-width:0;padding:0;border:0}
+ .spa-treatments-prices tbody th{grid-column:1;grid-row:1;font-size:20px}.spa-treatments-prices .spa-treatments-price-description{grid-column:1;grid-row:2;font-size:16px}
+ .spa-treatments-prices .spa-treatments-price-value{grid-column:2;grid-row:1/span 2;align-self:center;font-size:24px}
+ .spa-treatments-price-note{font-size:17px;margin-top:20px}
+ .spa-treatments-details{margin-top:56px;gap:48px}.spa-treatments-primary{grid-template-columns:1fr;gap:26px}
+ .spa-treatments-secondary{grid-template-columns:1fr;gap:48px}.spa-treatments-secondary .spa-treatments-service-copy{margin-top:24px}
+ .spa-treatments-service-copy h2,.spa-treatments-primary h2{font-size:32px;margin-bottom:20px}.spa-treatments-service-copy .spa-service-description{font-size:20px;line-height:1.5}
+ .spa-treatments-service-action{margin-top:24px}.spa-treatments-service-action>.button{width:100%;font-size:18px}
+ .spa-treatments-rest{margin-top:64px;padding-block:48px}.spa-treatments-rest-heading{margin-bottom:30px}.spa-treatments-rest-heading h2{font-size:32px}
+ .spa-treatments-rest-heading>p{font-size:20px}.spa-treatments-rest-grid{grid-template-columns:1fr;gap:40px}.spa-treatments-rest-item h3{font-size:26px}.spa-treatments-rest-item>p{font-size:20px}
+}
+
+/* Existing compact homepage promotion stays unchanged. */
 .spa-teaser{display:flex;align-items:center;justify-content:space-between;gap:32px;margin-top:40px;padding-top:32px;border-top:1px solid var(--line)}
 .spa-teaser>div{max-width:760px}
 .spa-teaser h3{margin-bottom:14px;font-size:28px;line-height:1.2}
 .spa-teaser p{font-size:20px;line-height:1.5}
 .spa-teaser>.text-link{flex:none;font-size:19px}
 @media(max-width:760px){.spa-teaser{align-items:flex-start;flex-direction:column;gap:18px;margin-top:32px;padding-top:26px}.spa-teaser h3{font-size:26px}.spa-teaser p{font-size:19px}}
-.spa-procedures-bath .text-link{margin-top:26px;font-size:20px}
-@media(max-width:1050px){.spa-procedures-bath{margin-top:104px}}
-@media(max-width:760px){.spa-procedures-bath{margin-top:80px}.spa-procedures-bath .text-link{font-size:19px}}
 
 .social-links{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
 .social-link{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--green);font-size:18px;font-weight:500;line-height:1.3;transition:background var(--motion-fast) ease}

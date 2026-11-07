@@ -1097,5 +1097,101 @@
       }
     ],
     "src": "/assets/kitchen-dumplings-1536-d81502faf9.webp"
+  },
+  "spa_treatment_hero": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "url": "/assets/spa-treatment-hero-400-76dfdaad54ea.webp"
+      },
+      {
+        "width": 640,
+        "height": 360,
+        "url": "/assets/spa-treatment-hero-640-76dfdaad54ea.webp"
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "url": "/assets/spa-treatment-hero-960-76dfdaad54ea.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "url": "/assets/spa-treatment-hero-1280-76dfdaad54ea.webp"
+      },
+      {
+        "width": 1600,
+        "height": 900,
+        "url": "/assets/spa-treatment-hero-1600-76dfdaad54ea.webp"
+      }
+    ],
+    "src": "/assets/spa-treatment-hero-1600-76dfdaad54ea.webp"
+  },
+  "spa_massage": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "url": "/assets/spa-massage-400-29be48562ebd.webp"
+      },
+      {
+        "width": 640,
+        "height": 427,
+        "url": "/assets/spa-massage-640-29be48562ebd.webp"
+      },
+      {
+        "width": 960,
+        "height": 640,
+        "url": "/assets/spa-massage-960-29be48562ebd.webp"
+      },
+      {
+        "width": 1280,
+        "height": 853,
+        "url": "/assets/spa-massage-1280-29be48562ebd.webp"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "url": "/assets/spa-massage-1536-29be48562ebd.webp"
+      }
+    ],
+    "src": "/assets/spa-massage-1536-29be48562ebd.webp"
+  },
+  "spa_peeling": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "url": "/assets/spa-peeling-400-199e917ceceb.webp"
+      },
+      {
+        "width": 640,
+        "height": 427,
+        "url": "/assets/spa-peeling-640-199e917ceceb.webp"
+      },
+      {
+        "width": 960,
+        "height": 640,
+        "url": "/assets/spa-peeling-960-199e917ceceb.webp"
+      },
+      {
+        "width": 1280,
+        "height": 853,
+        "url": "/assets/spa-peeling-1280-199e917ceceb.webp"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "url": "/assets/spa-peeling-1536-199e917ceceb.webp"
+      }
+    ],
+    "src": "/assets/spa-peeling-1536-199e917ceceb.webp"
   }
 }

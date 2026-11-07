@@ -57,8 +57,8 @@ export function legacySpaPath(index,locale='ru'){
 
 export function whatsapp(locale='ru',kind='general',name='') {
   const u=ui[locale];
-  const treatment={ru:'Здравствуйте! Хочу уточнить процедуру в ArtEnergy: ',en:'Hello! I would like to ask about a treatment at ArtEnergy: ',es:'¡Hola! Quisiera consultar un tratamiento en ArtEnergy: '}[locale];
-  const treatments={ru:'Здравствуйте! Хочу записаться на SPA-процедуру в ArtEnergy. Процедура: Дата: Время: ',en:'Hello! I would like to book a SPA treatment at ArtEnergy. Treatment: Date: Time: ',es:'¡Hola! Quisiera reservar un tratamiento de spa en ArtEnergy. Tratamiento: Fecha: Hora: '}[locale];
+  const treatment={ru:'Здравствуйте! Хочу записаться на процедуру в ArtEnergy: ',en:'Hello! I would like to book a treatment at ArtEnergy: ',es:'¡Hola! Quisiera reservar un tratamiento en ArtEnergy: '}[locale];
+  const treatments={ru:'Здравствуйте! Хочу записаться на SPA-процедуры в ArtEnergy.\nПроцедуры: \nДата: \nКоличество гостей: ',en:'Hello! I would like to book SPA treatments at ArtEnergy.\nTreatments: \nDate: \nNumber of guests: ',es:'¡Hola! Quisiera reservar tratamientos de spa en ArtEnergy.\nTratamientos: \nFecha: \nNúmero de personas: '}[locale];
   const message=kind==='spa-treatment'?treatment+name:kind==='spa-treatments'?treatments:kind==='spa-service'?spaPageCopy[locale].waService+translate(name,locale):kind==='bath'?u.waBath:kind==='event'?u.waEvent+translate(name,locale):kind==='room'?u.waStay+translate(name,locale):kind==='menu'?u.waMenu:kind==='organizers'?u.waOrg:kind==='visit'?u.waVisit:u.waHello;
   return contact.whatsapp+'?text='+encodeURIComponent(message);
 }
@@ -97,6 +97,9 @@ export const eventText={
 };
 
 const altText={
+  spa_treatment_hero:['Принадлежности для SPA','SPA accessories','Accesorios de spa'],
+  spa_massage:['Массаж спины','Back massage','Masaje de espalda'],
+  spa_peeling:['Пилинг тела','Body peeling','Exfoliación corporal'],
   organizers_yoga:['Практика йоги у бассейна','Yoga practice by the pool','Práctica de yoga junto a la piscina'],
   organizers_meditation:['Группа на практике медитации у бассейна','A group meditating by the pool','Un grupo meditando junto a la piscina'],
   organizers_aqua:['Групповое занятие в бассейне','A group activity in the pool','Una actividad en grupo en la piscina'],
