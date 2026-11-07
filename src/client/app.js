@@ -337,7 +337,7 @@ if(tabs){
     links.forEach(link=>{const active=link.dataset.menuTab===key;link.classList.toggle('is-active',active);link.setAttribute('aria-selected',String(active));link.tabIndex=active?0:-1;});
     panels.forEach(panel=>{const active=panel.dataset.menuPanel===key;panel.hidden=!active;panel.classList.toggle('is-active',active);if(active&&selectedMenu!==null&&selectedMenu!==key)motion.run(panel,[{opacity:.7},{opacity:1}]);});
     selectedMenu=key;
-    document.querySelectorAll('.languages a').forEach(link=>{const url=new URL(link.href);url.hash=`menu-${key}`;link.href=url.pathname+url.hash;});
+    document.querySelectorAll('.languages a,[data-language-accept]').forEach(link=>{const url=new URL(link.href);url.hash=`menu-${key}`;link.href=url.pathname+url.hash;});
     if(updateUrl)history.replaceState(null,'',`#menu-${key}`);
   };
   const hashKey=()=>location.hash.startsWith('#menu-')?location.hash.slice(6):links[0].dataset.menuTab;
@@ -380,7 +380,7 @@ if(copyAddress){
 // Keep the selected option when switching languages on a shared service page.
 const serviceAnchors={spa:['#banya','#hammam'],stay:['#bungalow','#apartments']}[document.body.dataset.page];
 if(serviceAnchors){
-  const syncServiceLanguage=()=>document.querySelectorAll('.languages a').forEach(link=>{
+  const syncServiceLanguage=()=>document.querySelectorAll('.languages a,[data-language-accept]').forEach(link=>{
     const url=new URL(link.href);url.hash=serviceAnchors.includes(location.hash)?location.hash:'';link.href=url.pathname+url.hash;
   });
   window.addEventListener('hashchange',syncServiceLanguage);syncServiceLanguage();

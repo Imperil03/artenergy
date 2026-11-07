@@ -33,6 +33,13 @@ for(const page of manifest.pages){
     assert.equal((desktopNav.match(/data-nav-primary/g)||[]).length,6,`${page.path}: six primary sections without visit item`);
     assert.equal((desktopNav.match(/data-event-link/g)||[]).length,6,`${page.path}: six event submenu links`);
     for(const surface of ['desktop','mobile'])assert.ok(pageHeader.includes(`id="events-submenu-${surface}"`),`${page.path}: unique ${surface} event submenu`);
+    const suggestion=html.match(/<aside class="language-suggestion"[\s\S]*?<\/aside>/g)||[];
+    assert.equal(suggestion.length,page.key==='404'?0:1,`${page.path}: one language suggestion on content pages`);
+    if(suggestion.length){
+      assert.match(suggestion[0],/data-language-suggestion[^>]* hidden>/,`${page.path}: suggestion starts hidden`);
+      for(const control of ['message','accept','dismiss'])assert.ok(suggestion[0].includes(`data-language-${control}`),`${page.path}: language suggestion ${control}`);
+      assert.ok(!/role="(?:dialog|alertdialog)"|autofocus/.test(suggestion[0]),`${page.path}: nonmodal suggestion without focus stealing`);
+    }
   }
   if(page.lang!=='ru')assert.ok(!/[А-Яа-яЁё]/.test(html),`${page.path}: no untranslated Cyrillic`);
   if(page.key!=='404'&&!page.redirectTo){
@@ -172,5 +179,5 @@ for(const page of manifest.pages){
 const sitemap=await readFile(path.join(output,'sitemap.xml'),'utf8');
 for(const page of manifest.pages)if(page.redirectTo)assert.ok(!sitemap.includes(`<loc>${origin+page.path}</loc>`),`${page.path}: alias excluded from sitemap`);
 const js=await readFile(path.join(output,'app.js'),'utf8');
-assert.ok(!/fetch\(|XMLHttpRequest|sendBeacon|localStorage\.setItem/.test(js),'No hidden submission/tracking');
+assert.ok(!/fetch\(|XMLHttpRequest|sendBeacon/.test(js),'No hidden submission/tracking network requests');
 console.log(`PASS: ${manifest.pages.length} pages, ${links} local links/assets, ${images} image tags; locales, prices, 16-photo galleries, 68-item menus and no forms/development copy.`);

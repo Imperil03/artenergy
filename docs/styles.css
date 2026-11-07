@@ -952,3 +952,19 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
 }
 @media(prefers-reduced-motion:reduce){.events-dropdown-toggle svg{transition:none}}
 [data-motion="reduce"] .events-dropdown-toggle svg{transition:none}
+
+/* A dismissible language suggestion stays secondary to page content and navigation. */
+.language-suggestion{position:fixed;z-index:20;right:24px;bottom:calc(24px + env(safe-area-inset-bottom));display:grid;grid-template-columns:minmax(0,1fr) 44px;align-items:start;gap:8px;width:min(400px,calc(100vw - 48px));max-height:calc(100svh - 48px - env(safe-area-inset-bottom));overflow:auto;padding:20px;border-radius:12px;background:var(--white);color:var(--ink);box-shadow:0 8px 28px rgba(9,38,24,.18)}
+.language-suggestion-content{min-width:0}
+.language-suggestion [data-language-message]{margin:0;font-size:17px;font-weight:500;line-height:1.45;overflow-wrap:anywhere}
+.language-suggestion-accept{display:inline-flex;align-items:center;gap:8px;min-height:44px;max-width:100%;margin-top:4px;color:var(--green);font-size:16px;font-weight:600;line-height:1.4;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;overflow-wrap:anywhere}
+.language-suggestion-accept svg{flex:none}
+.language-suggestion-accept:hover{text-decoration-thickness:2px}
+.language-suggestion-dismiss{display:grid;place-items:center;width:44px;min-height:44px;padding:0;border:0;border-radius:8px;background:transparent;color:var(--ink);cursor:pointer}
+.language-suggestion-dismiss:hover{background:var(--pale)}
+.language-suggestion-dismiss:focus-visible{outline-offset:-3px}
+@media(max-width:760px){
+  .language-suggestion{right:16px;bottom:calc(16px + env(safe-area-inset-bottom));width:calc(100vw - 32px);max-height:calc(100svh - 32px - env(safe-area-inset-bottom));padding:16px}
+  .has-mobile-contact .language-suggestion{bottom:calc(100px + env(safe-area-inset-bottom));max-height:calc(100svh - 116px - env(safe-area-inset-bottom))}
+}
+@media print{.language-suggestion{display:none!important}}
