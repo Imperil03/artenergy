@@ -1,10 +1,9 @@
-import {readFileSync} from 'node:fs';
-import {pathFor,altFor} from './model.mjs';
+import {pathFor,altFor,spaTreatmentCatalog} from './model.mjs';
 import {shell} from './templates.mjs';
 import {breadcrumbs,esc,image,photoLink,paragraphs,wa,local,bookingSection} from './components.mjs';
 import {spaProceduresCopy} from './spa-procedures-copy.mjs';
 
-const {services,heroImage}=JSON.parse(readFileSync(new URL('./content/spa-procedures.json',import.meta.url),'utf8'));
+const {services,heroImage}=spaTreatmentCatalog;
 const localized=(value,lang)=>typeof value==='string'?value:value?.[lang]??'';
 
 function procedureSection(service,lang,primary=false){

@@ -7,6 +7,7 @@ export const copy = read('copy.json');
 export const menu = read('menu-catalog.json').categories;
 export const assets = read('asset-manifest.json');
 export const gallery = read('gallery-catalog.json');
+export const spaTreatmentCatalog = read('spa-procedures.json');
 export const locales=['ru','en','es'];
 export {origin} from './deployment.mjs';
 export const contact={
