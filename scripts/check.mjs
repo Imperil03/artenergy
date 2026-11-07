@@ -93,6 +93,19 @@ for(const page of manifest.pages){
     assert.equal((html.match(/class="event-card"/g)||[]).length,6,`${page.path}: event catalog`);
     assert.equal((html.match(/<h2 class="event-card-title"/g)||[]).length,6,`${page.path}: event heading hierarchy`);
   }
+  if(page.key==='event-0'){
+    assert.ok(html.includes('class="birthday-page"'),`${page.path}: dedicated birthday page`);
+    assert.equal((html.match(/data-gallery="birthday-venue"/g)||[]).length,3,`${page.path}: preserved venue gallery`);
+    assert.ok(!/class="room-card"|class="room-grid"|class="rates-table"|class="dish-row"/.test(html),`${page.path}: no accommodation catalog or full pricing/dish tables`);
+    assert.ok(!html.includes('150 USD'),`${page.path}: lodging is a short teaser only`);
+    assert.ok(html.includes('class="birthday-stay-link"')&&html.includes('class="birthday-booking"'),`${page.path}: short stay addition and closing CTA`);
+    for(const value of ['500 DOP','1 000 DOP'])assert.ok(html.includes(value),`${page.path}: visit amounts`);
+    if(page.lang==='ru'){
+      assert.ok(html.includes('<h1>День рождения в Пунта-Кане</h1>'),`${page.path}: requested H1`);
+      assert.ok(html.includes('<title>День рождения в Пунта-Кане — праздник у бассейна | ArtEnergy</title>'),`${page.path}: exact title`);
+      assert.ok(html.includes('content="Где отметить день рождения в Пунта-Кане? ArtEnergy в Баваро — площадка с двумя бассейнами, зонами отдыха, кухней и баром. Фотографии и условия проведения праздника."'),`${page.path}: exact description`);
+    }
+  }
   if(page.key==='stay'){
     for(const id of ['bungalow','apartments'])assert.ok(html.includes(`id="${id}"`),`${page.path}: independent accommodation section`);
     assert.equal((html.match(/class="lodging-offer(?: lodging-offer--reverse)?"/g)||[]).length,2,`${page.path}: two full accommodation sections`);

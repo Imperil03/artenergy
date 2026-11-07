@@ -169,4 +169,4 @@ export function errorPage(lang='ru'){
   return shell({key:'404',lang,title:u.notFound+' · ArtEnergy',description:u.notFoundText,status:404,body:`<section class="inner-page error-page"><div class="wrap wrap--reading"><h1>${esc(u.notFound)}</h1><p class="section-lead">${esc(u.notFoundText)}</p>${local(pathFor('home',lang),u.back,'button')}</div></section>`});
 }
 
-export {shell,gallerySection,eventCard,roomCard,photoLink,wa,local};
+export {shell,gallerySection,eventCard,roomCard,photoLink,image,icon,wa,local};

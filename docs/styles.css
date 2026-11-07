@@ -798,3 +798,91 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
   .spa-booking-copy>p{font-size:20px}
   .spa-booking-inner>.button{width:100%;font-size:18px}
 }
+
+/* Birthday page: venue first; accommodation stays a short addition. */
+.birthday-page{padding-top:45px}
+.birthday-wrap{width:min(1100px,calc(100% - var(--gutter)*2));margin-inline:auto}
+.birthday-reading{width:min(820px,calc(100% - var(--gutter)*2));margin-inline:auto}
+.birthday-page .breadcrumbs{margin-bottom:38px}
+.birthday-intro{max-width:1000px;margin-bottom:64px}
+.birthday-intro h1{margin-bottom:26px;font-size:clamp(44px,4.4vw,64px);line-height:1.12}
+.birthday-intro>.section-lead{max-width:820px;margin-bottom:30px;font-size:23px;line-height:1.45}
+.birthday-gallery h2{margin-bottom:30px;font-size:38px}
+.birthday-gallery-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);grid-template-rows:250px 250px;gap:20px}
+.birthday-gallery-grid>.photo-link{min-width:0;min-height:0;height:100%;border-radius:12px}
+.birthday-gallery-grid>.photo-link:first-child{grid-row:span 2}
+.birthday-feature{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center;gap:64px;margin-top:112px}
+.birthday-feature-copy,.birthday-feature-media{min-width:0}
+.birthday-feature h2{margin-bottom:26px;font-size:clamp(34px,3.1vw,44px);line-height:1.15}
+.birthday-feature-copy>p{font-size:21px;line-height:1.5}
+.birthday-feature-copy>p+p{margin-top:20px}
+.birthday-feature-copy>.birthday-practical-note{font-size:18px;line-height:1.5;color:var(--muted)}
+.birthday-feature-copy>.text-link{margin-top:26px;font-size:20px}
+.birthday-feature-media>.photo-link{border-radius:12px}
+.birthday-feature-media>.photo-link img{width:100%;height:auto;object-fit:contain}
+.birthday-feature-media>.photo-link:is(:hover,:focus-visible) img{transform:none}
+.birthday-pricing{margin-top:112px;padding-block:88px}
+.birthday-pricing h2{margin-bottom:28px;font-size:44px}
+.birthday-pricing p{font-size:22px;line-height:1.6}
+.birthday-pricing p+p{margin-top:22px}
+.birthday-price-value{color:var(--ink);font-size:30px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.birthday-pricing .birthday-practical-note{font-size:18px;line-height:1.5;color:var(--muted)}
+.birthday-pricing .text-link{margin-top:28px;font-size:20px}
+.birthday-stay{margin-block:96px}
+.birthday-stay-link{display:grid;grid-template-columns:320px minmax(0,1fr);align-items:center;gap:44px}
+.birthday-stay-photo{display:block;overflow:hidden;aspect-ratio:4/3;border-radius:12px}
+.birthday-stay-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
+.birthday-stay-copy{min-width:0}
+.birthday-stay h2{margin-bottom:20px;font-size:36px;line-height:1.15}
+.birthday-stay-copy>p{max-width:65ch;font-size:21px;line-height:1.5}
+.birthday-stay-action{margin-top:22px;font-size:20px}
+.birthday-stay-link:hover .birthday-stay-action{text-decoration:underline}
+.birthday-booking{padding-block:56px;background:var(--pale)}
+.birthday-booking-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:56px}
+.birthday-booking h2{margin-bottom:20px;font-size:40px;line-height:1.15}
+.birthday-booking p{max-width:70ch;font-size:21px;line-height:1.5}
+.birthday-booking-inner>.button{max-width:360px;gap:12px;padding-inline:20px;font-size:19px;line-height:1.35}
+
+@media(max-width:1050px){
+  .birthday-intro{margin-bottom:52px}
+  .birthday-gallery-grid{grid-template-rows:220px 220px}
+  .birthday-feature{grid-template-columns:1fr;gap:34px;max-width:820px;margin-top:96px}
+  .birthday-feature-media{order:0}
+  .birthday-feature-copy{order:1}
+  .birthday-feature-media>.photo-link{max-width:600px;margin-inline:auto}
+  .birthday-pricing{margin-top:96px;padding-block:80px}
+  .birthday-stay{margin-block:80px}
+  .birthday-stay-link{grid-template-columns:260px minmax(0,1fr);gap:32px}
+  .birthday-booking-inner{grid-template-columns:1fr;gap:30px}
+  .birthday-booking-inner>.button{justify-self:start;max-width:100%}
+}
+@media(max-width:760px){
+  .birthday-page{padding-top:22px}
+  .birthday-page .breadcrumbs{margin-bottom:28px;font-size:15px}
+  .birthday-intro{margin-bottom:44px}
+  .birthday-intro h1{margin-bottom:22px;font-size:clamp(36px,8.5vw,44px);line-height:1.13}
+  .birthday-intro>.section-lead{font-size:20px;line-height:1.45}
+  .birthday-intro>.button{width:100%;font-size:19px}
+  .birthday-gallery h2{margin-bottom:24px;font-size:30px}
+  .birthday-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto;gap:16px}
+  .birthday-gallery-grid>.photo-link{height:200px;border-radius:10px}
+  .birthday-gallery-grid>.photo-link:first-child{grid-column:span 2;grid-row:auto;height:280px}
+  .birthday-feature{gap:28px;margin-top:76px}
+  .birthday-feature h2{font-size:32px;margin-bottom:22px}
+  .birthday-feature-copy>p{font-size:20px}
+  .birthday-feature-copy>.text-link{font-size:19px}
+  .birthday-pricing{margin-top:76px;padding-block:60px}
+  .birthday-pricing h2{font-size:32px;margin-bottom:24px}
+  .birthday-pricing p{font-size:20px;line-height:1.55}
+  .birthday-price-value{font-size:27px}
+  .birthday-pricing .text-link{font-size:19px}
+  .birthday-stay{margin-block:64px}
+  .birthday-stay-link{grid-template-columns:1fr;gap:28px}
+  .birthday-stay h2{font-size:32px}
+  .birthday-stay-copy>p{font-size:20px}
+  .birthday-stay-action{font-size:19px}
+  .birthday-booking{padding-block:44px}
+  .birthday-booking h2{font-size:32px}
+  .birthday-booking p{font-size:20px}
+  .birthday-booking-inner>.button{width:100%;font-size:18px}
+}
