@@ -2,9 +2,12 @@
 .nav-dropdown{position:relative;min-width:0}
 .nav-dropdown-row{display:flex;align-items:center;min-width:0}
 .nav-dropdown-toggle{display:grid;place-items:center;flex:none;width:44px;min-height:44px;padding:0;border:0;border-radius:8px;background:transparent;color:inherit;cursor:pointer}
-/* Fine-pointer desktop: a compact label/chevron group, still 44px high. */
-.desktop-nav .nav-dropdown-row{gap:4px}
-.desktop-nav .nav-dropdown-toggle{width:24px}
+/* Match gaps to the chevron's painted edge while keeping its full hit area. */
+@media(min-width:1201px){
+  .desktop-nav{--nav-toggle-width:24px;gap:24px}
+  .desktop-nav .nav-dropdown-row{gap:4px}
+  .desktop-nav .nav-dropdown-toggle{width:var(--nav-toggle-width);margin-inline-end:calc((10px - var(--nav-toggle-width))/2)}
+}
 .nav-dropdown-toggle svg{transition:transform var(--motion-fast) var(--motion-ease)}
 .nav-dropdown-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
 .nav-dropdown-toggle:hover svg{opacity:.7}
@@ -15,13 +18,12 @@
 .nav-submenu a:is(:hover,:focus-visible),.nav-submenu a[aria-current="page"]{background:var(--paper);color:var(--green)}
 .nav-submenu a:focus-visible{outline-offset:-3px}
 
-@media(min-width:1201px) and (max-width:1360px){
+@media(min-width:1201px) and (max-width:1380px){
   .header-inner{gap:24px}
-  .desktop-nav{gap:14px}
   .desktop-nav a[data-nav-primary]{font-size:16px}
 }
-@media(any-pointer:coarse){
-  .desktop-nav .nav-dropdown-toggle{width:44px}
+@media(min-width:1201px) and (any-pointer:coarse){
+  .desktop-nav{--nav-toggle-width:44px}
 }
 @media(max-width:1200px){
   .mobile-nav-panel .nav-dropdown-row>[data-nav-primary]{display:flex;align-items:center;flex:1;min-width:0;min-height:44px}
