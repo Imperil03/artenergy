@@ -25,6 +25,9 @@
 .birthday-pricing h2{margin-bottom:28px;font-size:44px}
 .birthday-pricing p{font-size:22px;line-height:1.6}
 .birthday-pricing p+p{margin-top:22px}
+.birthday-pricing-list{margin-block:22px;padding-left:26px;font-size:22px;line-height:1.6;color:var(--ink);font-weight:600}
+.birthday-pricing-list li+li{margin-top:12px}
+.birthday-pricing-list .birthday-price-value{font-size:inherit;font-weight:inherit}
 .birthday-price-value{color:var(--ink);font-size:30px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
 .birthday-pricing .birthday-practical-note{font-size:18px;line-height:1.5;color:var(--muted)}
 .birthday-pricing .text-link{margin-top:28px;font-size:20px}
@@ -35,12 +38,14 @@
 .birthday-stay-copy{min-width:0}
 .birthday-stay h2{margin-bottom:20px;font-size:36px;line-height:1.15}
 .birthday-stay-copy>p{max-width:65ch;font-size:21px;line-height:1.5}
+.birthday-stay-copy>p+p{margin-top:16px}
 .birthday-stay-action{margin-top:22px;font-size:20px}
 .birthday-stay-link:hover .birthday-stay-action{text-decoration:underline}
 .birthday-booking{padding-block:56px;background:var(--pale)}
 .birthday-booking-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:56px}
 .birthday-booking h2{margin-bottom:20px;font-size:40px;line-height:1.15}
 .birthday-booking p{max-width:70ch;font-size:21px;line-height:1.5}
+.birthday-booking p+p{margin-top:18px}
 .birthday-booking-inner>.button{max-width:360px;gap:12px;padding-inline:20px;font-size:19px;line-height:1.35}
 
 @media(max-width:1050px){
@@ -74,6 +79,7 @@
   .birthday-pricing{margin-top:76px;padding-block:60px}
   .birthday-pricing h2{font-size:32px;margin-bottom:24px}
   .birthday-pricing p{font-size:20px;line-height:1.55}
+  .birthday-pricing-list{font-size:20px;line-height:1.55}
   .birthday-price-value{font-size:27px}
   .birthday-pricing .text-link{font-size:19px}
   .birthday-stay{margin-block:64px}

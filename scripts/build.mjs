@@ -6,6 +6,7 @@ import {homePage,menuPage,contactsPage,eventPage,spaRedirect,errorPage} from '..
 import {spaPage} from '../src/spa-page.mjs';
 import {birthdayPage} from '../src/birthday-page.mjs';
 import {childrenPartyPage} from '../src/children-page.mjs';
+import {editorialEventKeys,editorialEventPage} from '../src/event-editorial-pages.mjs';
 import {sectionPage} from '../src/section-pages.mjs';
 import {locales,events,spaServices,pathFor,legacySpaPath,origin} from '../src/model.mjs';
 import {basePath,noIndex,publishHtml,publishCss} from '../src/deployment.mjs';
@@ -13,6 +14,12 @@ import {basePath,noIndex,publishHtml,publishCss} from '../src/deployment.mjs';
 export const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export const output=path.resolve(root,'dist');
 const buildDate='2026-11-06';
+function renderEvent(event,lang){
+  if(event.key==='event-0')return birthdayPage(lang);
+  if(event.key==='event-1')return childrenPartyPage(lang);
+  if(editorialEventKeys.includes(event.key))return editorialEventPage(event.key,lang);
+  return eventPage(event,lang);
+}
 export async function build(){
   const pages=[];
   for(const lang of locales){
@@ -20,7 +27,7 @@ export async function build(){
     for(const key of ['venue','events','stay'])pages.push({path:pathFor(key,lang),lang,key,html:sectionPage(key,lang)});
     pages.push({path:pathFor('menu',lang),lang,key:'menu',html:menuPage(lang)});
     pages.push({path:pathFor('contacts',lang),lang,key:'contacts',html:contactsPage(lang)});
-    for(const event of events)pages.push({path:pathFor(event.key,lang),lang,key:event.key,html:event.key==='event-0'?birthdayPage(lang):event.key==='event-1'?childrenPartyPage(lang):eventPage(event,lang)});
+    for(const event of events)pages.push({path:pathFor(event.key,lang),lang,key:event.key,html:renderEvent(event,lang)});
     pages.push({path:pathFor('spa',lang),lang,key:'spa',html:spaPage(lang)});
     for(const service of spaServices)pages.push({path:legacySpaPath(service.index,lang),lang,key:service.key,redirectTo:pathFor(service.key,lang),html:spaRedirect(service,lang)});
     pages.push({path:pathFor('404',lang),lang,key:'404',html:errorPage(lang)});

@@ -9,7 +9,7 @@ export const childrenPartyCopy = {
       'Соберите друзей и близких, подготовьте поздравления, игры и праздничную программу. На территории ArtEnergy можно провести время у бассейнов, организовать угощение для гостей и отдохнуть в крытых зонах среди пальм.',
       'Если вы планируете пригласить аниматора, украсить площадку или провести тематическую вечеринку, расскажите об этом заранее. Мы обсудим ваши пожелания и возможности проведения праздника.',
     ],
-    safetyNote: 'Дети должны находиться под постоянным присмотром взрослых. Прыжки и ныряние в бассейны запрещены.',
+    safetyNote: 'Дети должны находиться под постоянным присмотром взрослых.',
     foodTitle: 'Детское меню и праздничный торт',
     foodParagraphs: [
       'Для маленьких гостей в ArtEnergy предусмотрено отдельное меню: гамбургеры, чизбургеры, куриные наггетсы, картофель фри и соки. Взрослые могут выбрать блюда из основного меню кухни и бара.',
@@ -42,7 +42,7 @@ export const childrenPartyCopy = {
       'Gather friends and family, prepare birthday wishes, games and a party programme. At ArtEnergy, you can spend time by the pools, arrange food for your guests and relax in covered areas among the palm trees.',
       'If you plan to invite a children’s entertainer, decorate the venue or hold a themed party, tell us in advance. We will discuss your ideas and what can be arranged for the celebration.',
     ],
-    safetyNote: 'Children must be supervised by adults at all times. Jumping and diving into the pools are prohibited.',
+    safetyNote: 'Children must be supervised by adults at all times.',
     foodTitle: 'Children’s menu and celebration cake',
     foodParagraphs: [
       'ArtEnergy has a separate menu for younger guests: hamburgers, cheeseburgers, chicken nuggets, fries and juices. Adults can choose dishes from the main kitchen and bar menu.',
@@ -75,7 +75,7 @@ export const childrenPartyCopy = {
       'Reúne a amigos y familiares, prepara felicitaciones, juegos y un programa para la fiesta. En ArtEnergy puedes disfrutar junto a las piscinas, organizar la comida para los invitados y descansar en zonas cubiertas entre palmeras.',
       'Si tienes pensado invitar a un animador infantil, decorar el recinto u organizar una fiesta temática, cuéntanoslo con antelación. Hablaremos de tus ideas y de lo que se puede organizar para la celebración.',
     ],
-    safetyNote: 'Los niños deben estar bajo la supervisión constante de adultos. Está prohibido saltar o zambullirse en las piscinas.',
+    safetyNote: 'Los niños deben estar bajo la supervisión constante de adultos.',
     foodTitle: 'Menú infantil y pastel de celebración',
     foodParagraphs: [
       'ArtEnergy tiene un menú especial para los más pequeños: hamburguesas, hamburguesas con queso, nuggets de pollo, papas fritas y jugos. Los adultos pueden elegir platos del menú principal de cocina y bar.',

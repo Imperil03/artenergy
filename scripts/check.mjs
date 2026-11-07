@@ -93,13 +93,15 @@ for(const page of manifest.pages){
     assert.equal((html.match(/class="event-card"/g)||[]).length,6,`${page.path}: event catalog`);
     assert.equal((html.match(/<h2 class="event-card-title"/g)||[]).length,6,`${page.path}: event heading hierarchy`);
   }
-  if(page.key==='event-0'||page.key==='event-1'){
+  if(['event-0','event-1','event-2','event-3','event-4','event-6'].includes(page.key)){
     assert.ok(html.includes('class="birthday-page"'),`${page.path}: dedicated birthday page`);
     assert.equal((html.match(/data-gallery="birthday-venue"/g)||[]).length,3,`${page.path}: preserved venue gallery`);
     assert.ok(!/class="room-card"|class="room-grid"|class="rates-table"|class="dish-row"/.test(html),`${page.path}: no accommodation catalog or full pricing/dish tables`);
     assert.ok(!html.includes('150 USD'),`${page.path}: lodging is a short teaser only`);
     assert.ok(html.includes('class="birthday-stay-link"')&&html.includes('class="birthday-booking"'),`${page.path}: short stay addition and closing CTA`);
-    for(const value of ['500 DOP','1 000 DOP'])assert.ok(html.includes(value),`${page.path}: visit amounts`);
+    if(page.key!=='event-2')assert.ok(html.includes('1 000 DOP'),`${page.path}: approved evening amount`);
+    if(!['event-2','event-6'].includes(page.key))assert.ok(html.includes('500 DOP'),`${page.path}: approved daytime amount`);
+    if(page.key==='event-6')assert.ok(html.includes('class="birthday-pricing-list"'),`${page.path}: two supplied night periods`);
     if(page.lang==='ru'&&page.key==='event-0'){
       assert.ok(html.includes('<h1>День рождения в Пунта-Кане</h1>'),`${page.path}: requested H1`);
       assert.ok(html.includes('<title>День рождения в Пунта-Кане — праздник у бассейна | ArtEnergy</title>'),`${page.path}: exact title`);
@@ -109,7 +111,8 @@ for(const page of manifest.pages){
       assert.ok(html.includes('<h1>Детский праздник в Пунта-Кане</h1>'),`${page.path}: child party H1`);
       assert.ok(html.includes('<title>Детский день рождения и праздники в Пунта-Кане | ArtEnergy</title>'),`${page.path}: exact child party title`);
       assert.ok(html.includes('content="Детский праздник в ArtEnergy, Баваро, Пунта-Кана. Площадка с бассейнами, зонами отдыха, детским меню и праздничными тортами. Фото, условия проведения и бронирование."'),`${page.path}: exact child party description`);
-      assert.ok(html.includes('Дети должны находиться под постоянным присмотром взрослых. Прыжки и ныряние в бассейны запрещены.'),`${page.path}: approved safety text`);
+      assert.ok(html.includes('Дети должны находиться под постоянным присмотром взрослых.'),`${page.path}: approved supervision text`);
+      assert.ok(!html.includes('Прыжки и ныряние в бассейны запрещены.'),`${page.path}: removed child-page fragment`);
       assert.ok(html.includes('Условия посещения для детей уточняются отдельно.'),`${page.path}: approved child pricing text`);
     }
   }
