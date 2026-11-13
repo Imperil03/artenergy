@@ -1,4 +1,4 @@
-import {copy,menu,assets,gallery,locales,origin,contact,events,rooms,spaServices,pathFor,translate,ui,altFor,whatsapp} from './model.mjs';
+import {copy,menu,assets,gallery,locales,origin,contact,events,rooms,spaServices,pathFor,translate,ui,altFor,whatsapp,defaultLocale} from './model.mjs';
 import {contactPageCopy,spaPageCopy,menuPageCopy,workingHoursCopy} from './translations.mjs';
 import {basePath} from './deployment.mjs';
 import {esc,icon,srcset,image,external,wa,local,alias,figure,breadcrumbs} from './components.mjs';
@@ -135,7 +135,7 @@ function languageSuggestion(key,lang){
 
 function shell({key,lang,title,description,body,home=false,status=200}){
   const canonical=origin+pathFor(key,lang);
-  return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><meta name="theme-color" content="#153d2c">${status===404?'<meta name="robots" content="noindex">':`<link rel="canonical" href="${canonical}">${locales.map(l=>`<link rel="alternate" hreflang="${l}" href="${origin+pathFor(key,l)}">`).join('')}<link rel="alternate" hreflang="x-default" href="${origin+pathFor(key,'ru')}">`}<meta property="og:type" content="website"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${origin+assets.hero.src}"><meta property="og:locale" content="${{ru:'ru_RU',en:'en_US',es:'es_DO'}[lang]}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="preload" href="/fonts/GolosText-variable.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="/styles.css"><script src="/app.js" defer></script>${schemaScript(pageSchema({key,lang,title,description,body,status}))}</head><body class="${home?'page-home':'page-inner'}" data-locale="${lang}" data-page="${key}">${header(key,lang)}<main id="main">${body}</main>${footer(lang,key)}${status===200?languageSuggestion(key,lang):''}${lightbox(lang)}${home?overviewDialog(lang):''}${status===200?floatingContact(lang):''}</body></html>`;
+  return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><meta name="theme-color" content="#153d2c">${status===404?'<meta name="robots" content="noindex">':`<link rel="canonical" href="${canonical}">${locales.map(l=>`<link rel="alternate" hreflang="${l}" href="${origin+pathFor(key,l)}">`).join('')}<link rel="alternate" hreflang="x-default" href="${origin+pathFor(key,defaultLocale)}">`}<meta property="og:type" content="website"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${origin+assets.hero.src}"><meta property="og:locale" content="${{ru:'ru_RU',en:'en_US',es:'es_DO'}[lang]}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="preload" href="/fonts/GolosText-variable.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="/styles.css"><script src="/app.js" defer></script>${schemaScript(pageSchema({key,lang,title,description,body,status}))}</head><body class="${home?'page-home':'page-inner'}" data-locale="${lang}" data-page="${key}">${header(key,lang)}<main id="main">${body}</main>${footer(lang,key)}${status===200?languageSuggestion(key,lang):''}${lightbox(lang)}${home?overviewDialog(lang):''}${status===200?floatingContact(lang):''}</body></html>`;
 }
 
 export function homePage(lang){
@@ -152,12 +152,23 @@ export function menuPage(lang){
   return shell({key:'menu',lang,title:c.title,description:c.description,body});
 }
 
-export function spaRedirect(service,lang){
-  const title=translate(copy.bath.title,lang),target=basePath+pathFor(service.key,lang),canonical=origin+pathFor('spa',lang);
-  return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(title)} · ArtEnergy</title><meta name="robots" content="noindex, follow"><link rel="canonical" href="${esc(canonical)}"><meta http-equiv="refresh" content="0;url=${esc(target)}"><script>location.replace(${JSON.stringify(target).replace(/</g,'\\u003c')})</script></head><body><h1>${esc(title)}</h1><p><a href="${pathFor(service.key,lang)}">${esc(spaPageCopy[lang].continue)}</a></p></body></html>`;
+function redirectPage({lang,title,targetPath,canonicalPath,preserveHash=false}){
+  const target=basePath+targetPath,canonical=origin+canonicalPath;
+  const encoded=JSON.stringify(target).replace(/</g,'\\u003c');
+  const script=preserveHash?`location.replace(${encoded}+location.hash)`:`location.replace(${encoded})`;
+  return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(title)} · ArtEnergy</title><meta name="robots" content="noindex, follow"><link rel="canonical" href="${esc(canonical)}"><meta http-equiv="refresh" content="0;url=${esc(target)}"><script>${script}</script></head><body><h1>${esc(title)}</h1><p><a href="${targetPath}">${esc(spaPageCopy[lang].continue)}</a></p></body></html>`;
 }
 
-export function errorPage(lang='ru'){
+export function spaRedirect(service,lang){
+  return redirectPage({lang,title:translate(copy.bath.title,lang),targetPath:pathFor(service.key,lang),canonicalPath:pathFor('spa',lang)});
+}
+
+export function homeRedirect(lang='es'){
+  const targetPath=pathFor('home',lang);
+  return redirectPage({lang,title:translate(copy.hero.title,lang),targetPath,canonicalPath:targetPath,preserveHash:true});
+}
+
+export function errorPage(lang=defaultLocale){
   const u=ui[lang];
   return shell({key:'404',lang,title:u.notFound+' · ArtEnergy',description:u.notFoundText,status:404,body:`<section class="inner-page error-page"><div class="wrap wrap--reading"><h1>${esc(u.notFound)}</h1><p class="section-lead">${esc(u.notFoundText)}</p>${local(pathFor('home',lang),u.back,'button')}</div></section>`});
 }

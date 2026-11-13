@@ -11,6 +11,8 @@ const manifest=JSON.parse(await readFile(path.join(root,'build-manifest.json'),'
 const origin=manifest.siteUrl||'https://artenergy.do';
 const basePath=manifest.basePath||'';
 const docs=new Map();
+assert.equal(manifest.pages.find(page=>page.path==='/')?.lang,'es','Spanish is served directly at the site root');
+assert.equal(manifest.pages.find(page=>page.path==='/ru/')?.lang,'ru','Russian home remains directly accessible');
 assert.ok(!manifest.pages.some(page=>page.key.startsWith('room-')),'No separate lodging pages or redirect aliases');
 assert.ok(!manifest.pages.some(page=>['event-5','event-7'].includes(page.key)),'Retired event pages are absent');
 for(const page of manifest.pages){
@@ -52,10 +54,11 @@ for(const page of manifest.pages){
   if(page.lang!=='ru')assert.ok(!/[А-Яа-яЁё]/.test(html),`${page.path}: no untranslated Cyrillic`);
   if(page.key!=='404'&&!page.redirectTo){
     assert.ok(html.includes(`href="${origin}${page.path}"`),`${page.path}: canonical`);
-    for(const lang of ['ru','en','es'])assert.ok(html.includes(`hreflang="${lang}"`),`${page.path}: language alternative`);
+    for(const lang of ['ru','en','es'])assert.ok(html.includes(`hreflang="${lang}" href="${origin+pathFor(page.key,lang)}"`),`${page.path}: correct ${lang} language alternative`);
+    assert.ok(html.includes(`hreflang="x-default" href="${origin+pathFor(page.key,'es')}"`),`${page.path}: Spanish is the default alternative`);
   }
   if(page.redirectTo){
-    const canonical=origin+pathFor('spa',page.lang);
+    const canonical=origin+(page.canonicalPath||pathFor('spa',page.lang));
     assert.ok(html.includes(`rel="canonical" href="${canonical}"`),`${page.path}: alias canonical without fragment`);
     assert.ok(html.includes(`content="0;url=${basePath+page.redirectTo}"`),`${page.path}: same-site deployment-aware redirect`);
     assert.ok(html.includes('content="noindex, follow"'),`${page.path}: aliases not indexable`);

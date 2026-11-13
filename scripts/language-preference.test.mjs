@@ -1,6 +1,9 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
+import {homeRedirect} from '../src/templates.mjs';
+import {pathFor,defaultLocale} from '../src/model.mjs';
+import {basePath} from '../src/deployment.mjs';
 
 const source=await readFile(new URL('../src/client/language-preference.js',import.meta.url),'utf8');
 const preferenceKey='artenergy.language.v1',dismissalKey='artenergy.language-suggestion-dismissed.v1';
@@ -50,6 +53,18 @@ function page({locale='ru',languages=['en-US'],language='en-US',saved,closed=fal
 }
 function check(name,run){run();passed++;console.log('PASS',name);}
 
+check('Spanish is the default home while Russian and English remain directly reachable',()=>{
+  assert.equal(defaultLocale,'es');assert.equal(pathFor('home'),'/');
+  assert.equal(pathFor('home','ru'),'/ru/');assert.equal(pathFor('home','en'),'/en/');
+});
+check('Legacy Spanish home normalization preserves its section in root and prefixed builds',()=>{
+  const html=homeRedirect('es');const script=html.match(/<script>([\s\S]*?)<\/script>/)[1];
+  for(const hash of ['', '#stay']){
+    let destination;vm.runInNewContext(script,{location:{hash,replace:value=>{destination=value;}}});
+    assert.equal(destination,basePath+'/'+hash);
+  }
+});
+
 check('Browser regional tag selects the matching translated page without startup writes or focus',()=>{
   const p=page({languages:['es-DO','en-US']});
   assert.equal(p.suggestion.hidden,false);assert.equal(p.suggestion.lang,'es');
@@ -68,6 +83,21 @@ check('Language list uses the first supported entry, ignoring unsupported prefer
 });
 check('Unsupported browser list falls back to Spanish',()=>{
   assert.equal(page({languages:['de-DE','fr-FR']}).accept.hreflang,'es');
+});
+check('Spanish default page needs no suggestion for a Spanish browser',()=>{
+  const p=page({locale:'es',languages:['es-DO']});assert.equal(p.suggestion.hidden,true);assert.deepEqual(p.writes,[]);
+});
+check('Spanish default page suggests English without navigating',()=>{
+  const p=page({locale:'es',languages:['en-US']});assert.equal(p.suggestion.hidden,false);assert.equal(p.accept.hreflang,'en');assert.deepEqual(p.writes,[]);
+});
+check('Spanish default page suggests Russian without navigating',()=>{
+  const p=page({locale:'es',languages:['ru-RU','en-US']});assert.equal(p.accept.hreflang,'ru');assert.deepEqual(p.writes,[]);
+});
+check('Unsupported browser languages leave the Spanish default page unchanged',()=>{
+  const p=page({locale:'es',languages:['fr-FR','de-DE']});assert.equal(p.suggestion.hidden,true);assert.deepEqual(p.writes,[]);
+});
+check('A saved choice still overrides the browser on the Spanish default page',()=>{
+  const p=page({locale:'es',saved:'ru',languages:['en-US']});assert.equal(p.accept.hreflang,'ru');assert.deepEqual(p.writes,[]);
 });
 check('Single navigator.language works when language list is absent or empty',()=>{
   assert.equal(page({languages:null,language:'es-MX'}).accept.hreflang,'es');

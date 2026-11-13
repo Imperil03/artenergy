@@ -9,6 +9,7 @@ export const assets = read('asset-manifest.json');
 export const gallery = read('gallery-catalog.json');
 export const spaTreatmentCatalog = read('spa-procedures.json');
 export const locales=['ru','en','es'];
+export const defaultLocale='es';
 export {origin} from './deployment.mjs';
 export const contact={
   phone:'+1 829 771 5555',whatsapp:'https://wa.me/18297715555',email:'Arteenergy501@gmail.com',instagram:socials.instagram,
@@ -28,9 +29,10 @@ export const events=copy.events.tiles.map(([name,image],i)=>({key:`event-${i}`,n
 export const rooms=copy.stay.choices.map((room,i)=>({...room,key:`room-${i}`,index:i}));
 export const spaServices=copy.bath.services.map((service,i)=>({...service,key:`spa-${i}`,index:i}));
 
-export function pathFor(key='home',locale='ru') {
+export function pathFor(key='home',locale=defaultLocale) {
   const prefix=locale==='ru'?'':`/${locale}`;
-  if(key==='home') return prefix+'/';
+  if(key==='home')return {es:'/',en:'/en/',ru:'/ru/'}[locale];
+  if(key==='404')return {es:'/404.html',en:'/en/404.html',ru:'/ru/404.html'}[locale];
   if(key==='venue')return prefix+({ru:'/ploshchadka/',en:'/venue/',es:'/espacio/'}[locale]);
   if(key==='events')return prefix+({ru:'/sobytiya/',en:'/events/',es:'/eventos/'}[locale]);
   if(key==='stay')return prefix+({ru:'/prozhivanie/',en:'/stays/',es:'/alojamiento/'}[locale]);

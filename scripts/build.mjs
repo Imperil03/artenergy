@@ -2,7 +2,7 @@ import {mkdir,readFile,writeFile,rm,cp,lstat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
-import {homePage,menuPage,contactsPage,spaRedirect,errorPage} from '../src/templates.mjs';
+import {homePage,menuPage,contactsPage,spaRedirect,homeRedirect,errorPage} from '../src/templates.mjs';
 import {spaPage} from '../src/spa-page.mjs';
 import {spaProceduresPage} from '../src/spa-procedures-page.mjs';
 import {birthdayPage} from '../src/birthday-page.mjs';
@@ -36,6 +36,7 @@ export async function build(){
     for(const service of spaServices)pages.push({path:legacySpaPath(service.index,lang),lang,key:service.key,redirectTo:pathFor(service.key,lang),html:spaRedirect(service,lang)});
     pages.push({path:pathFor('404',lang),lang,key:'404',html:errorPage(lang)});
   }
+  pages.push({path:'/es/',lang:'es',key:'legacy-home-es',redirectTo:pathFor('home','es'),canonicalPath:pathFor('home','es'),html:homeRedirect('es')});
   for(const page of pages)page.html=publishHtml(page.html);
   // Only the generated dist directory inside this app is ever removed.
   if(output!==path.join(root,'dist')||!output.startsWith(root+path.sep))throw new Error('Unsafe output path');
@@ -80,7 +81,7 @@ export async function build(){
   const sitemap=`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${livePages.map(p=>`\n<url><loc>${origin+p.path}</loc><lastmod>${buildDate}</lastmod>${locales.map(l=>`<xhtml:link rel="alternate" hreflang="${l}" href="${origin+pathFor(p.key,l)}"/>`).join('')}</url>`).join('')}\n</urlset>\n`;
   await writeFile(path.join(output,'sitemap.xml'),sitemap);
   await writeFile(path.join(output,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`);
-  const manifests=pages.map(({path,lang,key,redirectTo,html})=>({path,lang,key,...(redirectTo?{redirectTo}:{}),sha256:createHash('sha256').update(html).digest('hex')}));
+  const manifests=pages.map(({path,lang,key,redirectTo,canonicalPath,html})=>({path,lang,key,...(redirectTo?{redirectTo}:{}),...(canonicalPath?{canonicalPath}:{}),sha256:createHash('sha256').update(html).digest('hex')}));
   await writeFile(path.join(output,'.nojekyll'),'');
   await writeFile(path.join(root,'build-manifest.json'),JSON.stringify({builtAt:new Date().toISOString(),siteUrl:origin,basePath,noIndex,assetFiles,bundles,pages:manifests},null,2));
   console.log(`Built ${pages.length} HTML pages (${locales.join(', ')}) to ${output}`);

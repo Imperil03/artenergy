@@ -28,7 +28,7 @@ const server=http.createServer(async(req,res)=>{
       file=path.join(file,'index.html');info=await stat(file).catch(()=>null);
     }
     if(!info?.isFile()){
-      const locale=pathname.startsWith('/en/')?'en/':pathname.startsWith('/es/')?'es/':'';
+      const locale=pathname.startsWith('/en/')?'en/':pathname.startsWith('/ru/')?'ru/':'';
       res.writeHead(404,{'Content-Type':'text/html; charset=utf-8'});
       res.end(req.method==='HEAD'?'':await readFile(path.join(output,locale+'404.html')));return;
     }
