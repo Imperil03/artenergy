@@ -197,7 +197,9 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
 .footer-meta{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;margin-top:54px;font-size:15px;color:#e7eee8}
 .footer-meta a:hover{text-decoration:underline}
 .footer-meta .text-link{font-size:16px;min-height:32px;padding:0}
-.mobile-contact{display:none}
+.floating-contact{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom));z-index:24;display:grid;place-items:center;width:60px;height:60px;border-radius:50%;background:#087d50;color:var(--white);box-shadow:0 6px 18px rgba(9,38,24,.22);transition:background var(--motion-fast) ease}
+.floating-contact:hover{background:#09663f}
+.floating-contact:focus-visible{box-shadow:0 0 0 3px var(--white),0 6px 18px rgba(9,38,24,.22)}
 
 /* Fullscreen photo viewer */
 .lightbox{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:var(--white)}
@@ -324,8 +326,7 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
   .contact-section{min-height:640px}.contact-inner{padding-top:70px;padding-bottom:42px}.contact-inner h2{font-size:38px;margin-bottom:34px}.contact-shade{background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.6),rgba(0,0,0,.45))}
   address{font-size:20px;line-height:28px}address a{font-size:20px}.contact-actions{gap:24px;margin-top:32px}.contact-actions .button{width:100%}
   .footer-meta{display:grid;gap:13px;margin-top:40px;font-size:14px}
-  .mobile-contact{position:fixed;z-index:25;inset:auto 0 0;display:block;padding:10px 24px max(10px,env(safe-area-inset-bottom));background:var(--white);border-top:1px solid var(--line)}
-  .mobile-contact .button{width:100%;justify-content:space-between}.has-mobile-contact{padding-bottom:86px}
+  .floating-contact{right:16px;bottom:calc(16px + env(safe-area-inset-bottom));width:56px;height:56px}
   .lightbox-shell{grid-template-columns:1fr;gap:0;padding:70px 12px 85px}.lightbox-close{top:17px;right:17px}.lightbox-figure{grid-column:1}.lightbox-figure figcaption{font-size:16px;gap:16px;padding-inline:8px}.lightbox-prev,.lightbox-next{position:absolute;bottom:24px}.lightbox-prev{left:calc(50% - 64px)}.lightbox-next{right:calc(50% - 64px)}
   .inner-page{padding-top:24px;padding-bottom:76px}.breadcrumbs{font-size:15px;margin-bottom:32px}.inner-page h1{font-size:38px;line-height:1.13;margin-bottom:26px}
   .menu-intro{font-size:20px;line-height:1.5}.menu-visit-note{margin-top:22px;padding:20px;font-size:18px}
@@ -342,7 +343,7 @@ address a{display:inline-block;margin-top:14px;font-size:25px}
 @media(prefers-reduced-motion:reduce){:root{--motion-fast:100ms;--motion-state:120ms;--motion-photo:0ms;--motion-out:80ms;--motion-spatial:0ms;--motion-photo-scale:1;--motion-arrow:0px;--motion-panel-inset:inset(0 0 0 0 round 4px);scroll-behavior:auto}.button:active{transform:none}}
 :root[data-motion="reduce"]{--motion-fast:100ms;--motion-state:120ms;--motion-photo:0ms;--motion-out:80ms;--motion-spatial:0ms;--motion-photo-scale:1;--motion-arrow:0px;--motion-panel-inset:inset(0 0 0 0 round 4px);scroll-behavior:auto}
 :root[data-motion="reduce"] .button:active{transform:none}
-@media print{.site-header,.mobile-contact,.lightbox,.overview-dialog,.hero-overview,.button{display:none!important}.hero{min-height:600px}.section{break-inside:avoid}.contact-section{min-height:420px}.menu-panel[hidden]{display:block!important}}
+@media print{.site-header,.floating-contact,.lightbox,.overview-dialog,.hero-overview,.button{display:none!important}.hero{min-height:600px}.section{break-inside:avoid}.contact-section{min-height:420px}.menu-panel[hidden]{display:block!important}}
 
 @media(max-width:1380px) and (min-width:1051px){.desktop-nav{gap:18px}.desktop-nav a{font-size:15px}.header-inner{gap:22px}}
 

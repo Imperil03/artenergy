@@ -4,7 +4,6 @@ const {motion,dialogMotion}=createMotion();
 initNavigation();
 initGallery(motion);
 initOverview(motion,dialogMotion);
-initStickyContact();
 initLightbox(motion,dialogMotion);
 initMenu(motion);
 initContactActions();
